@@ -7,6 +7,8 @@ import { DefaultTheme } from "./assets/themes/default";
 import { GlobalStyles } from "./assets/global";
 import { ThemeProvider } from "styled-components";
 
+import "react-responsive-carousel/lib/styles/carousel.min.css"; //
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
