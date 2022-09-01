@@ -22,7 +22,7 @@ function Nav() {
         <Link to="/types">Types</Link>
       </LinkContainer>
       <Right>
-        <ProfileLink to="/use/profile">
+        <ProfileLink to="/user/profile">
           <CgProfile />
         </ProfileLink>
       </Right>

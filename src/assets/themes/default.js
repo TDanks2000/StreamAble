@@ -14,5 +14,6 @@ export const DefaultTheme = {
     warning: "#f57c00",
     success: "#388e3c",
     confused: "#ab47bc",
+    danger: "#dc3545",
   },
 };
