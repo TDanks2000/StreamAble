@@ -81,7 +81,7 @@ function InfoComponent(props) {
         </EpisodeTitle>
         <InfoTitle>{titlE}</InfoTitle>
 
-        <DownloadButton stream={stream} />
+        <DownloadButton stream={stream} epNum={ep} title={titlE} />
 
         <InfoGenreWrapper>
           {genres?.map((genre, index) => (
