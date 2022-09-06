@@ -23,7 +23,7 @@ export const TopContainer = styled.div`
 export const TopWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5rem;
+  padding: 0.8rem;
   align-items: center;
 `;
 

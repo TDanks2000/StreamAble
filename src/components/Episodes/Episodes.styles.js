@@ -28,17 +28,28 @@ export const Episode = styled(NavLink)`
   font-weight: 500;
   text-transform: uppercase;
   background: ${({ theme }) => theme.base.navBg};
-  padding: 0.6rem 0.8rem;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
+  &:hover,
+  &.active {
+    // background: ${({ theme }) => theme.base.mainColor};
+    background: url(${({ image }) => image});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: ${({ theme }) => theme.base.mainColor};
+  }
+`;
+
+export const EpisodeInner = styled.div`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  padding: 0.6rem 0.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  &:hover,
-  &.active {
-    background: ${({ theme }) => theme.base.mainColor};
-    color: black;
-  }
 `;
 
 export const EpisodesTitle = styled.h1`

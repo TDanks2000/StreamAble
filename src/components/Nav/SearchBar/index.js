@@ -16,7 +16,7 @@ function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value.length < 3) return setOutput([]);
-    api.getSearch({ search: value, limit: 7 }).then((res) => setOutput(res));
+    api.getSearch(value, 1, 7).then((res) => setOutput(res));
   };
 
   return (

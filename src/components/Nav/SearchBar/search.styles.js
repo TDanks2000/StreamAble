@@ -5,7 +5,7 @@ export const SearchContainer = styled.form`
   height: 100%;
   position: relative;
   display: flex;
-  background: #171717;
+  background: #1f1e1e;
   font-size: 1.1rem;
   padding: 0 10px;
   height: 36px;

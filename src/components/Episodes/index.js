@@ -1,29 +1,32 @@
 import React from "react";
 import {
   Episode,
+  EpisodeInner,
   EpisodesContainer,
   EpisodesTitle,
   EpisodesWrapper,
 } from "./Episodes.styles";
 
-function InfoEpisodes({ animeTitle, episodes, id, from }) {
+function InfoEpisodes({ episodes, id, color, ep }) {
   return (
     <EpisodesContainer>
       <EpisodesTitle>Episodes</EpisodesTitle>
       <EpisodesWrapper>
-        {episodes.map(({ title }, index) => {
+        {episodes.map(({ title, image }, index) => {
           const realEpisode = index + 1;
           return (
             <Episode
-              to={
-                id
-                  ? `/anime/${id}/episode/${realEpisode}`
-                  : `/anime/${animeTitle}/episode/${realEpisode}`
-              }
-              sate={{ from }}
+              to={`/anime/${id}/episode/${realEpisode}`}
               key={realEpisode}
+              image={image}
+              color={color}
+              className={realEpisode === ep ? "active" : ""}
             >
-              {!title ? `Episode ${realEpisode}` : `${realEpisode} - ${title}`}
+              <EpisodeInner>
+                {!title
+                  ? `Episode ${realEpisode}`
+                  : `${realEpisode} - ${title}`}
+              </EpisodeInner>
             </Episode>
           );
         })}

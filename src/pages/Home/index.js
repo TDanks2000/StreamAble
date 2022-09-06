@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TopRated from "../../components/Sections/TopRated";
-import Popular from "../../components/Sections/Popular";
+import Trending from "../../components/Sections/Trending";
 import {
   Identifier,
   Wrapper,
@@ -14,7 +13,7 @@ import { BannerItem } from "../../components/Banner/BannerItem";
 function Home() {
   const [topRated, setTopRated] = useState([]);
   useEffect(() => {
-    api.getTopRated(7).then(({ data }) => {
+    api.getPopular(1, 7).then((data) => {
       setTopRated(data);
     });
   }, []);
@@ -26,9 +25,9 @@ function Home() {
           topRated.map((res) => <BannerItem key={res.id} {...res} />)}
       </Banner>
       <SectionContainer>
-        <Identifier>Popular</Identifier>
+        <Identifier>Trending</Identifier>
         <Wrapper>
-          <Popular limit={9} type={1} />
+          <Trending perPage={7 * 2} />
         </Wrapper>
       </SectionContainer>
     </HomeContainer>

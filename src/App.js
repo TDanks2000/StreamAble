@@ -13,7 +13,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/anime/:id" element={<Info />} />
-          <Route path="/anime/:id/episode/:ep" element={<Info />} />
+          <Route path="/anime/:id/episode/:ep/" element={<Info />} />
+          <Route path="/anime/:id/episode/:ep/:typeDub" element={<Info />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </AppWrapper>

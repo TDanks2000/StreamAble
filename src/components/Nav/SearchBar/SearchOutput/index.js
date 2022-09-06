@@ -7,7 +7,7 @@ function SearchOutput({ data, setOutput }) {
   return (
     <SearchOutputContainer className={!data ? "hide" : "show"}>
       {data.map((res) => (
-        <Item key={res.mal_id} {...res} setOutput={setOutput} />
+        <Item key={res.id} {...res} setOutput={setOutput} />
       ))}
     </SearchOutputContainer>
   );

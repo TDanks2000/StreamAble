@@ -11,6 +11,7 @@ export const InfoTitle = styled.h1`
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
+  // color: ${({ color }) => color};
 `;
 
 export const InfoTop = styled.div`

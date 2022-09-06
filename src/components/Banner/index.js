@@ -6,6 +6,7 @@ export const Banner = ({ children }) => {
   return (
     <BannerContainer>
       <Carousel
+        showThumbs={false}
         centerMode={false}
         showStatus={false}
         interval={5000}

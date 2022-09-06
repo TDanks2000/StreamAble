@@ -17,35 +17,42 @@ import {
 import * as api from "../../utils/api/api";
 import ReactVideoPlayer from "../Watch";
 import { DownloadButton } from "./Download";
+import { SubOrDubSelector } from "./SubOrDubSelector";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function InfoComponent(props) {
   const {
-    title,
-    animeId,
+    title: { english: title_english },
+    id,
+    malId,
     genres,
-    synopsis,
-    episodesData,
+    description,
     episodes,
-    mal_id,
-    animeTitle,
-    from,
+    status,
+    releaseDate,
+    rating,
+    duration,
+    subOrDub,
+    season,
+    color,
+    setSubOrDub,
+    typeDub,
   } = props;
   const [stream, setStream] = useState(null);
-  const { ep = 1 } = useParams();
-  const { id } = useParams();
-  const titlE = animeTitle || title;
+  let { ep = 1 } = useParams();
+  var parser = new DOMParser();
+  var htmlDoc = parser.parseFromString(description, "text/html");
+  const episodeId = episodes[ep - 1].id;
+  const titlE = `${title_english} ${subOrDub ? "(dub)" : ""}`;
+
+  useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {
-    const realAnimeId = isNaN(id) ? id : animeId;
-    api.getEpisodeStream(realAnimeId, ep, from).then(({ sources }) => {
-      const src = sources[0].file;
+    api.getSource(episodeId).then(({ sources, headers }) => {
+      const src = sources[0].url;
       setStream(src);
     });
-    document.title = titlE;
-    return () => {
-      document.title = "Anime";
-    };
-  }, [ep, animeId, mal_id, titlE, from, id]);
+  }, [ep, titlE, id, episodeId]);
 
   return (
     <InfoContainer>
@@ -59,37 +66,50 @@ function InfoComponent(props) {
               title={titlE}
               epNum={ep}
               epTitle={
-                !episodesData.length
-                  ? ep
-                  : `${ep} -  ${episodesData[ep - 1]?.title}`
+                episodes[ep - 1].title
+                  ? episodes[ep - 1].title
+                  : `Episode ${ep}`
               }
             />
           </PlayerContainer>
         </InfoLeft>
         <InfoRight>
           <InfoEpisodes
-            animeTitle={id}
-            from={from}
-            episodes={episodesData.length ? episodesData : episodes}
-            id={mal_id}
+            color={color}
+            ep={ep}
+            animeTitle={title_english}
+            episodes={episodes}
+            id={id}
           />
         </InfoRight>
       </InfoTop>
       <InfoLeft>
         <EpisodeTitle>
-          {episodesData[ep - 1] ? episodesData[ep - 1].title : ""}
+          {episodes[ep - 1].title ? episodes[ep - 1].title : `Episode ${ep}`}
         </EpisodeTitle>
-        <InfoTitle>{titlE}</InfoTitle>
+        <InfoTitle color={color}>{titlE}</InfoTitle>
 
-        <DownloadButton stream={stream} epNum={ep} title={titlE} />
+        {/* <DownloadButton stream={stream} epNum={ep} title={titlE} /> */}
 
         <InfoGenreWrapper>
           {genres?.map((genre, index) => (
-            <InfoGenre href="#" key={`${genre}-${index}`}></InfoGenre>
+            <InfoGenre href="#" key={`${genre}-${index}`}>
+              {genre}
+            </InfoGenre>
           ))}
         </InfoGenreWrapper>
+
+        <SubOrDubSelector
+          typeDub={typeDub}
+          subOrDub={subOrDub}
+          setSubOrDub={setSubOrDub}
+        />
         <InfoSynopsis>
-          {synopsis.split(" [Written by MAL Rewrite]")[0]}
+          {
+            htmlDoc
+              .querySelector("body")
+              .innerText.split(" [Written by MAL Rewrite]")[0]
+          }
         </InfoSynopsis>
       </InfoLeft>
     </InfoContainer>

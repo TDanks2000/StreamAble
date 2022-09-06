@@ -7,19 +7,38 @@ const api = axios.create({
   baseURL: `${defaultHost}:${defaultPort}`,
 });
 
-export const getPopular = async ({ type = 1, limit = 10 }) => {
-  const { data } = await api.get(`/api/animixplay/popular?type=${type}`);
+export const getPopular = async (page, perPage) => {
+  const {
+    data: { results },
+  } = await api.get(`/api/anime/popular?page=${page}&perPage=${perPage}`);
 
-  if (!data)
+  if (!results)
     return {
       error: "No data",
     };
 
-  const sortedData = data.sort((a, b) => {
-    return b.score - a.score;
+  const sortedData = results.sort((a, b) => {
+    return b.rating - a.rating;
   });
 
-  return sortedData.splice(0, limit);
+  return sortedData;
+};
+
+export const getTrending = async (page, perPage) => {
+  const {
+    data: { results },
+  } = await api.get(`/api/anime/trending?page=${page}&perPage=${perPage}`);
+
+  if (!results)
+    return {
+      error: "No data",
+    };
+
+  const sortedData = results.sort((a, b) => {
+    return b.rating - a.rating;
+  });
+
+  return sortedData;
 };
 
 export const getTopRated = async (limit = 10, offset = 0) => {
@@ -36,7 +55,7 @@ export const getTopRated = async (limit = 10, offset = 0) => {
 };
 
 export const getInfo = async (id) => {
-  const { data } = await api.get(`/api/anime/info?mal_id=${id}`);
+  const { data } = await api.get(`/api/anime/info/${id}`);
 
   if (!data)
     return {
@@ -46,8 +65,8 @@ export const getInfo = async (id) => {
   return data;
 };
 
-export const getEpisodes = async (id) => {
-  const { data } = await api.get(`/api/anime/episodes?mal_id=${id}`);
+export const getData = async (id) => {
+  const { data } = await api.get(`/api/anime/data/${id}`);
 
   if (!data)
     return {
@@ -57,10 +76,19 @@ export const getEpisodes = async (id) => {
   return data;
 };
 
-export const getEpisodeStream = async (id, epNum, from) => {
-  const { data } = await api.get(
-    `/api/AnimixPlay/source?animeId=${id}&episode=${epNum}`
-  );
+export const getEpisodes = async (id, dub = false) => {
+  const { data } = await api.get(`/api/anime/episodes/${id}?dub=${dub}`);
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
+export const getSource = async (episodeId) => {
+  const { data } = await api.get(`/api/anime/watch/${episodeId}`);
 
   if (!data)
     return {
@@ -92,18 +120,22 @@ export const getGoGoInfo = async (id) => {
   return data;
 };
 
-export const getSearch = async ({ search, limit = 5, offset = 0 }) => {
+export const getSearch = async (search, page, perPage) => {
   if (!search)
     return {
       error: "No search",
     };
 
-  const { data } = await api.get(`/api/gogoanime/search?search=${search}`);
+  const {
+    data: { results },
+  } = await api.get(
+    `/api/anime/search/${search}?page=${page}&perPage=${perPage}`
+  );
 
-  if (!data)
+  if (!results)
     return {
       error: "No data",
     };
 
-  return data.splice(offset, limit);
+  return results;
 };

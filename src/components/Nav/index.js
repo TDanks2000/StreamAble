@@ -14,7 +14,7 @@ import { CgProfile } from "react-icons/cg";
 function Nav() {
   return (
     <NavContainer>
-      <Logo>Anime</Logo>
+      <Logo>StreamAble</Logo>
       <Search />
       <LinkContainer>
         <Link to="/">Home</Link>

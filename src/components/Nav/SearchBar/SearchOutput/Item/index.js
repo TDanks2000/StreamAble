@@ -1,26 +1,48 @@
 import React from "react";
-import { Info, ItemContainer, Meta, Name, Poster } from "./Item.styles";
+import {
+  Info,
+  ItemContainer,
+  Meta,
+  MetaItem,
+  Name,
+  Poster,
+} from "./Item.styles";
 
 function Item(props) {
+  const {
+    title: { userPreferred: title_userPreferred },
+    id,
+    malId,
+    image,
+    rating,
+    genres,
+    duration,
+    type,
+    releaseDate,
+    status,
+    format,
+  } = props;
   const { setOutput } = props;
 
   return (
     <ItemContainer
-      to={`/anime/${props.animeId}/episode/1`}
-      state={{
-        from: props.from,
-      }}
+      to={`/anime/${id}/episode/1`}
       onClick={() => setOutput([])}
-      key={props.animeId}
+      key={id}
     >
       <Poster>
         <span>
-          <img src={props.animeImg} alt="img" />
+          <img src={image} alt="img" />
         </span>
       </Poster>
       <Info>
-        <Name>{props.animeTitle}</Name>
-        <Meta></Meta>
+        <Name>{title_userPreferred}</Name>
+        <Meta>
+          <MetaItem>{(rating / 10).toFixed(1)}</MetaItem>
+          {rating ? <MetaItem>{(rating / 10).toFixed(1)}</MetaItem> : ""}
+          {releaseDate ? <MetaItem>{releaseDate}</MetaItem> : ""}
+          {format ? <MetaItem>{format}</MetaItem> : ""}
+        </Meta>
       </Info>
     </ItemContainer>
   );

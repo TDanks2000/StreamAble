@@ -7,9 +7,9 @@ export const SectionContainer = styled.div`
 `;
 
 export const Identifier = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  margin: 0.3rem 0;
+  margin-bottom: 0.8rem;
   text-transform: uppercase;
 `;
 

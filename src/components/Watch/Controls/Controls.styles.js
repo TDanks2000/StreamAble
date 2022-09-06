@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ControlsWrapper = styled.div`
   display: flex;
   gap: 0.25rem;
-  padding: 0.25rem;
+  padding: 0.8rem 0.5rem;
   align-items: center;
 `;
 

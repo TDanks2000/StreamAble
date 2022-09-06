@@ -1,6 +1,9 @@
 import React from "react";
 import {
+  BannerGenre,
+  BannerGenreWrapper,
   BannerItemContainer,
+  BannerItemDesc,
   BannerItemInfo,
   BannerItemInside,
   BannerItemTitle,
@@ -10,29 +13,46 @@ import {
 } from "./BannerItem.styles";
 
 export const BannerItem = (props) => {
-  console.log(props);
-  const { year, score, images, title, duration, status, aired, type } = props;
-  const image = images.jpg.large_image_url;
+  const {
+    title: { english: title_english },
+    id,
+    malId,
+    cover,
+    image,
+    rating,
+    genres,
+    duration,
+    type,
+    releaseDate,
+    status,
+    description,
+  } = props;
+  console.log(releaseDate);
 
-  const Aired = new Date(aired.string);
-  const AiredYear = Aired.getFullYear();
+  var parser = new DOMParser();
+  var desc = parser
+    .parseFromString(description, "text/html")
+    .querySelector("body")
+    .innerText.split(" [Written by MAL Rewrite]")[0];
   return (
-    <BannerItemContainer url={image}>
+    <BannerItemContainer url={cover || image}>
       <BannerItemInside>
         <BannerItemInfo>
-          <BannerItemTitle>{title}</BannerItemTitle>
+          <BannerItemTitle>{title_english}</BannerItemTitle>
+          <BannerGenreWrapper>
+            {genres?.map((genre) => (
+              <BannerGenre to="#">{genre}</BannerGenre>
+            ))}
+          </BannerGenreWrapper>
+          <BannerItemDesc>{desc.split("(Source:")[0]}</BannerItemDesc>
           <BannerItemUnderInfo>
-            <BannerItemUnderInfoItem>
-              {year || AiredYear}
-            </BannerItemUnderInfoItem>
+            <BannerItemUnderInfoItem>{releaseDate}</BannerItemUnderInfoItem>
+            <Dot />
+            <BannerItemUnderInfoItem>{duration}</BannerItemUnderInfoItem>
             <Dot />
             <BannerItemUnderInfoItem>
-              {type.toLowerCase() !== "movie"
-                ? duration.split("min")[0]
-                : duration}
+              {(rating / 10).toFixed(1)}
             </BannerItemUnderInfoItem>
-            <Dot />
-            <BannerItemUnderInfoItem>{score}</BannerItemUnderInfoItem>
             <Dot />
             <BannerItemUnderInfoItem>{status}</BannerItemUnderInfoItem>
             <Dot />

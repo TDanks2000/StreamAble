@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const MetaItem = styled.span`
+  & + &::before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.text.secondary};
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 8px;
+  }
+`;
+
 export const ItemContainer = styled(Link)`
   display: flex;
   padding: 15px 15px;
@@ -8,6 +21,9 @@ export const ItemContainer = styled(Link)`
   transition: all 0.3s ease;
   &:hover {
     background: ${({ theme }) => theme.base.mainColor};
+  }
+  &:hover ${MetaItem}, &:hover ${MetaItem} * {
+    color: ${({ theme }) => theme.text.offWhite};
   }
 `;
 
@@ -47,6 +63,7 @@ export const Name = styled.div`
 `;
 
 export const Meta = styled.div`
-  color: #515151;
+  color: ${({ theme }) => theme.text.secondary};
   font-size: 1rem;
+  margin-top: -1px;
 `;

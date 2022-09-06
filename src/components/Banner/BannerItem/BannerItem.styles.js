@@ -1,20 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-export const BannerItemContainer = styled.div`
-  width: 100%;
-  height: 350px;
-  margin: 0;
-  background: url(${({ url }) => url}) no-repeat;
-  background-position: center;
-  background-size: cover;
-`;
 
 export const BannerItemInside = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
-  padding: 1.2rem;
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease;
 `;
 
 export const BannerItemInfo = styled.div`
@@ -29,6 +22,40 @@ export const BannerItemTitle = styled.h1`
   font-weight: bold;
   width: 100%;
   text-align: left;
+  text-transform: uppercase;
+`;
+
+export const BannerGenreWrapper = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.1rem;
+`;
+
+export const BannerGenre = styled(Link)`
+  position: relative;
+  z-index: 200;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  color: ${({ theme }) => theme.text.offWhite};
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const BannerItemDesc = styled.h1`
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  color: ${({ theme }) => theme.text.offWhite};
+  text-align: left;
+  padding-bottom: 0.5rem;
 `;
 
 export const BannerItemUnderInfo = styled.div`
@@ -40,7 +67,10 @@ export const BannerItemUnderInfo = styled.div`
   width: 100%;
 `;
 
-export const BannerItemUnderInfoItem = styled.p``;
+export const BannerItemUnderInfoItem = styled.p`
+  font-size: 1.1rem;
+  text-transform: uppercase;
+`;
 
 const DoT = styled.span`
   height: 7px;
@@ -52,3 +82,19 @@ const DoT = styled.span`
 `;
 
 export const Dot = () => <DoT></DoT>;
+
+export const BannerItemContainer = styled.div`
+  width: 100%;
+  height: 350px;
+  margin: 0;
+  background: url(${({ url }) => url}) no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  &:hover ${BannerItemTitle} {
+    // text-decoration: underline;
+  }
+  &:hover ${BannerItemInside} {
+    backdrop-filter: blur(1px);
+  }
+`;
