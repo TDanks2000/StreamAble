@@ -7,7 +7,7 @@ const api = axios.create({
   baseURL: `${defaultHost}:${defaultPort}`,
 });
 
-export const getPopular = async (page, perPage) => {
+export const getPopular = async (page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(`/api/anime/popular?page=${page}&perPage=${perPage}`);
@@ -24,7 +24,7 @@ export const getPopular = async (page, perPage) => {
   return sortedData;
 };
 
-export const getTrending = async (page, perPage) => {
+export const getTrending = async (page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(`/api/anime/trending?page=${page}&perPage=${perPage}`);
@@ -120,7 +120,7 @@ export const getGoGoInfo = async (id) => {
   return data;
 };
 
-export const getSearch = async (search, page, perPage) => {
+export const getSearch = async (search, page = 1, perPage = 20) => {
   if (!search)
     return {
       error: "No search",
@@ -138,4 +138,16 @@ export const getSearch = async (search, page, perPage) => {
     };
 
   return results;
+};
+
+export const getGenre = async (genres, page = 1, perPage = 20) => {
+  if (!genres)
+    return {
+      error: "No genres",
+    };
+  const { data } = await api.get(
+    `/api/anime/genre?genres=["${genres}"]&page=${page}&perPage=${perPage}`
+  );
+
+  return data;
 };

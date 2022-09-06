@@ -12,7 +12,7 @@ import {
 function PostComponent(props) {
   console.log(props);
   const {
-    title: { english: title_english },
+    title: { userPreferred: title_userPreferred },
     id,
     malId,
     image,
@@ -34,7 +34,7 @@ function PostComponent(props) {
           </PostRatingWrapper>
         </PostTop>
         <PostBottom>
-          <PostTitle>{title_english}</PostTitle>
+          <PostTitle>{title_userPreferred}</PostTitle>
         </PostBottom>
       </PostWrapper>
     </PostContainer>

@@ -53,7 +53,7 @@ export const Name = styled.div`
   font-weight: 500;
   margin-bottom: 6px;
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
