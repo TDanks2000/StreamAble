@@ -19,5 +19,6 @@ export const DropdownContainer = styled.ul`
   z-index: 200;
   transform: translateY(-10px);
   opacity: ${({ open }) => (open ? 1 : 0)};
+  pointer-events: ${({ open }) => (!open ? "none" : "auto")};
   transition: all 0.3s linear;
 `;

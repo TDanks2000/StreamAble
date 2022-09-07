@@ -88,7 +88,7 @@ export const getEpisodes = async (id, dub = false) => {
 };
 
 export const getSource = async (episodeId) => {
-  const { data } = await api.get(`/api/anime/watch/${episodeId}`);
+  let { data } = await api.get(`/api/anime/watch/${episodeId}`);
 
   if (!data)
     return {

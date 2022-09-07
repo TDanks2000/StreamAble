@@ -15,14 +15,18 @@ export const BannerItemInfo = styled.div`
   bottom: 0;
   left: 0;
   padding: inherit;
+  text-align: left;
 `;
 
-export const BannerItemTitle = styled.h1`
+export const BannerItemTitle = styled(Link)`
   font-size: 1.5rem;
   font-weight: bold;
   width: 100%;
-  text-align: left;
   text-transform: uppercase;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const BannerGenreWrapper = styled.div`

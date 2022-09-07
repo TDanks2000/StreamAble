@@ -14,9 +14,11 @@ function Quality({ VideoRef, hlsPlayer, levels, currentQuality }) {
   };
 
   useEffect(() => {
-    setQualityLevels(levels);
-    setCurrentLevel(currentQuality);
-  }, [currentQuality, levels]);
+    if (hlsPlayer) {
+      setQualityLevels(levels);
+      setCurrentLevel(-1);
+    }
+  }, [currentQuality, levels, hlsPlayer]);
 
   if (!qualityLevels) return null;
   return (

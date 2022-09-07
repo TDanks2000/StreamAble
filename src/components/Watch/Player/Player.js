@@ -78,7 +78,7 @@ function Player({
         config={{
           file: {
             attributes: {
-              preload: "auto",
+              preload: "metadata",
             },
           },
         }}

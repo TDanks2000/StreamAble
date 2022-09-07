@@ -10,9 +10,9 @@ function TimeLine({ VideoRef, playing, currentTime, setCurrentTime }) {
   };
 
   const handleSkip = (e) => {
-    if (!VideoRef?.getCurrentTime()) return;
-    if (e <= 0) return;
-    if (e >= VideoRef.getDuration()) return;
+    if (!VideoRef?.getCurrentTime()) return null;
+    if (e <= 0) return null;
+    if (e >= VideoRef.getDuration()) return null;
     setCurrentTime(e);
     VideoRef.seekTo(e);
   };

@@ -10,7 +10,6 @@ import {
 } from "./Post.styles";
 
 function PostComponent(props) {
-  console.log(props);
   const {
     title: { userPreferred: title_userPreferred },
     id,

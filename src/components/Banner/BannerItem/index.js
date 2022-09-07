@@ -14,7 +14,7 @@ import {
 
 export const BannerItem = (props) => {
   const {
-    title: { english: title_english },
+    title: { userPreferred: title_userPreferred },
     id,
     malId,
     cover,
@@ -26,8 +26,8 @@ export const BannerItem = (props) => {
     releaseDate,
     status,
     description,
+    to,
   } = props;
-  console.log(releaseDate);
 
   var parser = new DOMParser();
   var desc = parser
@@ -38,7 +38,7 @@ export const BannerItem = (props) => {
     <BannerItemContainer url={cover || image}>
       <BannerItemInside>
         <BannerItemInfo>
-          <BannerItemTitle>{title_english}</BannerItemTitle>
+          <BannerItemTitle to={to}>{title_userPreferred}</BannerItemTitle>
           <BannerGenreWrapper>
             {genres?.map((genre) => (
               <BannerGenre to="#">{genre}</BannerGenre>

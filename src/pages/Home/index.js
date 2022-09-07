@@ -11,18 +11,24 @@ import { Banner } from "../../components/Banner";
 import { BannerItem } from "../../components/Banner/BannerItem";
 
 function Home() {
-  const [topRated, setTopRated] = useState([]);
+  const [popular, setPopular] = useState([]);
   useEffect(() => {
     api.getPopular(1, 7).then((data) => {
-      setTopRated(data);
+      setPopular(data);
     });
   }, []);
 
   return (
     <HomeContainer>
       <Banner>
-        {topRated &&
-          topRated.map((res) => <BannerItem key={res.id} {...res} />)}
+        {popular &&
+          popular.map((res) => (
+            <BannerItem
+              key={res.id}
+              {...res}
+              to={`/anime/${res.id}/episode/1`}
+            />
+          ))}
       </Banner>
       <SectionContainer>
         <Identifier>Trending</Identifier>
