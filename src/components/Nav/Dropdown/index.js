@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { Link, LinkNav } from "../Nav.styles";
-import { Dropdown, DropdownContainer } from "./DropdownStyles";
+import { Dropdown, DropdownContainer, DropdownTitle } from "./DropdownStyles";
 
 const DropdownComponent = ({ to, title, children }) => {
   const [open, setOpen] = useState(false);
@@ -25,9 +24,9 @@ const DropdownComponent = ({ to, title, children }) => {
 
   return (
     <Dropdown>
-      <LinkNav ref={linkRef} onClick={handleOpen} to={to}>
+      <DropdownTitle ref={linkRef} onClick={handleOpen} to={to}>
         {title}
-      </LinkNav>
+      </DropdownTitle>
       <DropdownContainer open={open} ref={dropdownRef}>
         {children}
       </DropdownContainer>

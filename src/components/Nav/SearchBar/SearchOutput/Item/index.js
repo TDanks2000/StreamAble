@@ -12,15 +12,10 @@ function Item(props) {
   const {
     title: { userPreferred: title_userPreferred },
     id,
-    malId,
     image,
     rating,
-    genres,
-    duration,
     type,
     releaseDate,
-    status,
-    format,
   } = props;
   const { setOutput } = props;
 

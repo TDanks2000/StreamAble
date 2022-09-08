@@ -12,7 +12,6 @@ import {
 
 const RecommendItem = (props) => {
   const {
-    cover,
     image,
     id,
     title: { userPreferred: title_userPreferred },

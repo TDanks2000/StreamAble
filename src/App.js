@@ -5,6 +5,7 @@ import { AppWrapper } from "./app.styles";
 import Info from "./pages/Info";
 import { NoMatch } from "./pages/NoMatch";
 import Genre from "./pages/Genre";
+import { UserProfile } from "./pages/user/profile";
 
 const App = () => {
   return (
@@ -17,6 +18,10 @@ const App = () => {
           <Route path="/anime/:id/episode/:ep/" element={<Info />} />
           <Route path="/anime/:id/episode/:ep/:typeDub" element={<Info />} />
           <Route path="/genre/:genre" element={<Genre />} />
+
+          {/* USER ROUTES */}
+          <Route path="/user/profile" element={<UserProfile />} />
+
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </AppWrapper>

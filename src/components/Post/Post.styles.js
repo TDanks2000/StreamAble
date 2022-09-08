@@ -11,7 +11,7 @@ export const PostContainer = styled(Link)`
   background-position: center;
   margin-bottom: 10px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 7px;
   transition: all 0.1s ease-in;
   &:hover {
     transform: scale(1.01);
@@ -33,8 +33,6 @@ const PostPos = styled.div`
   position: absolute;
   left: 0;
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
   padding: inherit;
 `;
 
@@ -50,14 +48,15 @@ export const PostTitle = styled.p`
   color: #fff;
   text-align: left;
   overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
-  line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 `;
 
 export const PostTop = styled(PostPos)`
+  display: flex;
+  justify-content: flex-start;
   top: 0;
 `;
 
@@ -66,6 +65,7 @@ export const PostRatingWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
 export const PostRating = styled.span`
   background: rgba(0, 0, 0, 0.7);
   padding: 0.3rem 0.6rem;
@@ -73,4 +73,22 @@ export const PostRating = styled.span`
   overflow: hidden;
   font-weight: 500;
   font-size: 0.8rem;
+`;
+
+export const PostMeta = styled.div`
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+`;
+
+export const Dot = styled.span`
+  & + ::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.text.secondary};
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 8px;
+  }
 `;

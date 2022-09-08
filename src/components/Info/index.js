@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import InfoEpisodes from "../Episodes";
 import {
   InfoGenreWrapper,
@@ -17,7 +17,6 @@ import {
 
 import * as api from "../../utils/api/api";
 import ReactVideoPlayer from "../Watch";
-import { DownloadButton } from "./Download";
 import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Recommended from "./Recommended";
@@ -26,17 +25,11 @@ function InfoComponent(props) {
   const {
     title: { english: title_english },
     id,
-    malId,
     genres,
     description,
     episodes,
-    status,
-    releaseDate,
     recommendations,
-    rating,
-    duration,
     subOrDub,
-    season,
     color,
     setSubOrDub,
     typeDub,

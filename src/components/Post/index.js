@@ -1,7 +1,9 @@
 import React from "react";
 import {
+  Dot,
   PostBottom,
   PostContainer,
+  PostMeta,
   PostRating,
   PostRatingWrapper,
   PostTitle,
@@ -16,11 +18,10 @@ function PostComponent(props) {
     malId,
     image,
     rating,
-    genres,
     duration,
     type,
     releaseDate,
-    status,
+    totalEpisodes,
   } = props;
 
   if (!props) return null;
@@ -34,6 +35,12 @@ function PostComponent(props) {
         </PostTop>
         <PostBottom>
           <PostTitle>{title_userPreferred}</PostTitle>
+          <PostMeta>
+            <Dot>{releaseDate}</Dot>
+            <Dot>{totalEpisodes}</Dot>
+            <Dot>{duration}</Dot>
+            <Dot>{type}</Dot>
+          </PostMeta>
         </PostBottom>
       </PostWrapper>
     </PostContainer>
