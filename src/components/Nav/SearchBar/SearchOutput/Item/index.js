@@ -38,10 +38,9 @@ function Item(props) {
       <Info>
         <Name>{title_userPreferred}</Name>
         <Meta>
-          <MetaItem>{(rating / 10).toFixed(1)}</MetaItem>
           {rating ? <MetaItem>{(rating / 10).toFixed(1)}</MetaItem> : ""}
           {releaseDate ? <MetaItem>{releaseDate}</MetaItem> : ""}
-          {format ? <MetaItem>{format}</MetaItem> : ""}
+          {type ? <MetaItem>{type}</MetaItem> : ""}
         </Meta>
       </Info>
     </ItemContainer>

@@ -14,16 +14,23 @@ export const InfoTitle = styled.h1`
   // color: ${({ color }) => color};
 `;
 
-export const InfoTop = styled.div`
+export const InfoTopBot = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  height: 700px;
   position: relative;
   overflow: hidden;
   margin-bottom: 0.5rem;
+`;
+
+export const InfoTop = styled(InfoTopBot)`
+  height: 700px;
+`;
+
+export const InfoBottom = styled(InfoTopBot)`
+  height: auto;
 `;
 
 export const EpisodeTitle = styled.span`

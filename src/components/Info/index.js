@@ -12,6 +12,7 @@ import {
   InfoTop,
   EpisodeTitle,
   PlayerContainer,
+  InfoBottom,
 } from "./Info.styles";
 
 import * as api from "../../utils/api/api";
@@ -19,6 +20,7 @@ import ReactVideoPlayer from "../Watch";
 import { DownloadButton } from "./Download";
 import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import Recommended from "./Recommended";
 
 function InfoComponent(props) {
   const {
@@ -30,6 +32,7 @@ function InfoComponent(props) {
     episodes,
     status,
     releaseDate,
+    recommendations,
     rating,
     duration,
     subOrDub,
@@ -84,35 +87,40 @@ function InfoComponent(props) {
           />
         </InfoRight>
       </InfoTop>
-      <InfoLeft>
-        <EpisodeTitle>
-          {episodes[ep - 1].title ? episodes[ep - 1].title : `Episode ${ep}`}
-        </EpisodeTitle>
-        <InfoTitle color={color}>{titlE}</InfoTitle>
+      <InfoBottom>
+        <InfoLeft>
+          <EpisodeTitle>
+            {episodes[ep - 1].title ? episodes[ep - 1].title : `Episode ${ep}`}
+          </EpisodeTitle>
+          <InfoTitle color={color}>{titlE}</InfoTitle>
 
-        {/* <DownloadButton stream={stream} epNum={ep} title={titlE} /> */}
+          {/* <DownloadButton stream={stream} epNum={ep} title={titlE} /> */}
 
-        <InfoGenreWrapper>
-          {genres?.map((genre, index) => (
-            <InfoGenre href="#" key={`${genre}-${index}`}>
-              {genre}
-            </InfoGenre>
-          ))}
-        </InfoGenreWrapper>
+          <InfoGenreWrapper>
+            {genres?.map((genre, index) => (
+              <InfoGenre href="#" key={`${genre}-${index}`}>
+                {genre}
+              </InfoGenre>
+            ))}
+          </InfoGenreWrapper>
 
-        <SubOrDubSelector
-          typeDub={typeDub}
-          subOrDub={subOrDub}
-          setSubOrDub={setSubOrDub}
-        />
-        <InfoSynopsis>
-          {
-            htmlDoc
-              .querySelector("body")
-              .innerText.split(" [Written by MAL Rewrite]")[0]
-          }
-        </InfoSynopsis>
-      </InfoLeft>
+          <SubOrDubSelector
+            typeDub={typeDub}
+            subOrDub={subOrDub}
+            setSubOrDub={setSubOrDub}
+          />
+          <InfoSynopsis>
+            {
+              htmlDoc
+                .querySelector("body")
+                .innerText.split(" [Written by MAL Rewrite]")[0]
+            }
+          </InfoSynopsis>
+        </InfoLeft>
+        <InfoRight>
+          <Recommended data={recommendations} />
+        </InfoRight>
+      </InfoBottom>
     </InfoContainer>
   );
 }

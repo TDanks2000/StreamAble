@@ -16,6 +16,7 @@ function Info() {
 
   useEffect(() => {
     api.getData(id).then((res) => {
+      console.log(res);
       setData(res);
     });
     api

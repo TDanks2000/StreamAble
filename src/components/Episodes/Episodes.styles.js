@@ -44,7 +44,7 @@ export const Episode = styled(NavLink)`
 export const EpisodeInner = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  // background: ${({ theme }) => theme.base.navBg};
   backdrop-filter: blur(5px);
   padding: 0.6rem 0.8rem;
   text-overflow: ellipsis;
