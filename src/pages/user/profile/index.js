@@ -1,7 +1,7 @@
 import React from "react";
 import UserNav from "../../../components/user/nav";
 import { UserProfileComponent } from "../../../components/user/Profile";
-import { Wrapper } from "./profile.styles";
+import { Wrapper } from "../styles";
 
 export const UserProfile = () => {
   return (

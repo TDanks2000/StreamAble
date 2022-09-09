@@ -6,10 +6,10 @@ export const TopNav = () => {
     <TopNavContainer>
       <TopNavLinks>
         <TopNavLink to={"/user/profile"}>Profile</TopNavLink>
-        <TopNavLink to={"/"}>Watch List</TopNavLink>
-        <TopNavLink to={"/"}>Continue Watching</TopNavLink>
-        <TopNavLink to={"/"}>MAL</TopNavLink>
-        <TopNavLink to={"/"}>Settings</TopNavLink>
+        <TopNavLink to={"/user/watchList"}>Watch List</TopNavLink>
+        <TopNavLink to={"/user/continueWatching"}>Continue Watching</TopNavLink>
+        <TopNavLink to={"/user/mal"}>MAL</TopNavLink>
+        <TopNavLink to={"/user/settings"}>Settings</TopNavLink>
       </TopNavLinks>
     </TopNavContainer>
   );

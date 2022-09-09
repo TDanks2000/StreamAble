@@ -1,11 +1,20 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+
 import Nav from "./components/Nav";
+
+import Home from "./pages/Home";
 import { AppWrapper } from "./app.styles";
 import Info from "./pages/Info";
 import { NoMatch } from "./pages/NoMatch";
 import Genre from "./pages/Genre";
+
+// USER ROUTES
 import { UserProfile } from "./pages/user/profile";
+import { UserWL } from "./pages/user/watchList";
+import { UserCW } from "./pages/user/continueWatching";
+import { UserMal } from "./pages/user/mal";
+import { UserSettings } from "./pages/user/settings";
 
 const App = () => {
   return (
@@ -21,6 +30,10 @@ const App = () => {
 
           {/* USER ROUTES */}
           <Route path="/user/profile" element={<UserProfile />} />
+          <Route path="/user/continueWatching" element={<UserCW />} />
+          <Route path="/user/watchList" element={<UserWL />} />
+          <Route path="/user/mal" element={<UserMal />} />
+          <Route path="/user/settings" element={<UserSettings />} />
 
           <Route path="*" element={<NoMatch />} />
         </Routes>
