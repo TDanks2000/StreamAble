@@ -15,6 +15,7 @@ import { UserWL } from "./pages/user/watchList";
 import { UserCW } from "./pages/user/continueWatching";
 import { UserMal } from "./pages/user/mal";
 import { UserSettings } from "./pages/user/settings";
+import LogIn from "./pages/user/logIn";
 
 const App = () => {
   return (
@@ -29,6 +30,9 @@ const App = () => {
           <Route path="/genre/:genre" element={<Genre />} />
 
           {/* USER ROUTES */}
+          <Route path="/user/signIn" element={<LogIn isSwitch={true} />} />
+          <Route path="/user/signUp" element={<LogIn isSwitch={false} />} />
+
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/user/continueWatching" element={<UserCW />} />
           <Route path="/user/watchList" element={<UserWL />} />

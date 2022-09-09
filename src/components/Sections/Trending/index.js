@@ -13,7 +13,7 @@ function Trending({ page = 1, perPage = 10 }) {
   }, []);
 
   if (!info.length) return null;
-  return info.map((item) => <PostComponent {...item} />);
+  return info.map((item) => <PostComponent key={item.id} {...item} />);
 }
 
 export default Trending;

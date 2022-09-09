@@ -41,7 +41,9 @@ export const BannerItem = (props) => {
           <BannerItemTitle to={to}>{title_userPreferred}</BannerItemTitle>
           <BannerGenreWrapper>
             {genres?.map((genre) => (
-              <BannerGenre to="#">{genre}</BannerGenre>
+              <BannerGenre to="#" key={`genre-${genre}`}>
+                {genre}
+              </BannerGenre>
             ))}
           </BannerGenreWrapper>
           <BannerItemDesc>{desc.split("(Source:")[0]}</BannerItemDesc>

@@ -1,14 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Link,
   LinkContainer,
   NavContainer,
   Logo,
   Right,
   ProfileLink,
-  Dropdown,
-  DropdownContainer,
-  DropdownContent,
   DropdownItem,
   DropdownLink,
   DropdownLinkText,
@@ -42,6 +38,7 @@ export const Genres = [
 ];
 
 function Nav() {
+  const [loggedIn] = useState(false);
   return (
     <NavContainer>
       <Logo>StreamAble</Logo>
@@ -50,7 +47,7 @@ function Nav() {
         <LinkNav to="/">Home</LinkNav>
         <DropdownComponent to="/genres" title="Genre">
           {Genres.map((genre, index) => (
-            <DropdownItem>
+            <DropdownItem key={`genre-${genre}-${index}`}>
               <DropdownLink to={`/genre/${genre}`.toLowerCase()}>
                 <DropdownLinkText key={`genre-${index}`}>
                   {genre}
@@ -62,9 +59,13 @@ function Nav() {
         <LinkNav to="/types">Type</LinkNav>
       </LinkContainer>
       <Right>
-        <ProfileLink to="/user/profile">
-          <CgProfile />
-        </ProfileLink>
+        {loggedIn ? (
+          <ProfileLink to="/user/profile">
+            <CgProfile />
+          </ProfileLink>
+        ) : (
+          <ProfileLink to="/user/signIn">Sign In</ProfileLink>
+        )}
       </Right>
     </NavContainer>
   );
