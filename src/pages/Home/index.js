@@ -9,6 +9,7 @@ import {
 import * as api from "../../utils/api/api";
 import { Banner } from "../../components/Banner";
 import { BannerItem } from "../../components/Banner/BannerItem";
+import Recent from "../../components/Sections/Recent";
 
 function Home() {
   const [popular, setPopular] = useState([]);
@@ -30,6 +31,12 @@ function Home() {
             />
           ))}
       </Banner>
+      <SectionContainer>
+        <Identifier>Recent Episodes</Identifier>
+        <Wrapper>
+          <Recent perPage={7 * 2} />
+        </Wrapper>
+      </SectionContainer>
       <SectionContainer>
         <Identifier>Trending</Identifier>
         <Wrapper>

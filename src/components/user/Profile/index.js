@@ -14,7 +14,7 @@ export const UserProfileComponent = () => {
         <InputContainer>
           <label>Join date</label>
           <InputWrapper>
-            <input type="text" readOnly="" value="jul 11, 2017" />
+            <input type="text" readOnly value="jul 11, 2017" />
           </InputWrapper>
         </InputContainer>
         <InputContainer>

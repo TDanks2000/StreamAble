@@ -54,6 +54,21 @@ export const getTopRated = async (limit = 10, offset = 0) => {
   return data;
 };
 
+export const getRecentEpisodes = async (page = 1, perPage = 20) => {
+  const {
+    data: { results },
+  } = await api.get(
+    `/api/anime/recent-episodes?page=${page}&perPage=${perPage}`
+  );
+
+  if (!results)
+    return {
+      error: "No data",
+    };
+
+  return results;
+};
+
 export const getInfo = async (id) => {
   const { data } = await api.get(`/api/anime/info/${id}`);
 
@@ -89,28 +104,6 @@ export const getEpisodes = async (id, dub = false) => {
 
 export const getSource = async (episodeId) => {
   let { data } = await api.get(`/api/anime/watch/${episodeId}`);
-
-  if (!data)
-    return {
-      error: "No data",
-    };
-
-  return data;
-};
-
-export const getAnimaxInfo = async (id) => {
-  const { data } = await api.get(`/api/AnimixPlay/info?mal_id=${id}`);
-
-  if (!data)
-    return {
-      error: "No data",
-    };
-
-  return data;
-};
-
-export const getGoGoInfo = async (id) => {
-  const { data } = await api.get(`/api/gogoanime/info?animeId=${id}`);
 
   if (!data)
     return {

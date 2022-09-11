@@ -22,9 +22,41 @@ function PostComponent(props) {
     type,
     releaseDate,
     totalEpisodes,
+    episodeNumber,
+    aired,
+    isEpisode,
   } = props;
 
   if (!props) return null;
+
+  if (isEpisode) {
+    const airedDate = new Date(aired);
+    return (
+      <PostContainer
+        key={malId}
+        image={image}
+        to={`/anime/${id}/episode/${episodeNumber}/sub`}
+      >
+        <PostWrapper>
+          <PostTop>
+            <PostRatingWrapper>
+              <PostRating>{(rating / 10).toFixed(1)}</PostRating>
+            </PostRatingWrapper>
+          </PostTop>
+          <PostBottom>
+            <PostTitle>{title_userPreferred}</PostTitle>
+            <PostMeta>
+              <Dot>{airedDate.getFullYear()}</Dot>
+              <Dot>EP {episodeNumber}</Dot>
+              <Dot>{duration}</Dot>
+              <Dot>{type}</Dot>
+            </PostMeta>
+          </PostBottom>
+        </PostWrapper>
+      </PostContainer>
+    );
+  }
+
   return (
     <PostContainer key={malId} image={image} to={`/anime/${id}/episode/1`}>
       <PostWrapper>

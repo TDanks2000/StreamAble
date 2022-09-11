@@ -1,30 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import * as api from "../../utils/api/api";
 
 import InfoComponent from "../../components/Info";
 import { Error, GoBack } from "../styles";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function Info() {
-  const storageTypeDub = localStorage.getItem("typeDub");
+  let { pathname } = useLocation();
   const [data, setData] = useState(null);
   const [episodes, setEpisodes] = useState(null);
   const { id, typeDub = "sub" } = useParams();
-  const [subOrDub, setSubOrDub] = useState(typeDub === "sub" ? false : true);
+  const [subOrDub, setSubOrDub] = useLocalStorage("typeDub", false);
 
   useEffect(() => {
     api.getData(id).then((res) => {
-      console.log(res);
       setData(res);
     });
-    api
-      .getEpisodes(id, storageTypeDub ? storageTypeDub : subOrDub)
-      .then((res) => {
-        setEpisodes(res);
-      });
+    api.getEpisodes(id, subOrDub).then((res) => {
+      setEpisodes(res);
+    });
   }, [id, subOrDub]);
+
+  useEffect(() => {
+    pathname.includes("sub") ? setSubOrDub(false) : setSubOrDub(true);
+  }, [pathname]);
 
   if (!episodes) return "loading...";
   if (!data) return "loading...";
@@ -41,7 +43,7 @@ function Info() {
       {...data}
       episodes={episodes}
       setSubOrDub={setSubOrDub}
-      subOrDub={storageTypeDub ? storageTypeDub : subOrDub}
+      subOrDub={subOrDub}
       typeDub={typeDub}
     />
   );

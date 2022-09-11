@@ -5,10 +5,10 @@ export const LoginOutside = styled.div`
   width: 100%;
   height: 100%;
   padding: 1.5rem 0;
-  background: url(${bg});
-  background-repeat: no-repeat;
-  background-size: 700px;
-  background-position: top right 2.5rem;
+  // background: url(${bg});
+  // background-repeat: no-repeat;
+  // background-size: 700px;
+  // background-position: top right 2.5rem;
 `;
 
 export const LoginContainer = styled.div`

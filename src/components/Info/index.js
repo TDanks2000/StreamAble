@@ -45,8 +45,7 @@ function InfoComponent(props) {
 
   useEffect(() => {
     api.getSource(episodeId).then(({ sources, headers }) => {
-      console.log(headers);
-      const src = sources[0].url;
+      const src = sources.pop().url;
       setStream(src);
     });
   }, [ep, titlE, id, episodeId]);
