@@ -1,3 +1,4 @@
+import { readableColor } from "polished";
 import React from "react";
 import {
   Dot,
@@ -25,9 +26,11 @@ function PostComponent(props) {
     episodeNumber,
     aired,
     isEpisode,
+    color,
   } = props;
 
   if (!props) return null;
+  console.log(readableColor("#fff", color));
 
   if (isEpisode) {
     const airedDate = new Date(aired);
@@ -40,7 +43,7 @@ function PostComponent(props) {
         <PostWrapper>
           <PostTop>
             <PostRatingWrapper>
-              <PostRating>{(rating / 10).toFixed(1)}</PostRating>
+              <PostRating color={color}>{(rating / 10).toFixed(1)}</PostRating>
             </PostRatingWrapper>
           </PostTop>
           <PostBottom>

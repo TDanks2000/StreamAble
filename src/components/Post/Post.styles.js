@@ -1,3 +1,4 @@
+import { readableColor, rgba } from "polished";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -33,17 +34,17 @@ const PostPos = styled.div`
   position: absolute;
   left: 0;
   width: 100%;
-  padding: inherit;
 `;
 
 export const PostBottom = styled(PostPos)`
+  padding: inherit;
   bottom: 0;
 `;
 
 export const PostTitle = styled.p`
   width: 100%;
   height: 100%;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: #fff;
   text-align: left;
@@ -52,6 +53,9 @@ export const PostTitle = styled.p`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  @media (min-width: 1600px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const PostTop = styled(PostPos)`
@@ -67,9 +71,16 @@ export const PostRatingWrapper = styled.div`
 `;
 
 export const PostRating = styled.span`
-  background: rgba(0, 0, 0, 0.7);
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
+  background: ${({ color }) =>
+    !color ? "rgba(0, 0, 0, 0.7)" : rgba(color, 0.7)};
+  color: ${({ color }) =>
+    readableColor("black", color) === "black" ? "white" : "black"};
+  padding-left: 1rem;
+  padding-right: 0.7rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.5rem;
+  // border-radius: 5px;
+  border-bottom-left-radius: 25px;
   overflow: hidden;
   font-weight: 500;
   font-size: 0.8rem;
@@ -77,7 +88,15 @@ export const PostRating = styled.span`
 
 export const PostMeta = styled.div`
   margin-top: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  @media (min-width: 1600px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const Dot = styled.span`
