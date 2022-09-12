@@ -11,7 +11,7 @@ export const InputContainer = styled.div`
   align-items: center;
   & label {
     font-size: 1.1rem;
-    color: #777;
+    color: ${({ theme }) => theme.text.offWhite};
     padding-top: calc(0.375rem + 1px);
     padding-bottom: calc(0.375rem + 1px);
     margin-bottom: 0.5rem;
@@ -39,7 +39,7 @@ export const InputWrapper = styled.div`
     font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #aaa;
+    color: ${({ theme }) => theme.text.secondary};
     background-color: #212121;
     background-clip: padding-box;
     border: 1px solid #303030;

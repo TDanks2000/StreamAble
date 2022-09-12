@@ -14,14 +14,15 @@ export const TopNavContainer = styled.div`
 export const TopNavLinks = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   gap: 2rem;
 `;
 
 export const TopNavLink = styled(NavLink)`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
   &.active {
     font-weight: 600;
   }
