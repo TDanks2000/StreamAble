@@ -17,7 +17,7 @@ export const PostContainer = styled(Link)`
   &:hover {
     transform: scale(1.01);
   }
-  @media (min-width: 1600px) {
+  @media (min-width: 1700px) {
     width: 215px;
     height: 310px;
   }

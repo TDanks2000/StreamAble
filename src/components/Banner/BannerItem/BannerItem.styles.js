@@ -101,4 +101,7 @@ export const BannerItemContainer = styled.div`
   &:hover ${BannerItemInside} {
     backdrop-filter: blur(1px);
   }
+  @media (min-width: 1700px) {
+    height: 500px;
+  }
 `;

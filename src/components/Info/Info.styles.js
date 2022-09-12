@@ -3,8 +3,22 @@ import styled from "styled-components";
 export const InfoContainer = styled.div`
   width: 100%;
   overflow: hidden;
-  position: relative;
+  // position: relative;
   padding-bottom: 1rem;
+`;
+
+export const InfoBg = styled.img`
+  position: absolute;
+  top: 6rem;
+  z-index: 0;
+  left: 0;
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  filter: blur(18px);
+  // -webkit-filter: blur(8px);
+  border-radius 5%;
+  overflow: hidden;
 `;
 
 export const InfoTitle = styled.h1`

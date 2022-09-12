@@ -19,7 +19,7 @@ const RecommendItem = (props) => {
     type,
     episodes,
   } = props;
-  console.log(props);
+
   return (
     <Container to={`/anime/${id}/episode/1`}>
       <Inner>
