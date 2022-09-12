@@ -37,6 +37,8 @@ export const DropdownLinkText = styled.h3`
 
 export const NavContainer = styled.nav`
   width: 100%;
+  max-width: 1800px;
+  height: 5rem;
   padding: 0.7rem 1.5rem;
   display: flex;
   justify-content: flex-start;
@@ -85,13 +87,6 @@ export const LinkNav = styled(NavLink)`
 
 export const Right = styled.div`
   margin-left: auto;
-`;
-
-export const ProfileLink = styled(Link)`
-  font-size: 1.5rem;
-  &.active {
-    border: none;
-  }
 `;
 
 export const SearchContainer = styled.div`

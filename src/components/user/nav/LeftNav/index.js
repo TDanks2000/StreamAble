@@ -29,7 +29,10 @@ export const LeftNav = () => {
       </UnderInfoContainer>
       <Bottom>
         <LogOutText>
-          <span>{<MdLogout />}</span>Log Out
+          <span>
+            <MdLogout />
+          </span>
+          Log Out
         </LogOutText>
       </Bottom>
     </LeftNavContainer>

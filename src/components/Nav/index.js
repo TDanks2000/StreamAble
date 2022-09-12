@@ -14,6 +14,7 @@ import Search from "./SearchBar";
 
 import { CgProfile } from "react-icons/cg";
 import DropdownComponent from "./Dropdown";
+import NavProfile from "./Profile";
 
 export const Genres = [
   "ACTION",
@@ -38,7 +39,7 @@ export const Genres = [
 ];
 
 function Nav() {
-  const [loggedIn] = useState(false);
+  const [loggedIn] = useState(true);
   return (
     <NavContainer>
       <Logo>StreamAble</Logo>
@@ -59,13 +60,7 @@ function Nav() {
         <LinkNav to="/types">Type</LinkNav>
       </LinkContainer>
       <Right>
-        {loggedIn ? (
-          <ProfileLink to="/user/profile">
-            <CgProfile />
-          </ProfileLink>
-        ) : (
-          <ProfileLink to="/user/signIn">Sign In</ProfileLink>
-        )}
+        <NavProfile loggedIn={loggedIn} />
       </Right>
     </NavContainer>
   );
