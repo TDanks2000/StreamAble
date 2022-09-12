@@ -13,6 +13,7 @@ import {
   EpisodeTitle,
   PlayerContainer,
   InfoBottom,
+  InfoBg,
 } from "./Info.styles";
 
 import * as api from "../../utils/api/api";
@@ -20,10 +21,11 @@ import ReactVideoPlayer from "../Watch";
 import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Recommended from "./Recommended";
+import Characters from "./Characters";
 
 function InfoComponent(props) {
   const {
-    title: { english: title_english },
+    title: { english: title_english, title_userPreferred },
     id,
     genres,
     description,
@@ -33,13 +35,19 @@ function InfoComponent(props) {
     color,
     setSubOrDub,
     typeDub,
+    characters,
+    cover,
   } = props;
   const [stream, setStream] = useState(null);
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
   var htmlDoc = parser.parseFromString(description, "text/html");
   const episodeId = episodes[ep - 1].id;
-  const titlE = `${title_english} ${subOrDub ? "(dub)" : ""}`;
+  const titlE = `${title_english || title_userPreferred} ${
+    subOrDub ? "(dub)" : ""
+  }`;
+
+  console.log(props);
 
   useDocumentTitle(`${ep} - ${titlE} `);
 
@@ -51,7 +59,9 @@ function InfoComponent(props) {
   }, [ep, titlE, id, episodeId]);
 
   return (
-    <InfoContainer>
+    <InfoContainer cover={cover}>
+      {/* <InfoBg src={cover} alt={title_english || title_userPreferred} /> */}
+
       <InfoTop>
         <InfoLeft>
           <PlayerContainer>
@@ -108,6 +118,8 @@ function InfoComponent(props) {
                 .innerText.split(" [Written by MAL Rewrite]")[0]
             }
           </InfoSynopsis>
+
+          <Characters data={characters} />
         </InfoLeft>
         <InfoRight>
           <Recommended data={recommendations} />
