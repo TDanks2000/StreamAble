@@ -35,17 +35,22 @@ export const DropdownLinkText = styled.h3`
   white-space: nowrap;
 `;
 
+export const NavWrapper = styled.div`
+  margin-top: 0;
+  background-color: ${({ theme }) => theme.base.navBg};
+  color: ${({ theme }) => theme.text.primary};
+`;
+
 export const NavContainer = styled.nav`
   width: 100%;
   max-width: 1800px;
+  margin: 0 auto;
   height: 5rem;
   padding: 0.7rem 1.5rem;
   display: flex;
   justify-content: flex-start;
   gap: 1.5rem;
   align-items: center;
-  background-color: ${({ theme }) => theme.base.navBg};
-  color: ${({ theme }) => theme.text.primary};
 `;
 
 export const Logo = styled.h1`
