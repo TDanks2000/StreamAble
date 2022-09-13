@@ -102,8 +102,19 @@ export const getEpisodes = async (id, dub = false) => {
   return data;
 };
 
-export const getSource = async (episodeId) => {
-  let { data } = await api.get(`/api/anime/watch/${episodeId}`);
+export const getSource = async (episodeId, provider) => {
+  let { data } = await api.get(`/api/anime/watch/?episodeId=${episodeId}`);
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
+export const getServers = async (episodeId) => {
+  let { data } = await api.get(`/api/anime/servers/${episodeId}`);
 
   if (!data)
     return {

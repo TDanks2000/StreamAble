@@ -23,11 +23,13 @@ const Character = (props) => {
         <Actor>
           <ActorImage>
             <img
-              src={voiceActors[0].image}
-              alt={voiceActors[0].name.userPreferred}
+              src={voiceActors[0]?.image}
+              alt={voiceActors[0]?.name?.userPreferred}
             />
           </ActorImage>
-          <ActorName>{camelize(voiceActors[0].name.userPreferred)}</ActorName>
+          <ActorName>
+            {camelize(voiceActors[0]?.name?.userPreferred || "Unknown")}
+          </ActorName>
         </Actor>
         <Role>{role}</Role>
       </Info>

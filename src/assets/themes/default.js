@@ -6,6 +6,7 @@ export const DefaultTheme = {
     bg: "#1f2429",
     navBg: "#141414",
     darkBg: "#0f0f0f",
+    offDarkBg: "#212121",
   },
   text: {
     primary: "#fff",
