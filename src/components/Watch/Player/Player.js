@@ -10,6 +10,7 @@ import {
 } from "./Player.styles";
 
 function Player({
+  headers,
   url,
   startMuted = false,
   startPlaying = false,
@@ -79,6 +80,11 @@ function Player({
           file: {
             attributes: {
               preload: "metadata",
+            },
+            hlsOptions: {
+              autoStartLoad: true,
+              startPosition: -1,
+              startFragPrefetch: true,
             },
           },
         }}

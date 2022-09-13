@@ -17,10 +17,11 @@ function Quality({ VideoRef, hlsPlayer, levels, currentQuality }) {
     if (hlsPlayer) {
       setQualityLevels(levels);
       setCurrentLevel(-1);
+      console.log(levels);
     }
   }, [currentQuality, levels, hlsPlayer]);
 
-  if (!qualityLevels) return null;
+  if (qualityLevels.length < 1) return null;
   return (
     <Select defaultValue={currentLevel} onChange={handleChange}>
       {qualityLevels.map((res, index) => {

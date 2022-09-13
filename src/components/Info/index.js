@@ -39,6 +39,7 @@ function InfoComponent(props) {
     cover,
   } = props;
   const [stream, setStream] = useState(null);
+  const [headers, setHeaders] = useState(null);
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
   var htmlDoc = parser.parseFromString(description, "text/html");
@@ -53,6 +54,7 @@ function InfoComponent(props) {
 
   useEffect(() => {
     api.getSource(episodeId).then(({ sources, headers }) => {
+      setHeaders(headers);
       const src = sources.pop().url;
       setStream(src);
     });
@@ -66,6 +68,7 @@ function InfoComponent(props) {
         <InfoLeft>
           <PlayerContainer>
             <ReactVideoPlayer
+              headers={headers}
               url={stream}
               startMuted={false}
               startPlaying={false}
