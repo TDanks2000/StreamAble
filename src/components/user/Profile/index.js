@@ -1,30 +1,26 @@
 import React from "react";
-import { UserContainer } from "../styles";
-import {
-  ButtonContainer,
-  FormContainer,
-  InputContainer,
-  InputWrapper,
-} from "./UserProfile.styles";
+import { InputName, UserContainer } from "../styles";
+import { FormContainer, InputContainer, InputWrapper } from "../styles";
+import { ButtonContainer } from "./UserProfile.styles";
 
 export const UserProfileComponent = () => {
   return (
     <UserContainer>
       <FormContainer>
         <InputContainer>
-          <label>Join date</label>
+          <InputName>Join date</InputName>
           <InputWrapper>
             <input type="text" readOnly value="jul 11, 2017" />
           </InputWrapper>
         </InputContainer>
         <InputContainer>
-          <label>Email address</label>
+          <InputName>Email address</InputName>
           <InputWrapper>
             <input type="email" value="random@hotmail.com" />
           </InputWrapper>
         </InputContainer>
         <InputContainer>
-          <label>Username</label>
+          <InputName>Username</InputName>
           <InputWrapper>
             <input type="text" value="UserName" />
           </InputWrapper>

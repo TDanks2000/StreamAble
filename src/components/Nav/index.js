@@ -8,6 +8,7 @@ import {
   DropdownLink,
   DropdownLinkText,
   LinkNav,
+  NavWrapper,
 } from "./Nav.styles";
 import Search from "./SearchBar";
 
@@ -39,28 +40,30 @@ export const Genres = [
 function Nav() {
   const [loggedIn] = useState(true);
   return (
-    <NavContainer>
-      <Logo>Consume</Logo>
-      <Search />
-      <LinkContainer>
-        <LinkNav to="/">Home</LinkNav>
-        <DropdownComponent to="/genres" title="Genre">
-          {Genres.map((genre, index) => (
-            <DropdownItem key={`genre-${genre}-${index}`}>
-              <DropdownLink to={`/genre/${genre}`.toLowerCase()}>
-                <DropdownLinkText key={`genre-${index}`}>
-                  {genre}
-                </DropdownLinkText>
-              </DropdownLink>
-            </DropdownItem>
-          ))}
-        </DropdownComponent>
-        <LinkNav to="/types">Type</LinkNav>
-      </LinkContainer>
-      <Right>
-        <NavProfile loggedIn={loggedIn} />
-      </Right>
-    </NavContainer>
+    <NavWrapper>
+      <NavContainer>
+        <Logo>StreamAble</Logo>
+        <Search />
+        <LinkContainer>
+          <LinkNav to="/">Home</LinkNav>
+          <DropdownComponent to="/genres" title="Genre">
+            {Genres.map((genre, index) => (
+              <DropdownItem key={`genre-${genre}-${index}`}>
+                <DropdownLink to={`/genre/${genre}`.toLowerCase()}>
+                  <DropdownLinkText key={`genre-${index}`}>
+                    {genre}
+                  </DropdownLinkText>
+                </DropdownLink>
+              </DropdownItem>
+            ))}
+          </DropdownComponent>
+          <LinkNav to="/types">Type</LinkNav>
+        </LinkContainer>
+        <Right>
+          <NavProfile loggedIn={loggedIn} />
+        </Right>
+      </NavContainer>
+    </NavWrapper>
   );
 }
 

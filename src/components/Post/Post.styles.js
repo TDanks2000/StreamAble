@@ -62,6 +62,7 @@ export const PostTop = styled(PostPos)`
   display: flex;
   justify-content: flex-start;
   top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
 `;
 
 export const PostRatingWrapper = styled.div`
@@ -73,8 +74,7 @@ export const PostRatingWrapper = styled.div`
 export const PostRating = styled.span`
   background: ${({ color }) =>
     !color ? "rgba(0, 0, 0, 0.7)" : rgba(color, 0.7)};
-  color: ${({ color }) =>
-    readableColor("black", color) === "black" ? "white" : "black"};
+  color: ${({ theme }) => theme.text.primary};
   padding-left: 1rem;
   padding-right: 0.7rem;
   padding-top: 0.2rem;
