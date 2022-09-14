@@ -4,7 +4,6 @@ import {
   NavContainer,
   Logo,
   Right,
-  ProfileLink,
   DropdownItem,
   DropdownLink,
   DropdownLinkText,
@@ -12,7 +11,6 @@ import {
 } from "./Nav.styles";
 import Search from "./SearchBar";
 
-import { CgProfile } from "react-icons/cg";
 import DropdownComponent from "./Dropdown";
 import NavProfile from "./Profile";
 
@@ -42,7 +40,7 @@ function Nav() {
   const [loggedIn] = useState(true);
   return (
     <NavContainer>
-      <Logo>StreamAble</Logo>
+      <Logo>Consume</Logo>
       <Search />
       <LinkContainer>
         <LinkNav to="/">Home</LinkNav>
