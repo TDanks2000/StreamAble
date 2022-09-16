@@ -1,28 +1,76 @@
 import React from "react";
 import { useState } from "react";
+import RadioButtonGroup from "../../Form/Radio";
 import ToggleSwitch from "../../Form/ToggleSwitch";
 import {
   FormContainer,
   InputContainer,
   InputName,
-  InputWrapper,
   UserContainer,
 } from "../styles";
+import { NumberInput, InputWrapper, InputSeparator } from "./settings.styles";
+
+const languageOptions = [
+  {
+    label: "en",
+    name: "languageRadio",
+  },
+  {
+    label: "jp",
+    name: "languageRadio",
+  },
+];
 
 export const UserSettingsComponent = () => {
+  const [language, setLanguage] = useState("en");
   const [autoPlay, setAutoPlay] = useState(false);
+
+  const radioHandler = (e) => {
+    setLanguage(e.target.value);
+  };
 
   return (
     <UserContainer>
       <FormContainer>
         <InputContainer>
-          <InputName>AutoPlay</InputName>
+          <InputName>Anime title language</InputName>
+          <InputWrapper>
+            <RadioButtonGroup
+              options={languageOptions}
+              onChange={radioHandler}
+            />
+          </InputWrapper>
+        </InputContainer>
+
+        <InputContainer>
+          <InputName>Show continue watching on the home page</InputName>
+          <InputWrapper>
+            <ToggleSwitch Name={`ContinueWatchingHomePage`} />
+          </InputWrapper>
+        </InputContainer>
+
+        <InputSeparator />
+
+        <InputContainer>
+          <InputName>Auto Play</InputName>
           <InputWrapper>
             <ToggleSwitch
               Name={`AutoPlay`}
-              isOn={autoPlay}
+              checked={autoPlay}
               handleToggle={() => setAutoPlay((prev) => !prev)}
             />
+          </InputWrapper>
+        </InputContainer>
+        <InputContainer>
+          <InputName>Auto Next</InputName>
+          <InputWrapper>
+            <ToggleSwitch Name={`AutoNext`} />
+          </InputWrapper>
+        </InputContainer>
+        <InputContainer>
+          <InputName>Skip seconds</InputName>
+          <InputWrapper>
+            <NumberInput type="number" min={1} max={10} value={10} />
           </InputWrapper>
         </InputContainer>
       </FormContainer>

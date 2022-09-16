@@ -1,4 +1,3 @@
-import { readableColor } from "polished";
 import React from "react";
 import {
   Dot,
@@ -30,8 +29,6 @@ function PostComponent(props) {
   } = props;
 
   if (!props) return null;
-  console.log(readableColor("#fff", color));
-
   if (isEpisode) {
     const airedDate = new Date(aired);
     return (

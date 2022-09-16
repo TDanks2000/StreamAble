@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const UserContainer = styled.div`
+  position: relative;
   background: ${({ theme }) => theme.base.navBg};
   padding: 1.5rem;
   border-radius: 7px;
@@ -22,16 +23,15 @@ export const InputContainer = styled.div`
 export const InputName = styled.label`
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: ${({ theme }) => theme.text.offWhite};
   padding-top: calc(0.375rem + 1px);
   padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0.5rem;
-  font-size: inherit;
   line-height: 1.5;
   @media (min-width: 768px) {
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex: 0 0 30%;
+    max-width: 30%;
   }
 `;
 

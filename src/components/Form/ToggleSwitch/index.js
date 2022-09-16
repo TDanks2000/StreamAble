@@ -1,24 +1,20 @@
 import React from "react";
 import {
-  ToggleSwitchButton,
   ToggleSwitchContainer,
-  ToggleSwitchLabel,
+  ToggleSwitchInput,
+  ToggleSwitchSlider,
 } from "./ToggleSwitch.styles";
 
-const ToggleSwitch = ({ isOn, handleToggle, Name }) => {
+const ToggleSwitch = ({ handleToggle, checked }) => {
   return (
-    <>
-      <ToggleSwitchContainer
+    <ToggleSwitchContainer>
+      <ToggleSwitchInput
         type="checkbox"
-        name={Name}
-        id={Name}
-        checked={isOn}
         onChange={handleToggle}
-      ></ToggleSwitchContainer>
-      <ToggleSwitchLabel htmlFor={Name} isOn={isOn}>
-        <ToggleSwitchButton />
-      </ToggleSwitchLabel>
-    </>
+        checked={checked}
+      />
+      <ToggleSwitchSlider />
+    </ToggleSwitchContainer>
   );
 };
 

@@ -1,4 +1,4 @@
-import { readableColor, rgba } from "polished";
+import { rgba } from "polished";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 

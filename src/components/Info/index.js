@@ -41,8 +41,6 @@ function InfoComponent(props) {
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
-  const [subServers, setSubServers] = useState([]);
-  const [dubServers, setDubServers] = useState([]);
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
   var htmlDoc = parser.parseFromString(description, "text/html");
@@ -53,30 +51,10 @@ function InfoComponent(props) {
   useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {
-    const subEpisodeId = episodeId.replace("-dub-", "-");
-    const dubEpisodeId = episodeId
-      .replace("-dub-", "-")
-      .split("-episode-")
-      .join("-dub-episode-");
-    api.getServers(subEpisodeId).then((res) => {
-      setSubServers(res);
-      if (subOrDub === false) {
-        api.getSource(res.shift().url).then(({ sources, headers }) => {
-          setHeaders(headers);
-          const src = sources.pop().url;
-          setStream(src);
-        });
-      }
-    });
-    api.getServers(dubEpisodeId).then((res) => {
-      setDubServers(res);
-      if (subOrDub === true) {
-        api.getSource(res.shift().url).then(({ sources, headers }) => {
-          setHeaders(headers);
-          const src = sources.pop().url;
-          setStream(src);
-        });
-      }
+    api.getSource(episodeId).then(({ sources, headers }) => {
+      setHeaders(headers);
+      const src = sources.pop().url;
+      setStream(src);
     });
   }, [episodeId, subOrDub]);
 
@@ -114,12 +92,6 @@ function InfoComponent(props) {
       </InfoTop>
       <InfoBottom>
         <InfoLeft>
-          <Servers
-            episodeId={episodeId}
-            subServers={subServers}
-            dubServers={dubServers}
-            subOrDub={subOrDub}
-          />
           <EpisodeTitle>
             {episodes[ep - 1].title ? episodes[ep - 1].title : `Episode ${ep}`}
           </EpisodeTitle>
