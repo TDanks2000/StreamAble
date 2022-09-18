@@ -5,15 +5,16 @@ import {
   ToggleSwitchSlider,
 } from "./ToggleSwitch.styles";
 
-const ToggleSwitch = ({ handleToggle, checked }) => {
+const ToggleSwitch = ({ Name, handleToggle, checked }) => {
   return (
     <ToggleSwitchContainer>
       <ToggleSwitchInput
         type="checkbox"
         onChange={handleToggle}
         checked={checked}
+        id={Name}
       />
-      <ToggleSwitchSlider />
+      <ToggleSwitchSlider for={Name} />
     </ToggleSwitchContainer>
   );
 };

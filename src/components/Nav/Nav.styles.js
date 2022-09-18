@@ -53,14 +53,18 @@ export const NavContainer = styled.nav`
   align-items: center;
 `;
 
-export const Logo = styled.h1`
+export const Logo = styled.div`
+  width: 200px;
   display: flex;
-  justify-content: center;
   align-items: center;
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: bold;
   color: ${({ theme }) => theme.base.mainColor};
+  & img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const LinkContainer = styled.div`

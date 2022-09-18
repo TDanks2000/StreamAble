@@ -15,6 +15,8 @@ import Search from "./SearchBar";
 import DropdownComponent from "./Dropdown";
 import NavProfile from "./Profile";
 
+import LOGO from "../../assets/images/logo.png";
+
 export const Genres = [
   "ACTION",
   "ADVENTURE",
@@ -42,7 +44,9 @@ function Nav() {
   return (
     <NavWrapper>
       <NavContainer>
-        <Logo>StreamAble</Logo>
+        <Logo>
+          <img src={LOGO} alt="logo" />
+        </Logo>
         <Search />
         <LinkContainer>
           <LinkNav to="/">Home</LinkNav>

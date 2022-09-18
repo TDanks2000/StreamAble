@@ -28,6 +28,7 @@ export const PostWrapper = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  overflow: hidden;
 `;
 
 const PostPos = styled.div`
@@ -39,6 +40,7 @@ const PostPos = styled.div`
 export const PostBottom = styled(PostPos)`
   padding: inherit;
   bottom: 0;
+  left: ${({ wantWatched }) => (wantWatched === true ? "30px" : "0")};
 `;
 
 export const PostTitle = styled.p`

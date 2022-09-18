@@ -12,12 +12,27 @@ import { NumberInput, InputWrapper, InputSeparator } from "./settings.styles";
 
 const languageOptions = [
   {
-    label: "en",
+    label: "English",
     name: "languageRadio",
   },
   {
-    label: "jp",
+    label: "Japanese",
     name: "languageRadio",
+  },
+];
+
+const subDubOptions = [
+  {
+    label: "Sub",
+    name: "SubDubRadio",
+  },
+  {
+    label: "Dub",
+    name: "SubDubRadio",
+  },
+  {
+    label: "Both",
+    name: "SubDubRadio",
   },
 ];
 
@@ -52,6 +67,13 @@ export const UserSettingsComponent = () => {
         <InputSeparator />
 
         <InputContainer>
+          <InputName>Auto select language</InputName>
+          <InputWrapper>
+            <RadioButtonGroup options={subDubOptions} />
+          </InputWrapper>
+        </InputContainer>
+
+        <InputContainer>
           <InputName>Auto Play</InputName>
           <InputWrapper>
             <ToggleSwitch
@@ -61,16 +83,32 @@ export const UserSettingsComponent = () => {
             />
           </InputWrapper>
         </InputContainer>
+
         <InputContainer>
           <InputName>Auto Next</InputName>
           <InputWrapper>
             <ToggleSwitch Name={`AutoNext`} />
           </InputWrapper>
         </InputContainer>
+
         <InputContainer>
           <InputName>Skip seconds</InputName>
           <InputWrapper>
             <NumberInput type="number" min={1} max={10} value={10} />
+          </InputWrapper>
+        </InputContainer>
+
+        <InputContainer>
+          <InputName>Auto skip into</InputName>
+          <InputWrapper>
+            <ToggleSwitch Name={`AutoIntroSkip`} />
+          </InputWrapper>
+        </InputContainer>
+
+        <InputContainer>
+          <InputName>Auto skip outro</InputName>
+          <InputWrapper>
+            <ToggleSwitch Name={`AutoIntroOutro`} />
           </InputWrapper>
         </InputContainer>
       </FormContainer>

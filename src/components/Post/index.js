@@ -10,6 +10,7 @@ import {
   PostTop,
   PostWrapper,
 } from "./Post.styles";
+import WatchedComponent from "./WatchedAmount";
 
 function PostComponent(props) {
   const {
@@ -26,6 +27,9 @@ function PostComponent(props) {
     aired,
     isEpisode,
     color,
+    wantWatched = false,
+    episodeWatched = 1,
+    progress,
   } = props;
 
   if (!props) return null;
@@ -38,6 +42,9 @@ function PostComponent(props) {
         to={`/anime/${id}/episode/${episodeNumber}/sub`}
       >
         <PostWrapper>
+          {wantWatched && (
+            <WatchedComponent progress={progress} episode={episodeWatched} />
+          )}
           <PostTop>
             <PostRatingWrapper>
               <PostRating color={color}>{(rating / 10).toFixed(1)}</PostRating>
@@ -60,12 +67,15 @@ function PostComponent(props) {
   return (
     <PostContainer key={malId} image={image} to={`/anime/${id}/episode/1`}>
       <PostWrapper>
+        {wantWatched && (
+          <WatchedComponent progress={progress} episode={episodeWatched} />
+        )}
         <PostTop>
           <PostRatingWrapper>
             <PostRating>{(rating / 10).toFixed(1)}</PostRating>
           </PostRatingWrapper>
         </PostTop>
-        <PostBottom>
+        <PostBottom wantWatched={wantWatched}>
           <PostTitle>{title_userPreferred}</PostTitle>
           <PostMeta>
             <Dot>{releaseDate}</Dot>
