@@ -16,13 +16,21 @@ export const TopNavLinks = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
 `;
 
 export const TopNavLink = styled(NavLink)`
-  font-size: 1.3rem;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.text.offWhite};
   font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  & *:not(span) {
+    margin-right: 0.3rem;
+    display: flex;
+    align-items: center;
+  }
   &.active {
     font-weight: 600;
   }

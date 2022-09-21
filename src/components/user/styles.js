@@ -16,19 +16,15 @@ export const InputContainer = styled.div`
   margin-right: -10px;
   margin-left: -10px;
   margin-bottom: 1rem;
-  align-items: center;
-  height: 35px;
 `;
 
 export const InputName = styled.label`
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  color: ${({ theme }) => theme.text.offWhite};
   padding-top: calc(0.375rem + 1px);
   padding-bottom: calc(0.375rem + 1px);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   line-height: 1.5;
+  font-size: 1.1rem;
+  color: #777;
   @media (min-width: 768px) {
     flex: 0 0 30%;
     max-width: 30%;
@@ -61,4 +57,11 @@ export const InputWrapper = styled.div`
     background-color: #292929;
     opacity: 1;
   }
+`;
+
+export const FormText = styled.div`
+  color: #515151 !important;
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
 `;

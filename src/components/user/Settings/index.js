@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import RadioButtonGroup from "../../Form/Radio";
 import ToggleSwitch from "../../Form/ToggleSwitch";
+import { ButtonContainer } from "../Profile/UserProfile.styles";
 import {
   FormContainer,
   InputContainer,
@@ -111,6 +112,9 @@ export const UserSettingsComponent = () => {
             <ToggleSwitch Name={`AutoIntroOutro`} />
           </InputWrapper>
         </InputContainer>
+        <ButtonContainer>
+          <input type="submit" value="UPDATE" />
+        </ButtonContainer>
       </FormContainer>
     </UserContainer>
   );
