@@ -7,7 +7,8 @@ import {
   EpisodesWrapper,
 } from "./Episodes.styles";
 
-function InfoEpisodes({ episodes, id, color, ep }) {
+function InfoEpisodes(props) {
+  const { episodes, id, color, ep } = props;
   return (
     <EpisodesContainer>
       <EpisodesTitle>Episodes</EpisodesTitle>

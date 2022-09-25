@@ -17,7 +17,6 @@ function Quality({ VideoRef, hlsPlayer, levels, currentQuality }) {
     if (hlsPlayer) {
       setQualityLevels(levels);
       setCurrentLevel(-1);
-      console.log(levels);
     }
   }, [currentQuality, levels, hlsPlayer]);
 

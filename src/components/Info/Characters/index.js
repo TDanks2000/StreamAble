@@ -7,7 +7,6 @@ import {
 } from "./Characters.styles";
 
 const Characters = ({ data }) => {
-  console.log(data);
   return (
     <CharactersContainer>
       <CharactersTitle>Characters</CharactersTitle>

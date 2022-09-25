@@ -22,7 +22,7 @@ import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Recommended from "./Recommended";
 import Characters from "./Characters";
-import Servers from "./Servers";
+// import Servers from "./Servers";
 
 function InfoComponent(props) {
   const {
@@ -48,6 +48,7 @@ function InfoComponent(props) {
   const titlE = `${title_english || title_userPreferred} ${
     subOrDub ? "(dub)" : ""
   }`;
+
   useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {

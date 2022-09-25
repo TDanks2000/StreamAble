@@ -7,7 +7,6 @@ function Recent({ page, perPage }) {
 
   useEffect(() => {
     api.getRecentEpisodes(page, perPage).then((data) => {
-      console.log(data);
       setInfo(data);
     });
   }, []);
