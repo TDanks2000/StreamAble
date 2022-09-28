@@ -8,6 +8,7 @@ import Fullscreen from "./Fullscreen";
 import PlayPause from "./PlayPause";
 import Volume from "./Volume";
 import Quality from "./Quality";
+import Episodes from "./Episodes";
 
 function Controls({
   playing,
@@ -20,6 +21,9 @@ function Controls({
   currentTime,
   VideoRef,
   WrapperRef,
+  episodes,
+  epNum,
+  id,
 }) {
   const [fullscreen, setFullscreen] = useState(false);
 
@@ -60,6 +64,7 @@ function Controls({
         levels={levels}
         currentQuality={currentQuality}
       />
+      <Episodes episodes={episodes} epNum={epNum} id={id} />
       <Button onClick={handleFullscreen}>
         <Fullscreen fullscreen={fullscreen} />
       </Button>

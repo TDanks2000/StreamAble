@@ -16,6 +16,9 @@ function Player({
   startPlaying = false,
   title,
   epTitle,
+  episodes,
+  epNum,
+  id,
 }) {
   const [playing, setPlaying] = useState(startPlaying);
   const [muted, setMuted] = useState(startMuted);
@@ -54,6 +57,7 @@ function Player({
             setCurrentTime={setCurrentTime}
           />
           <Controls
+            id={id}
             playing={playing}
             setPlaying={setPlaying}
             setVolume={setVolume}
@@ -64,6 +68,8 @@ function Player({
             WrapperRef={WrapperRef}
             VideoRef={VideoRef.current}
             currentTime={currentTime}
+            episodes={episodes}
+            epNum={epNum}
           />
         </VideoControlsContainer>
       </FullContainer>
