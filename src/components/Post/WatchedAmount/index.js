@@ -8,9 +8,8 @@ import {
 const WatchedComponent = ({ progress, episode }) => {
   return (
     <Container>
-      <WatchedAmount progress={progress}>
-        <WatchedAmountText progress={progress}>ep {episode}</WatchedAmountText>
-      </WatchedAmount>
+      <WatchedAmountText progress={progress}>ep {episode}</WatchedAmountText>
+      <WatchedAmount progress={progress}></WatchedAmount>
     </Container>
   );
 };

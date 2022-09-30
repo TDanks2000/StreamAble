@@ -37,4 +37,5 @@ export const WatchedAmountText = styled.span`
   top: -15px;
   text-transform: uppercase;
   font-size: 1.5rem;
+  z-index: 2;
 `;
