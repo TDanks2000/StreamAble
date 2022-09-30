@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const InfoContainer = styled.div`
@@ -74,7 +75,7 @@ export const InfoGenreWrapper = styled.div`
   margin: 0.1rem 0;
 `;
 
-export const InfoGenre = styled.a`
+export const InfoGenre = styled(Link)`
   font-size: 1rem;
   font-weight: 500;
   text-transform: uppercase;

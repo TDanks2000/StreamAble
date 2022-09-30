@@ -8,7 +8,8 @@ export const EpisodeContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid ${({ theme }) => theme.text.offWhite};
+  // border-bottom: 1px solid ${({ theme }) => theme.text.offWhite};
+  padding: 0.5rem;
   cursor: pointer;
   &.active {
     background: rgba(255, 255, 255, 0.2);
@@ -25,7 +26,7 @@ const LR = styled.div`
 `;
 
 export const Left = styled(LR)`
-  width: 90px;
+  width: 70px;
 `;
 
 export const ImgContainer = styled.div`
@@ -35,11 +36,12 @@ export const ImgContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background: red;
   }
 `;
 
 export const Right = styled(LR)`
-  width: calc(100% - 95px);
+  width: calc(100% - 75px);
   padding: 0.5rem;
   float: right;
 `;

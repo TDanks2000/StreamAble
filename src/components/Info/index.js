@@ -25,6 +25,7 @@ import Characters from "./Characters";
 // import Servers from "./Servers";
 
 function InfoComponent(props) {
+  console.log(props);
   const {
     title: { english: title_english, title_userPreferred },
     id,
@@ -104,7 +105,7 @@ function InfoComponent(props) {
 
           <InfoGenreWrapper>
             {genres?.map((genre, index) => (
-              <InfoGenre href="#" key={`${genre}-${index}`}>
+              <InfoGenre to={`/genre/${genre}`} key={`${genre}-${index}`}>
                 {genre}
               </InfoGenre>
             ))}
