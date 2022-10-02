@@ -16,6 +16,7 @@ import DropdownComponent from "./Dropdown";
 import NavProfile from "./Profile";
 
 import LOGO from "../../assets/images/logo.png";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const Genres = [
   "ACTION",
@@ -40,7 +41,7 @@ export const Genres = [
 ];
 
 function Nav() {
-  const [loggedIn] = useState(true);
+  const { currentUser } = useAuth(true);
   return (
     <NavWrapper>
       <NavContainer>
@@ -64,7 +65,7 @@ function Nav() {
           <LinkNav to="/types">Type</LinkNav>
         </LinkContainer>
         <Right>
-          <NavProfile loggedIn={loggedIn} />
+          <NavProfile loggedIn={currentUser ? true : false} />
         </Right>
       </NavContainer>
     </NavWrapper>

@@ -11,10 +11,10 @@ import {
 } from "../styles";
 
 export const SignUpComponent = () => {
-  const { emailRef } = useRef();
-  const { usernameRef } = useRef();
-  const { passwordRef } = useRef();
-  const { cPasswordRef } = useRef();
+  const emailRef = useRef();
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const cPasswordRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -29,8 +29,9 @@ export const SignUpComponent = () => {
     try {
       setError("");
       setLoading(true);
-      await signUp(email, password);
+      await signUp(emailRef.current.value, passwordRef.current.value);
     } catch (err) {
+      console.log(err);
       setError("Failed to sign up: ");
     }
     setLoading(false);

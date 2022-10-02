@@ -13,7 +13,9 @@ function TopRated({ limit, offset }) {
   }, []);
 
   if (!info.data) return null;
-  return info.data.map((item) => <PostComponent {...item} />);
+  return info.data.map((item) => (
+    <PostComponent key={`top-post-${i}`} {...item} />
+  ));
 }
 
 export default TopRated;

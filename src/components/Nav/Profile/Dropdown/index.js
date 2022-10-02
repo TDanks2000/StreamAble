@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaBookmark,
   FaClock,
@@ -7,6 +7,8 @@ import {
   FaSync,
   FaUser,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../contexts/AuthContext";
 import {
   DropdownContainer,
   DropdownItem,
@@ -14,6 +16,19 @@ import {
 } from "./Dropdown.styles";
 
 export const UserDropdown = ({ open, handleClick }) => {
+  const navigate = useNavigate();
+  const [error, setError] = useState();
+  const { logout } = useAuth();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    logout()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => setError("unable to logout"));
+  };
+
   return (
     <DropdownContainer open={open}>
       <DropdownItem to={`/user/profile`} onClick={handleClick}>
@@ -36,7 +51,7 @@ export const UserDropdown = ({ open, handleClick }) => {
         <FaCog />
         <span>Settings</span>
       </DropdownItem>
-      <DropdownLogout to={`/user/logout`} onClick={handleClick}>
+      <DropdownLogout to={`#`} onClick={handleLogout}>
         <FaSignOutAlt />
         <span>Logout</span>
       </DropdownLogout>

@@ -32,7 +32,14 @@ export const ProfileUserName = styled.div`
 `;
 
 export const ProfileLink = styled(Link)`
-  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: right;
+  display: inline-block;
+  font-size: 1.1rem;
+  margin-right: 10px;
+  &:last-of-type {
+    margin-right: 0;
+  }
   &.active {
     border: none;
   }

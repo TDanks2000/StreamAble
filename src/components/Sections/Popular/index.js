@@ -11,7 +11,9 @@ function Popular({ limit, type }) {
   }, []);
 
   if (!info.length) return null;
-  return info.map((item) => <PostComponent {...item} />);
+  return info.map((item, i) => (
+    <PostComponent key={`popular-post-${i}`} {...item} />
+  ));
 }
 
 export default Popular;

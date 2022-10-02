@@ -32,7 +32,10 @@ const NavProfile = ({ loggedIn }) => {
           <UserDropdown open={open} handleClick={handleClick} />
         </>
       ) : (
-        <ProfileLink to="/user/signin">Sign In</ProfileLink>
+        <ProfileContent>
+          <ProfileLink to="/user/signin">Sign In</ProfileLink>
+          <ProfileLink to="/user/signUp">Sign Up</ProfileLink>
+        </ProfileContent>
       )}
     </ProfileContainer>
   );
