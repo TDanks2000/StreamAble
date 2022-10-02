@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+import { useAuth } from "../../../../contexts/AuthContext";
 import {
   FormWrapper,
   Input,
@@ -10,13 +11,29 @@ import {
 } from "../styles";
 
 export const SignUpComponent = () => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [cPassword, setCPassword] = useState("");
+  const { emailRef } = useRef();
+  const { usernameRef } = useRef();
+  const { passwordRef } = useRef();
+  const { cPasswordRef } = useRef();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const { signUp } = useAuth();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (passwordRef.current.value !== cPasswordRef.current.value)
+      return setError("Passwords do not match");
+
+    try {
+      setError("");
+      setLoading(true);
+      await signUp(email, password);
+    } catch (err) {
+      setError("Failed to sign up: ");
+    }
+    setLoading(false);
   };
 
   return (
@@ -26,34 +43,19 @@ export const SignUpComponent = () => {
           <InputIcon>
             <FaEnvelope />
           </InputIcon>
-          <Input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <Input type="email" placeholder="Email" ref={emailRef} />
         </InputWrapper>
         <InputWrapper>
           <InputIcon>
             <FaUser />
           </InputIcon>
-          <Input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <Input type="text" placeholder="Username" ref={usernameRef} />
         </InputWrapper>
         <InputWrapper>
           <InputIcon>
             <FaLock />
           </InputIcon>
-          <Input
-            type="Password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <Input type="Password" placeholder="Password" ref={passwordRef} />
         </InputWrapper>
         <InputWrapper>
           <InputIcon>
@@ -62,12 +64,11 @@ export const SignUpComponent = () => {
           <Input
             type="Password"
             placeholder="Confirm Password"
-            value={cPassword}
-            onChange={(e) => setCPassword(e.target.value)}
+            ref={cPasswordRef}
           />
         </InputWrapper>
         <InputWrapper>
-          <Submit>Sign Up</Submit>
+          <Submit disabled={loading}>Sign Up</Submit>
         </InputWrapper>
       </FormWrapper>
     </LoginWrapper>

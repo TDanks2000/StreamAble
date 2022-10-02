@@ -24,7 +24,7 @@ const App = () => {
       <AppWrapper>
         <AppContainer>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/anime/:id" element={<Info />} />
             <Route path="/anime/:id/episode/:ep/" element={<Info />} />
             <Route path="/anime/:id/episode/:ep/:typeDub" element={<Info />} />

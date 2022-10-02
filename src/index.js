@@ -6,17 +6,18 @@ import "./assets/normalize.css";
 import { DefaultTheme } from "./assets/themes/default";
 import { GlobalStyles } from "./assets/global";
 import { ThemeProvider } from "styled-components";
+import { AuthProvider } from "./contexts/AuthContext";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; //
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
-    <ThemeProvider theme={DefaultTheme}>
+  <ThemeProvider theme={DefaultTheme}>
+    <AuthProvider>
       <App />
-      <GlobalStyles />
-    </ThemeProvider>
-  </>
+    </AuthProvider>
+    <GlobalStyles />
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
