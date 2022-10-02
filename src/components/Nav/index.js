@@ -65,7 +65,7 @@ function Nav() {
           <LinkNav to="/types">Type</LinkNav>
         </LinkContainer>
         <Right>
-          <NavProfile loggedIn={currentUser ? true : false} />
+          <NavProfile loggedIn={currentUser} />
         </Right>
       </NavContainer>
     </NavWrapper>

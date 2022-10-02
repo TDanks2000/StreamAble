@@ -22,14 +22,19 @@ export const SignUpComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const email = emailRef?.current;
+    const username = usernameRef?.current;
+    const password = passwordRef?.current;
+    const cPassword = cPasswordRef?.current;
 
-    if (passwordRef.current.value !== cPasswordRef.current.value)
+    if (password.value !== cPassword.value)
       return setError("Passwords do not match");
 
     try {
       setError("");
       setLoading(true);
-      await signUp(emailRef.current.value, passwordRef.current.value);
+
+      await signUp(email.value, password.value, username.value);
     } catch (err) {
       console.log(err);
       setError("Failed to sign up: ");

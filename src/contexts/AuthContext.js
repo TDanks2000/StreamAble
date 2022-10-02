@@ -5,6 +5,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
@@ -18,8 +19,14 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const signUp = async (email, password) => {
-    return await createUserWithEmailAndPassword(auth, email, password);
+  const signUp = async (email, password, username) => {
+    return await createUserWithEmailAndPassword(auth, email, password).then(
+      (user) => {
+        updateProfile(user.user, {
+          displayName: username,
+        });
+      }
+    );
   };
 
   const login = async (email, password) => {

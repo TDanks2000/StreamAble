@@ -9,26 +9,43 @@ import {
   Bottom,
 } from "./LeftNav.styles";
 import { MdLogout } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
-const imgUrl = "https://pbs.twimg.com/media/Dqay-R6X0AEQZqo.jpg";
+import imgUrl from "../../../../assets/images/defaultUser.png";
 
-export const LeftNav = () => {
+export const LeftNav = ({ logout, currentUser }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout().then(() => navigate("/"));
+  };
+
+  let d = new Date(currentUser.metadata.creationTime);
+  const creationDate = new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }).format(d);
+
   return (
     <LeftNavContainer>
       <UserIcon>
-        <img src={imgUrl} alt="" />
+        <img
+          src={currentUser.photoURL !== "null" ? imgUrl : currentUser.photoURL}
+          alt={`${currentUser.displayName} profile picture`}
+        />
       </UserIcon>
-      <UserName>UserName</UserName>
+      <UserName>{currentUser.displayName}</UserName>
       <UnderInfoContainer>
         <UnderInfo>
-          Joined: <span>jul 11, 2017</span>
+          Joined: <span>{creationDate}</span>
         </UnderInfo>
         <UnderInfo>
           Watched: <span>200</span>
         </UnderInfo>
       </UnderInfoContainer>
       <Bottom>
-        <LogOutText>
+        <LogOutText onClick={handleLogout}>
           <span>
             <MdLogout />
           </span>

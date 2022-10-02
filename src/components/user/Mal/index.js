@@ -36,7 +36,7 @@ export const UserMalComponent = () => {
         <InputContainer>
           <InputName>Mal Username</InputName>
           <InputWrapper>
-            <input type="text" readOnly value="Tdanks2000" />
+            <input type="text" placeholder="Enter your username here" />
           </InputWrapper>
         </InputContainer>
         <InputContainer>

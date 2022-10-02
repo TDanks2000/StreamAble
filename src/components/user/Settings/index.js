@@ -95,7 +95,7 @@ export const UserSettingsComponent = () => {
         <InputContainer>
           <InputName>Skip seconds</InputName>
           <InputWrapper>
-            <NumberInput type="number" min={1} max={10} value={10} />
+            <NumberInput type="number" min={1} max={10} defaultValue={10} />
           </InputWrapper>
         </InputContainer>
 

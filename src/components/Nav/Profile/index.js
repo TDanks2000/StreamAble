@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
+import { useAuth } from "../../../contexts/AuthContext";
 import { UserDropdown } from "./Dropdown";
 import {
   ProfileContainer,
@@ -10,7 +11,7 @@ import {
   ProfileUserName,
 } from "./styles";
 
-const imgUrl = "https://pbs.twimg.com/media/Dqay-R6X0AEQZqo.jpg";
+import imgUrl from "../../../assets/images/defaultUser.png";
 
 const NavProfile = ({ loggedIn }) => {
   const [open, setOpen] = useState(false);
@@ -21,12 +22,15 @@ const NavProfile = ({ loggedIn }) => {
 
   return (
     <ProfileContainer>
-      {loggedIn ? (
+      {loggedIn !== null ? (
         <>
           <ProfileContent onClick={handleClick}>
-            <ProfileUserName>UserName</ProfileUserName>
+            <ProfileUserName>{loggedIn.displayName}</ProfileUserName>
             <ProfileImage>
-              <img src={imgUrl} alt="" />
+              <img
+                src={loggedIn.photoURL !== "null" ? imgUrl : loggedIn.photoURL}
+                alt={`${loggedIn.displayName} profile picture`}
+              />
             </ProfileImage>
           </ProfileContent>
           <UserDropdown open={open} handleClick={handleClick} />

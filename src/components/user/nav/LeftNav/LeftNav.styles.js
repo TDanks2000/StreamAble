@@ -17,11 +17,14 @@ export const UserIcon = styled.div`
   justify-content: center;
   align-items: center;
   pointer-events: none;
+  overflow: hidden;
   & img {
-    width: 80%;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
     border: 0.5rem solid ${({ theme }) => theme.base.mainColor};
+    background: ${({ theme }) => theme.base.mainColor};
   }
 `;
 
