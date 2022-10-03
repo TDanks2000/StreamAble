@@ -16,11 +16,11 @@ function Quality({ VideoRef, hlsPlayer, levels, currentQuality }) {
   useEffect(() => {
     if (hlsPlayer) {
       setQualityLevels(levels);
-      setCurrentLevel(-1);
+      setCurrentLevel(levels.length);
     }
-  }, [currentQuality, levels, hlsPlayer]);
+  }, [currentQuality, levels]);
 
-  if (qualityLevels.length < 1) return null;
+  if (qualityLevels.length <= 1) return null;
   return (
     <Select defaultValue={currentLevel} onChange={handleChange}>
       {qualityLevels.map((res, index) => {

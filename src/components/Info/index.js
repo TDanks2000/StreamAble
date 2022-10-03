@@ -26,7 +26,6 @@ import UserActions from "./UserActions";
 // import Servers from "./Servers";
 
 function InfoComponent(props) {
-  console.log(props);
   const {
     title: { english: title_english, title_userPreferred },
     id,
@@ -40,7 +39,9 @@ function InfoComponent(props) {
     typeDub,
     characters,
     cover,
+    totalEpisodes,
   } = props;
+  console.log(totalEpisodes);
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
   let { ep = 1 } = useParams();
@@ -69,6 +70,8 @@ function InfoComponent(props) {
         <InfoLeft>
           <PlayerContainer>
             <ReactVideoPlayer
+              animeData={props}
+              totalEpisodes={totalEpisodes}
               headers={headers}
               url={stream}
               startMuted={false}
@@ -97,13 +100,22 @@ function InfoComponent(props) {
       </InfoTop>
       <InfoBottom>
         <InfoLeft>
-          <EpisodeTitle>
-            {episodes[ep - 1].title ? episodes[ep - 1].title : `Episode ${ep}`}
-          </EpisodeTitle>
           <InfoTitle color={color}>
             <span>{titlE}</span>
             <UserActions data={props} />
+            <SubOrDubSelector
+              typeDub={typeDub}
+              subOrDub={subOrDub}
+              setSubOrDub={setSubOrDub}
+            />
           </InfoTitle>
+          <EpisodeTitle>
+            <span>
+              {episodes[ep - 1].title
+                ? episodes[ep - 1].title
+                : `Episode ${ep}`}
+            </span>
+          </EpisodeTitle>
 
           {/* <DownloadButton stream={stream} epNum={ep} title={titlE} /> */}
 
@@ -115,11 +127,6 @@ function InfoComponent(props) {
             ))}
           </InfoGenreWrapper>
 
-          <SubOrDubSelector
-            typeDub={typeDub}
-            subOrDub={subOrDub}
-            setSubOrDub={setSubOrDub}
-          />
           <InfoSynopsis>{htmlDoc.querySelector("body").innerText}</InfoSynopsis>
 
           <Characters data={characters} />

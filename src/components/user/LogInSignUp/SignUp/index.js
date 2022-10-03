@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+} from "../../../../utils/toast/Notify";
 import {
   FormWrapper,
   Input,
@@ -11,6 +16,7 @@ import {
 } from "../styles";
 
 export const SignUpComponent = () => {
+  const navigate = useNavigate();
   const emailRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();
@@ -34,10 +40,15 @@ export const SignUpComponent = () => {
       setError("");
       setLoading(true);
 
-      await signUp(email.value, password.value, username.value);
+      await signUp(email.value, password.value, username.value)
+        .then(() => {
+          toastSuccessNotify("Successfully logged in");
+          return navigate("/");
+        })
+        .catch((err) => toastErrorNotify(err.code));
     } catch (err) {
       console.log(err);
-      setError("Failed to sign up: ");
+      toastErrorNotify("Failed to sign up: ");
     }
     setLoading(false);
   };

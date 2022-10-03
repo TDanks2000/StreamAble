@@ -9,6 +9,8 @@ import Info from "./pages/Info";
 import { NoMatch } from "./pages/NoMatch";
 import Genre from "./pages/Genre";
 
+import { ToastContainer } from "react-toastify";
+
 // USER ROUTES
 import { UserProfile } from "./pages/user/profile";
 import { UserWL } from "./pages/user/watchList";
@@ -78,6 +80,7 @@ const App = () => {
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </AppContainer>
+        <ToastContainer />
       </AppWrapper>
     </Router>
   );

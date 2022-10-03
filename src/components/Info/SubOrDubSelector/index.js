@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import { FaClosedCaptioning, FaMicrophone } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./SubOrDubSelector.styles";
 
@@ -17,10 +18,8 @@ export const SubOrDubSelector = ({ subOrDub, setSubOrDub, typeDub }) => {
   };
 
   return (
-    <>
-      <Button onClick={handleClick}>
-        {subOrDub === false ? "sub" : "dub"}
-      </Button>
-    </>
+    <Button onClick={handleClick}>
+      {subOrDub === false ? <FaClosedCaptioning /> : <FaMicrophone />}
+    </Button>
   );
 };

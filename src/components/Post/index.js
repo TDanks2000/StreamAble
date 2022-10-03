@@ -14,7 +14,8 @@ import WatchedComponent from "./WatchedAmount";
 
 function PostComponent(props) {
   const {
-    title: { userPreferred: title_userPreferred },
+    title,
+    title: { userPreferred: title_userPreferred, english: title_english },
     id,
     malId,
     image,
@@ -28,9 +29,11 @@ function PostComponent(props) {
     isEpisode,
     color,
     wantWatched = false,
-    episodeWatched = 1,
-    progress,
+    number: episodeWatched = 1,
+    watched: progress,
   } = props;
+
+  console.log(props);
 
   if (!props) return null;
   if (isEpisode) {
@@ -51,7 +54,9 @@ function PostComponent(props) {
             </PostRatingWrapper>
           </PostTop>
           <PostBottom>
-            <PostTitle>{title_userPreferred}</PostTitle>
+            <PostTitle>
+              {title_userPreferred || title_english || title}
+            </PostTitle>
             <PostMeta>
               <Dot>{airedDate.getFullYear()}</Dot>
               <Dot>EP {episodeNumber}</Dot>
@@ -71,17 +76,19 @@ function PostComponent(props) {
           <WatchedComponent progress={progress} episode={episodeWatched} />
         )}
         <PostTop>
-          <PostRatingWrapper>
-            <PostRating>{(rating / 10).toFixed(1)}</PostRating>
-          </PostRatingWrapper>
+          {rating && (
+            <PostRatingWrapper>
+              <PostRating>{(rating / 10).toFixed(1)}</PostRating>
+            </PostRatingWrapper>
+          )}
         </PostTop>
         <PostBottom wantWatched={wantWatched}>
-          <PostTitle>{title_userPreferred}</PostTitle>
+          <PostTitle>{title_userPreferred || title_english || title}</PostTitle>
           <PostMeta>
-            <Dot>{releaseDate}</Dot>
-            <Dot>{totalEpisodes}</Dot>
-            <Dot>{duration}</Dot>
-            <Dot>{type}</Dot>
+            {Boolean(releaseDate) && <Dot>{releaseDate}</Dot>}
+            {Boolean(totalEpisodes) && <Dot>{totalEpisodes}</Dot>}
+            {Boolean(duration) && <Dot>{duration}</Dot>}
+            {Boolean(type) && <Dot>{type}</Dot>}
           </PostMeta>
         </PostBottom>
       </PostWrapper>

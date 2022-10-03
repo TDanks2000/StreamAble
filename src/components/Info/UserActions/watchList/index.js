@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../../../utils/firebase";
 import {} from "firebase/firestore/lite";
 import { doc, onSnapshot, setDoc } from "firebase/firestore";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { ActionContainer } from "../styles";
 
-const Like = ({ data, currentUser }) => {
-  const [liked, setLiked] = useState(false);
+const WatchList = ({ data, currentUser }) => {
+  const [wantWatch, setWantWatch] = useState(false);
   const {
     id,
     title,
@@ -24,20 +24,21 @@ const Like = ({ data, currentUser }) => {
 
   useEffect(() => {
     const unSubscribe = onSnapshot(movieID, (doc) => {
-      const docLiked = doc.data()?.liked;
-      setLiked(docLiked);
+      const docWantWatch = doc.data()?.wantWatch;
+      setWantWatch(docWantWatch);
     });
+
     return unSubscribe;
   }, [currentUser?.email, data]);
 
   const handleLike = async () => {
     if (currentUser?.email) {
-      setLiked((prev) => !prev);
+      setWantWatch((prev) => !prev);
 
       setDoc(
         movieID,
         {
-          liked: !liked,
+          wantWatch: !wantWatch,
           id,
           malId,
           rating,
@@ -58,9 +59,9 @@ const Like = ({ data, currentUser }) => {
 
   return (
     <ActionContainer onClick={handleLike}>
-      {liked !== true ? <FaRegHeart /> : <FaHeart />}
+      {wantWatch !== true ? <FaRegBookmark /> : <FaBookmark />}
     </ActionContainer>
   );
 };
 
-export default Like;
+export default WatchList;

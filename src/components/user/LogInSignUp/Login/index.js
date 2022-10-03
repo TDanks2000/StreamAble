@@ -11,6 +11,10 @@ import {
 import { FaLock, FaUser } from "react-icons/fa";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+} from "../../../../utils/toast/Notify";
 
 const LogInComponent = () => {
   const navigate = useNavigate();
@@ -23,7 +27,12 @@ const LogInComponent = () => {
     const email = emailRef.current;
     const password = passwordRef.current;
 
-    await login(email.value, password.value).then(() => navigate("/"));
+    return await login(email.value, password.value)
+      .then(() => {
+        toastSuccessNotify("Successfully logged in");
+        return navigate("/");
+      })
+      .catch((err) => toastErrorNotify(err.code));
   };
 
   return (

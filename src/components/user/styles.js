@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PostContainer } from "../Post/Post.styles";
 
 export const UserContainer = styled.div`
   position: relative;
@@ -64,4 +65,14 @@ export const FormText = styled.div`
   display: block;
   margin-top: 0.25rem;
   font-size: 0.9rem;
+`;
+
+export const UserWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.12rem;
+  & ${PostContainer} {
+    width: 100%;
+    height: 270px;
+  }
 `;

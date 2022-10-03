@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  padding: 0.3rem 0.5rem;
-  background: ${({ theme }) => theme.base.mainColor};
-  color: ${({ theme }) => theme.text.mainColor};
-  text-transform: uppercase;
+  font-size: 1.6rem;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
-  border-radius 5px;
-  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.text.offWhite};
   &:hover {
-    opacity: .8;
+    color: ${({ theme }) => theme.text.secondary};
+    opacity: 0.8;
+  }
+  & * {
+    display: flex;
+    align-items: center;
   }
 `;

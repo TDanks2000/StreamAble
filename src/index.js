@@ -7,6 +7,7 @@ import { DefaultTheme } from "./assets/themes/default";
 import { GlobalStyles } from "./assets/global";
 import { ThemeProvider } from "styled-components";
 import { AuthProvider } from "./contexts/AuthContext";
+import "react-toastify/dist/ReactToastify.css";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; //
 

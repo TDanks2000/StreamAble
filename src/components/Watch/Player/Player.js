@@ -1,3 +1,4 @@
+import { doc, setDoc } from "firebase/firestore";
 import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player/lazy";
 import Controls from "../Controls";
@@ -8,6 +9,8 @@ import {
   VideoControlsContainer,
   VideoWrapper,
 } from "./Player.styles";
+import { useAuth } from "../../../contexts/AuthContext";
+import { db } from "../../../utils/firebase";
 
 function Player({
   headers,
@@ -19,17 +22,39 @@ function Player({
   episodes,
   epNum,
   id,
+  totalEpisodes,
+  animeData,
 }) {
+  const { currentUser } = useAuth();
   const [playing, setPlaying] = useState(startPlaying);
   const [muted, setMuted] = useState(startMuted);
   const [volume, setVolume] = useState(1);
   const [currentTime, setCurrentTime] = useState(0);
+  const [watched, setWatched] = useState(false);
 
   const ContainerRef = useRef();
   const WrapperRef = useRef();
   const VideoRef = useRef();
 
+  const movieID = doc(db, "users", `${currentUser?.email}`, "anime", id);
+
   const handleTimeChange = (e) => {
+    if (currentUser?.email) {
+      const timeWatchedPercent =
+        (e.playedSeconds / VideoRef.current.getDuration()) * 100;
+
+      if (!watched && timeWatchedPercent >= 80) {
+        setWatched(true);
+
+        setDoc(
+          movieID,
+          {
+            watched: `${epNum} / ${totalEpisodes}`,
+          },
+          { merge: true }
+        );
+      }
+    }
     setCurrentTime(e.playedSeconds);
   };
 
@@ -43,6 +68,32 @@ function Player({
       ContainerRef.current.classList.remove("show");
       ContainerRef.current.classList.add("hide");
     }, duration);
+  };
+
+  const handlePause = (e) => {
+    if (currentUser?.email) {
+      const timeWatchedPercent = parseFloat(
+        ((currentTime / VideoRef.current.getDuration()) * 100).toFixed(3)
+      );
+      const newEpisodesArray = [
+        {
+          animeId: animeData.id,
+          animePoster: animeData.image,
+          animeTitle:
+            animeData.title?.userPreferred || animeData.title?.english,
+          ...episodes[epNum - 1],
+          watched: timeWatchedPercent,
+        },
+      ];
+
+      setDoc(
+        movieID,
+        {
+          episodes: newEpisodesArray,
+        },
+        { merge: true }
+      );
+    }
   };
 
   return (
@@ -82,6 +133,7 @@ function Player({
         volume={volume}
         ref={VideoRef}
         onProgress={handleTimeChange}
+        onPause={handlePause}
         config={{
           file: {
             attributes: {

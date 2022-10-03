@@ -24,17 +24,17 @@ export const InfoBg = styled.img`
 
 export const InfoTitle = styled.h1`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   align-items: center;
+  min-width: 20%;
+  gap: 1rem;
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
   // color: ${({ color }) => color};
   & span {
-    width: 80%;
-    display: flex;
-    align-items: center;
+    width: auto;
   }
 `;
 
@@ -58,11 +58,15 @@ export const InfoBottom = styled(InfoTopBot)`
 `;
 
 export const EpisodeTitle = styled.span`
-  width: 100%;
+  display: flex;
   color: ${({ theme }) => theme.text.offWhite};
   font-size: 0.9rem;
   font-weight: 300;
-  margin-top: -0.4rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.65rem;
+  & span {
+    width: auto;
+  }
 `;
 
 export const InfoLeft = styled.div`

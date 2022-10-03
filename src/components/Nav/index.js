@@ -50,7 +50,9 @@ function Nav() {
         </Logo>
         <Search />
         <LinkContainer>
-          <LinkNav to="/">Home</LinkNav>
+          <LinkNav end to="/">
+            Home
+          </LinkNav>
           <DropdownComponent to="/genres" title="Genre">
             {Genres.map((genre, index) => (
               <DropdownItem key={`genre-${genre}-${index}`}>
