@@ -22,6 +22,7 @@ import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Recommended from "./Recommended";
 import Characters from "./Characters";
+import UserActions from "./UserActions";
 // import Servers from "./Servers";
 
 function InfoComponent(props) {
@@ -45,7 +46,7 @@ function InfoComponent(props) {
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
   var htmlDoc = parser.parseFromString(description, "text/html");
-  const episodeId = episodes[ep - 1].id;
+  const episodeId = episodes[ep - 1]?.id;
   const titlE = `${title_english || title_userPreferred} ${
     subOrDub ? "(dub)" : ""
   }`;
@@ -99,7 +100,10 @@ function InfoComponent(props) {
           <EpisodeTitle>
             {episodes[ep - 1].title ? episodes[ep - 1].title : `Episode ${ep}`}
           </EpisodeTitle>
-          <InfoTitle color={color}>{titlE}</InfoTitle>
+          <InfoTitle color={color}>
+            <span>{titlE}</span>
+            <UserActions data={props} />
+          </InfoTitle>
 
           {/* <DownloadButton stream={stream} epNum={ep} title={titlE} /> */}
 

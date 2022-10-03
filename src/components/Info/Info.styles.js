@@ -23,10 +23,19 @@ export const InfoBg = styled.img`
 `;
 
 export const InfoTitle = styled.h1`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
   // color: ${({ color }) => color};
+  & span {
+    width: 80%;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const InfoTopBot = styled.div`

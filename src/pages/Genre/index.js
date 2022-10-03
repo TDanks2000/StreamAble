@@ -21,7 +21,7 @@ const Genre = () => {
       <GenreTitle>{genre}</GenreTitle>
       <GenreWrapper>
         {data.results.map((res) => {
-          return <PostComponent key={res.id} {...res} />;
+          return <PostComponent key={`genres-${res.id}`} {...res} />;
         })}
       </GenreWrapper>
     </GenreContainer>

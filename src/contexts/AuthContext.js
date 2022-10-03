@@ -8,8 +8,9 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth, storage } from "../utils/firebase";
+import { auth, db, storage } from "../utils/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore/lite";
 
 const AuthContext = createContext();
 
@@ -26,6 +27,11 @@ const AuthProvider = ({ children }) => {
       (user) => {
         updateProfile(user.user, {
           displayName: username,
+        });
+        setDoc(doc(db, "users", email), {
+          movies: [],
+          tv: [],
+          anime: [],
         });
       }
     );

@@ -33,7 +33,7 @@ export const Genres = [
   "MYSTERY",
   "PSYCHOLOGICAL",
   "ROMANCE",
-  "SCI FI",
+  "SCI-FI",
   "SLICE OF LIFE",
   "SPORTS",
   "SUPERNATURAL",

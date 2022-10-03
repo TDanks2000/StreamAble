@@ -28,7 +28,11 @@ const NavProfile = ({ loggedIn }) => {
             <ProfileUserName>{loggedIn.displayName}</ProfileUserName>
             <ProfileImage>
               <img
-                src={loggedIn.photoURL === "null" ? imgUrl : loggedIn.photoURL}
+                src={
+                  !loggedIn.photoURL?.startsWith("http")
+                    ? imgUrl
+                    : loggedIn.photoURL
+                }
                 alt={`${loggedIn.displayName} profile picture`}
               />
             </ProfileImage>

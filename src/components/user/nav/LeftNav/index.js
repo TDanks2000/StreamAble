@@ -49,7 +49,9 @@ export const LeftNav = ({ logout, currentUser, uploadProfilePicture }) => {
         <UserIcon>
           <img
             src={
-              currentUser.photoURL === "null" ? imgUrl : currentUser.photoURL
+              !currentUser.photoURL?.startsWith("http")
+                ? imgUrl
+                : currentUser.photoURL
             }
             alt={`${currentUser.displayName} profile picture`}
           />
