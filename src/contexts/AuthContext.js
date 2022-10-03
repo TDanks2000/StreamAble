@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import * as imageConversion from "image-conversion";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -7,7 +8,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth, storage } from "../utils/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const AuthContext = createContext();
 
@@ -41,6 +43,17 @@ const AuthProvider = ({ children }) => {
     return await sendPasswordResetEmail(auth, email);
   };
 
+  const uploadProfilePicture = async (file) => {
+    const storageRef = ref(storage, `profile/${currentUser.uid}.png`);
+
+    const snapshot = await uploadBytes(storageRef, file);
+    const photoURL = await getDownloadURL(storageRef);
+
+    updateProfile(currentUser, { photoURL });
+
+    return snapshot;
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
@@ -56,6 +69,7 @@ const AuthProvider = ({ children }) => {
     login,
     logout,
     resetPassword,
+    uploadProfilePicture,
   };
 
   return (

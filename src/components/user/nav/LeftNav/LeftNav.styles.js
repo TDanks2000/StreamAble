@@ -9,22 +9,66 @@ export const LeftNavContainer = styled.div`
   border-radius: 7px;
 `;
 
-export const UserIcon = styled.div`
+export const UserIconWrapper = styled.div`
+  position: relative;
   width: 100%;
   text-align: center;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+`;
+
+export const ImageHiddenInput = styled.input`
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ImageHover = styled.div`
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
   pointer-events: none;
+  transition: all 0.25s ease-in-out;
+  & span {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+`;
+
+export const UserIcon = styled.div`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 0.5rem solid ${({ theme }) => theme.base.mainColor};
+  background: ${({ theme }) => theme.base.mainColor};
+  cursor: pointer;
   overflow: hidden;
   & img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 0.5rem solid ${({ theme }) => theme.base.mainColor};
-    background: ${({ theme }) => theme.base.mainColor};
+  }
+  &:hover ${ImageHover} {
+    visibility: visible;
+    opacity: 1;
   }
 `;
 
