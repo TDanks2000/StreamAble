@@ -7,11 +7,31 @@
 ## GENERAL
 
     [] Random Anime page
-    [] Fix State on pages that are re rendering when there not supposed to
+    [] Type page
+    [] Add filters to the search page
 
-## MOVIES/TV
+## FIXES
 
-    [] Add movies/tv Section
+    [] State on pages that are re rendering when there not supposed to
+    [] Dub/sub sometimes not working
+    [] Episode list sometimes not getting dubbed episodes
+    [] Sometimes the video player is not getting correct link depending on type of dub or sub
+
+## MOVIES/TV/DRAMA/NEWS
+
+    [] MOVIES
+        [] Search
+        [] Info page
+        [] Watch page
+        [] Actions (firebase)
+
+    [] TV
+        [] Search
+        [] Info page
+        [] Watch page
+        [] Actions (firebase)
+
+    [] DRAMA (ASIAN)
         [] Search
         [] Info page
         [] Watch page
