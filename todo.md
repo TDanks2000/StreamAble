@@ -1,38 +1,40 @@
-## FIREBASE
+## StreamAble TODO
 
-    [] Improve implementation of user actions
-        [] Improve the structure of the doc in the movies/tv or anime col
-        [] Improve the functions that interact with the firebase api
+### FIREBASE
 
-## GENERAL
+    - [ ] Improve implementation of user actions
+        - [ ] Improve the structure of the doc in the movies/tv or anime col
+        - [ ] Improve the functions that interact with the firebase api
 
-    [] Random Anime page
-    [] Type page
-    [] Add filters to the search page
+### GENERAL
 
-## FIXES
+    - [ ] Random Anime page
+    - [ ] Type page
+    - [ ] Add filters to the search page
 
-    [] State on pages that are re rendering when there not supposed to
-    [] Dub/sub sometimes not working
-    [] Episode list sometimes not getting dubbed episodes
-    [] Sometimes the video player is not getting correct link depending on type of dub or sub
+### FIXES
 
-## MOVIES/TV/DRAMA/NEWS
+    - [ ] State on pages that are re rendering when there not supposed to
+    - [ ] Dub/sub sometimes not working
+    - [ ] Episode list sometimes not getting dubbed episodes
+    - [ ] Sometimes the video player is not getting correct link depending on type of dub or sub
 
-    [] MOVIES
-        [] Search
-        [] Info page
-        [] Watch page
-        [] Actions (firebase)
+### MOVIES/TV/DRAMA/NEWS
 
-    [] TV
-        [] Search
-        [] Info page
-        [] Watch page
-        [] Actions (firebase)
+    - [ ] MOVIES
+        - [ ] Search
+        - [ ] Info page
+        - [ ] Watch page
+        - [ ] Actions (firebase)
 
-    [] DRAMA (ASIAN)
-        [] Search
-        [] Info page
-        [] Watch page
-        [] Actions (firebase)
+    - [ ] TV
+        - [ ] Search
+        - [ ] Info page
+        - [ ] Watch page
+        - [ ] Actions (firebase)
+
+    - [ ] DRAMA (ASIAN)
+        - [ ] Search
+        - [ ] Info page
+        - [ ] Watch page
+        - [ ] Actions (firebase)
