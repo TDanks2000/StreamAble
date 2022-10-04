@@ -49,7 +49,19 @@ function Player({
         setDoc(
           movieID,
           {
-            watched: `${epNum} / ${totalEpisodes}`,
+            watched:
+              parseFloat(epNum) === parseFloat(totalEpisodes)
+                ? true
+                : `${epNum} / ${totalEpisodes}`,
+            id: animeData.id,
+            rating: animeData.rating,
+            releaseDate: animeData.releaseDate,
+            cover: animeData.cover,
+            duration: animeData.duration,
+            color: animeData.color,
+            title: animeData.title,
+            image: animeData.image,
+            totalEpisodes: animeData.totalEpisodes,
           },
           { merge: true }
         );
@@ -70,31 +82,31 @@ function Player({
     }, duration);
   };
 
-  const handlePause = (e) => {
-    if (currentUser?.email) {
-      const timeWatchedPercent = parseFloat(
-        ((currentTime / VideoRef.current.getDuration()) * 100).toFixed(3)
-      );
-      const newEpisodesArray = [
-        {
-          animeId: animeData.id,
-          animePoster: animeData.image,
-          animeTitle:
-            animeData.title?.userPreferred || animeData.title?.english,
-          ...episodes[epNum - 1],
-          watched: timeWatchedPercent,
-        },
-      ];
+  // const handlePause = (e) => {
+  //   if (currentUser?.email) {
+  //     const timeWatchedPercent = parseFloat(
+  //       ((currentTime / VideoRef.current.getDuration()) * 100).toFixed(3)
+  //     );
+  //     const newEpisodesArray = [
+  //       {
+  //         animeId: animeData.id,
+  //         animePoster: animeData.image,
+  //         animeTitle:
+  //           animeData.title?.userPreferred || animeData.title?.english,
+  //         ...episodes[epNum - 1],
+  //         watched: timeWatchedPercent,
+  //       },
+  //     ];
 
-      setDoc(
-        movieID,
-        {
-          episodes: newEpisodesArray,
-        },
-        { merge: true }
-      );
-    }
-  };
+  //     setDoc(
+  //       movieID,
+  //       {
+  //         episodes: newEpisodesArray,
+  //       },
+  //       { merge: true }
+  //     );
+  //   }
+  // };
 
   return (
     <VideoWrapper onMouseMove={handleInactive} ref={WrapperRef}>
@@ -133,7 +145,7 @@ function Player({
         volume={volume}
         ref={VideoRef}
         onProgress={handleTimeChange}
-        onPause={handlePause}
+        // onPause={handlePause}
         config={{
           file: {
             attributes: {

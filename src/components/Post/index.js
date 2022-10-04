@@ -31,9 +31,11 @@ function PostComponent(props) {
     wantWatched = false,
     number: episodeWatched = 1,
     watched: progress,
+    wantMeta = true,
+    subOrDub = "sub",
   } = props;
 
-  console.log(props);
+  console.log(subOrDub);
 
   if (!props) return null;
   if (isEpisode) {
@@ -42,7 +44,7 @@ function PostComponent(props) {
       <PostContainer
         key={malId}
         image={image}
-        to={`/anime/${id}/episode/${episodeNumber}/sub`}
+        to={`/anime/${id}/episode/${episodeNumber}/${subOrDub}`}
       >
         <PostWrapper>
           {wantWatched && (
@@ -53,16 +55,18 @@ function PostComponent(props) {
               <PostRating color={color}>{(rating / 10).toFixed(1)}</PostRating>
             </PostRatingWrapper>
           </PostTop>
-          <PostBottom>
+          <PostBottom wantWatched={wantWatched}>
             <PostTitle>
               {title_userPreferred || title_english || title}
             </PostTitle>
-            <PostMeta>
-              <Dot>{airedDate.getFullYear()}</Dot>
-              <Dot>EP {episodeNumber}</Dot>
-              <Dot>{duration}</Dot>
-              <Dot>{type}</Dot>
-            </PostMeta>
+            {Boolean(wantMeta) && (
+              <PostMeta>
+                <Dot>{airedDate.getFullYear()}</Dot>
+                <Dot>EP {episodeNumber}</Dot>
+                <Dot>{duration}</Dot>
+                <Dot>{type}</Dot>
+              </PostMeta>
+            )}
           </PostBottom>
         </PostWrapper>
       </PostContainer>

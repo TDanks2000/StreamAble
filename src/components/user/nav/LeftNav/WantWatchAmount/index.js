@@ -6,7 +6,7 @@ import { onSnapshot, where, query, collection } from "firebase/firestore";
 const WantWatch = ({ currentUser }) => {
   const [wantWatchedAmount, setWantWatchedAmount] = useState(false);
   const movieID = collection(db, "users", `${currentUser?.email}`, "anime");
-  const queryRef = query(movieID, where("wantWatch", "==", true));
+  const queryRef = query(movieID, where("watched", "==", true));
 
   useEffect(() => {
     if (currentUser?.email) {
@@ -21,7 +21,7 @@ const WantWatch = ({ currentUser }) => {
 
   return (
     <UnderInfo>
-      Watch list: <span>{wantWatchedAmount}</span>
+      Watched: <span>{wantWatchedAmount}</span>
     </UnderInfo>
   );
 };
