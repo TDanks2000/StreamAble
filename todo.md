@@ -3,7 +3,7 @@
 ### FIREBASE
 
 - [ ] Improve implementation of user actions
-  - [ ] Improve the structure of the doc in the movies/tv or anime col
+  - [x] Improve the structure of the doc in the movies/tv or anime col
   - [ ] Improve the functions that interact with the firebase api
 
 ### GENERAL
@@ -11,6 +11,7 @@
 - [ ] Random Anime page
 - [ ] Type page
 - [ ] Add filters to the search page
+- [ ] Airing Schedule
 
 ### FIXES
 

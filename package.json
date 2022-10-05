@@ -9,6 +9,7 @@
     "axios": "^0.27.2",
     "firebase": "^9.10.0",
     "image-conversion": "^2.1.1",
+    "moment": "^2.29.4",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

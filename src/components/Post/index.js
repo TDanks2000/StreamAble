@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import {
   Dot,
   PostBottom,
@@ -33,9 +34,9 @@ function PostComponent(props) {
     watched: progress,
     wantMeta = true,
     subOrDub = "sub",
+    wantRating = true,
+    wantMetaDate = false,
   } = props;
-
-  console.log(subOrDub);
 
   if (!props) return null;
   if (isEpisode) {
@@ -80,7 +81,7 @@ function PostComponent(props) {
           <WatchedComponent progress={progress} episode={episodeWatched} />
         )}
         <PostTop>
-          {rating && (
+          {wantRating && rating && (
             <PostRatingWrapper>
               <PostRating>{(rating / 10).toFixed(1)}</PostRating>
             </PostRatingWrapper>
@@ -88,12 +89,19 @@ function PostComponent(props) {
         </PostTop>
         <PostBottom wantWatched={wantWatched}>
           <PostTitle>{title_userPreferred || title_english || title}</PostTitle>
-          <PostMeta>
-            {Boolean(releaseDate) && <Dot>{releaseDate}</Dot>}
-            {Boolean(totalEpisodes) && <Dot>{totalEpisodes}</Dot>}
-            {Boolean(duration) && <Dot>{duration}</Dot>}
-            {Boolean(type) && <Dot>{type}</Dot>}
-          </PostMeta>
+          {Boolean(wantMeta) && (
+            <PostMeta>
+              {Boolean(releaseDate) && <Dot>{releaseDate}</Dot>}
+              {Boolean(totalEpisodes) && <Dot>{totalEpisodes}</Dot>}
+              {Boolean(duration) && <Dot>{duration}</Dot>}
+              {Boolean(type) && <Dot>{type}</Dot>}
+            </PostMeta>
+          )}
+          {Boolean(wantMetaDate) && (
+            <PostMeta>
+              <p>{moment(aired).format("HH:mm A (ZZ)")}</p>
+            </PostMeta>
+          )}
         </PostBottom>
       </PostWrapper>
     </PostContainer>

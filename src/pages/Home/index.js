@@ -10,6 +10,7 @@ import * as api from "../../utils/api/api";
 import { Banner } from "../../components/Banner";
 import { BannerItem } from "../../components/Banner/BannerItem";
 import Recent from "../../components/Sections/Recent";
+import AiringSchedule from "../../components/Sections/AiringSchedule";
 
 function Home() {
   const [popular, setPopular] = useState([]);
@@ -43,6 +44,10 @@ function Home() {
           <Trending perPage={7 * 2} />
         </Wrapper>
       </SectionContainer>
+
+      {/* <SectionContainer>
+        <AiringSchedule wrapper={Wrapper} />
+      </SectionContainer> */}
     </HomeContainer>
   );
 }

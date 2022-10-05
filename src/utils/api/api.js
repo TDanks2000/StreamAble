@@ -69,6 +69,19 @@ export const getRecentEpisodes = async (page = 1, perPage = 20) => {
   return results;
 };
 
+export const getAiringSchedule = async (perPage) => {
+  const { data } = await api.get(
+    `/api/anime/airing-schedule?perPage=${perPage}`
+  );
+
+  if (!data?.results)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
 export const getInfo = async (id) => {
   const { data } = await api.get(`/api/anime/info/${id}`);
 
