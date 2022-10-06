@@ -12,7 +12,7 @@ function InfoEpisodes(props) {
   return (
     <EpisodesContainer>
       <EpisodesTitle>Episodes</EpisodesTitle>
-      <EpisodesWrapper>
+      <EpisodesWrapper className={episodes.length > 100 ? "number" : "name"}>
         {episodes.map(({ title, image }, index) => {
           const realEpisode = index + 1;
           return (
@@ -23,11 +23,15 @@ function InfoEpisodes(props) {
               color={color}
               className={realEpisode === ep ? "active" : ""}
             >
-              <EpisodeInner>
-                {!title
-                  ? `Episode ${realEpisode}`
-                  : `${realEpisode} - ${title}`}
-              </EpisodeInner>
+              {episodes.length > 100 ? (
+                <EpisodeInner>{realEpisode}</EpisodeInner>
+              ) : (
+                <EpisodeInner>
+                  {!title
+                    ? `Episode ${realEpisode}`
+                    : `${realEpisode} - ${title}`}
+                </EpisodeInner>
+              )}
             </Episode>
           );
         })}

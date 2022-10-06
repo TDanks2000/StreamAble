@@ -10,18 +10,6 @@ export const EpisodesContainer = styled.div`
   // margin-top: 0.5rem;
 `;
 
-export const EpisodesWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 0;
-  width: 100%;
-  max-height: 93%;
-  overflow-y: auto;
-`;
-
 export const Episode = styled(NavLink)`
   width: 100%;
   font-size: 1rem;
@@ -59,4 +47,33 @@ export const EpisodesTitle = styled.h1`
   padding: 0.3rem 0;
   text-transform: uppercase;
   font-weight: bold;
+`;
+
+export const EpisodesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  max-height: 93%;
+  overflow-y: auto;
+  &.name {
+    justify-content: flex-end;
+  }
+  &.number {
+    padding: 10px;
+    justify-content: space-between;
+    gap: 10px;
+    & ${Episode} {
+      text-align: center;
+      font-weight: bold;
+      width: 10%;
+      border-radius: 8px;
+      overflow: hidden;
+      & ${EpisodeInner} {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
 `;
