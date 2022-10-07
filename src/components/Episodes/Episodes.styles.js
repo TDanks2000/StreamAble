@@ -66,9 +66,10 @@ export const EpisodesWrapper = styled.div`
     justify-content: space-between;
     gap: 10px;
     & ${Episode} {
+      font-size: 0.6rem;
       text-align: center;
       font-weight: bold;
-      width: 10%;
+      width: 13%;
       border-radius: 8px;
       overflow: hidden;
       & ${EpisodeInner} {

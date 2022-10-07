@@ -25,7 +25,11 @@ function Info() {
   }, [id, subOrDub]);
 
   useEffect(() => {
-    pathname.includes("sub") ? setSubOrDub(false) : setSubOrDub(true);
+    if (pathname.includes("sub")) {
+      setSubOrDub(false);
+    } else if (pathname.includes("dub")) {
+      setSubOrDub(true);
+    }
   }, [pathname]);
 
   if (!episodes) return "loading...";

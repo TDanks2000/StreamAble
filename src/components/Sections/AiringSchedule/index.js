@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PostComponent from "../../Post";
 import * as api from "../../../utils/api/api";
 import { datesGroupByComponent, numberToDay } from "../../../utils/Helpers";
+import { DayTitle } from "./AiringSchedule..styles";
 
 function AiringSchedule({ wrapper: Wrapper }) {
   const [info, setInfo] = useState([]);
@@ -21,7 +22,7 @@ function AiringSchedule({ wrapper: Wrapper }) {
         const res = info[key];
         return (
           <>
-            <strong>{numberToDay(key)}</strong>
+            <DayTitle>{numberToDay(key)}</DayTitle>
             <Wrapper>
               {res.map((r) => (
                 <PostComponent

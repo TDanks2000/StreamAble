@@ -23,6 +23,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Recommended from "./Recommended";
 import Characters from "./Characters";
 import UserActions from "./UserActions";
+import NextEpisode from "./NextEpisode";
 // import Servers from "./Servers";
 
 function InfoComponent(props) {
@@ -40,6 +41,7 @@ function InfoComponent(props) {
     characters,
     cover,
     totalEpisodes,
+    nextAiringEpisode,
   } = props;
   console.log(totalEpisodes);
   const [stream, setStream] = useState(null);
@@ -132,6 +134,7 @@ function InfoComponent(props) {
           <Characters data={characters} />
         </InfoLeft>
         <InfoRight>
+          <NextEpisode nextAiringEpisode={nextAiringEpisode} />
           <Recommended data={recommendations} />
         </InfoRight>
       </InfoBottom>
