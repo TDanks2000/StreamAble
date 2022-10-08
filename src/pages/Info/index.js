@@ -13,22 +13,22 @@ function Info() {
   const [data, setData] = useState(null);
   const [episodes, setEpisodes] = useState(null);
   const { id, typeDub = "sub" } = useParams();
-  const [subOrDub, setSubOrDub] = useLocalStorage("typeDub", false);
+  const [typeSubOrDub, setTypeSubOrDub] = useLocalStorage("typeDub", false);
 
   useEffect(() => {
-    api.getData(id).then((res) => {
+    api.getInfo(id, typeSubOrDub).then((res) => {
       setData(res);
     });
-    api.getEpisodes(id, subOrDub).then((res) => {
+    api.getEpisodes(id, typeSubOrDub).then((res) => {
       setEpisodes(res);
     });
-  }, [id, subOrDub]);
+  }, [id, typeSubOrDub]);
 
   useEffect(() => {
     if (pathname.includes("sub")) {
-      setSubOrDub(false);
+      setTypeSubOrDub(false);
     } else if (pathname.includes("dub")) {
-      setSubOrDub(true);
+      setTypeSubOrDub(true);
     }
   }, [pathname]);
 
@@ -46,8 +46,8 @@ function Info() {
     <InfoComponent
       {...data}
       episodes={episodes}
-      setSubOrDub={setSubOrDub}
-      subOrDub={subOrDub}
+      setSubOrDub={setTypeSubOrDub}
+      typeSubOrDub={typeSubOrDub}
       typeDub={typeDub}
     />
   );

@@ -8,9 +8,9 @@ import {
 } from "./NextEpisode.styles";
 
 const NextEpisode = ({ nextAiringEpisode }) => {
-  const nextAiringTimeDate = moment(nextAiringEpisode.airingTime * 1000);
-
   if (!nextAiringEpisode) return null;
+
+  const nextAiringTimeDate = moment(nextAiringEpisode.airingTime * 1000);
   return (
     <NextEpisodeContainer>
       <NextEpisodeDate>{nextAiringTimeDate.format("MMM DD")}</NextEpisodeDate>

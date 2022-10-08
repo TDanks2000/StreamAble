@@ -1,7 +1,6 @@
 import React from "react";
 import { Error, GoBack } from "../styles";
 
-console.log(window.location.pathname.split("/"));
 export const NoMatch = () => (
   <>
     <Error>

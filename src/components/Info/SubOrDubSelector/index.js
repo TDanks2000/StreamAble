@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { FaClosedCaptioning, FaMicrophone } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./SubOrDubSelector.styles";
@@ -7,6 +6,7 @@ import { Button } from "./SubOrDubSelector.styles";
 export const SubOrDubSelector = ({ subOrDub, setSubOrDub, typeDub }) => {
   let navigate = useNavigate();
   let { pathname } = useLocation();
+
   const handleClick = (e) => {
     e.preventDefault();
     const actualSubOrDub = subOrDub === false ? "sub" : "dub";
@@ -19,7 +19,7 @@ export const SubOrDubSelector = ({ subOrDub, setSubOrDub, typeDub }) => {
 
   return (
     <Button onClick={handleClick}>
-      {subOrDub === false ? <FaClosedCaptioning /> : <FaMicrophone />}
+      {subOrDub === "sub" ? <FaClosedCaptioning /> : <FaMicrophone />}
     </Button>
   );
 };

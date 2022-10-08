@@ -10,8 +10,6 @@ import {
 function InfoEpisodes(props) {
   const { episodes, id, color, ep } = props;
 
-  console.log(episodes);
-
   return (
     <EpisodesContainer>
       <EpisodesTitle>Episodes</EpisodesTitle>

@@ -13,7 +13,6 @@ import {
   EpisodeTitle,
   PlayerContainer,
   InfoBottom,
-  InfoBg,
 } from "./Info.styles";
 
 import * as api from "../../utils/api/api";
@@ -24,6 +23,7 @@ import Recommended from "./Recommended";
 import Characters from "./Characters";
 import UserActions from "./UserActions";
 import NextEpisode from "./NextEpisode";
+import HowLongToWatch from "./HowLongToWatch";
 // import Servers from "./Servers";
 
 function InfoComponent(props) {
@@ -32,6 +32,7 @@ function InfoComponent(props) {
     id,
     genres,
     description,
+    duration,
     episodes,
     recommendations,
     subOrDub,
@@ -43,21 +44,19 @@ function InfoComponent(props) {
     totalEpisodes,
     nextAiringEpisode,
   } = props;
-  console.log(totalEpisodes);
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
   var htmlDoc = parser.parseFromString(description, "text/html");
   const episodeId = episodes[ep - 1]?.id;
-  const titlE = `${title_english || title_userPreferred} ${
-    subOrDub ? "(dub)" : ""
-  }`;
+  const titlE = `${title_english || title_userPreferred} (${subOrDub})`;
 
   useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {
-    api.getSource(episodeId).then(({ sources, headers }) => {
+    api.getSource(episodeId).then((sourceRes) => {
+      const { sources, headers } = sourceRes;
       setHeaders(headers);
       const src = sources.pop().url;
       setStream(src);
@@ -103,7 +102,7 @@ function InfoComponent(props) {
       <InfoBottom>
         <InfoLeft>
           <InfoTitle color={color}>
-            <span>{titlE}</span>
+            <span>{title_english || title_userPreferred}</span>
             <UserActions data={props} />
             <SubOrDubSelector
               typeDub={typeDub}
@@ -130,6 +129,12 @@ function InfoComponent(props) {
           </InfoGenreWrapper>
 
           <InfoSynopsis>{htmlDoc.querySelector("body").innerText}</InfoSynopsis>
+
+          <HowLongToWatch
+            duration={duration}
+            nextAiringEpisode={nextAiringEpisode}
+            episodes={episodes}
+          />
 
           <Characters data={characters} />
         </InfoLeft>

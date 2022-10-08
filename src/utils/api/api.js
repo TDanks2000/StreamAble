@@ -82,8 +82,8 @@ export const getAiringSchedule = async (perPage) => {
   return data;
 };
 
-export const getInfo = async (id) => {
-  const { data } = await api.get(`/api/anime/info/${id}`);
+export const getInfo = async (id, dub) => {
+  const { data } = await api.get(`/api/anime/info/${id}?dub=${dub}`);
 
   if (!data)
     return {
