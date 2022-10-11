@@ -65,6 +65,7 @@ function Nav() {
             ))}
           </DropdownComponent>
           <LinkNav to="/types">Type</LinkNav>
+          <LinkNav to="/news">News</LinkNav>
         </LinkContainer>
         <Right>
           <NavProfile loggedIn={currentUser} />

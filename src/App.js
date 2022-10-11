@@ -19,6 +19,7 @@ import { UserMal } from "./pages/user/mal";
 import { UserSettings } from "./pages/user/settings";
 import LogIn from "./pages/user/logIn";
 import PrivateRoute from "./routes/PrivateRoute";
+import News from "./pages/News";
 
 const App = () => {
   return (
@@ -32,6 +33,8 @@ const App = () => {
             <Route path="/anime/:id/episode/:ep/" element={<Info />} />
             <Route path="/anime/:id/episode/:ep/:typeDub" element={<Info />} />
             <Route path="/genre/:genre" element={<Genre />} />
+            <Route path="/news/" element={<News />} />
+            <Route path="/news/:topic" element={<News />} />
             {/* USER ROUTES */}
             <Route path="/user/signIn" element={<LogIn isSwitch={true} />} />
             <Route path="/user/signUp" element={<LogIn isSwitch={false} />} />

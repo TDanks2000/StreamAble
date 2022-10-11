@@ -3,8 +3,11 @@ const axios = require("axios");
 const defaultHost = "http://localhost";
 const defaultPort = 3003 || 4000;
 
+const backupHost = "https://consume-api.up.railway.app";
+
 const api = axios.create({
-  baseURL: `${defaultHost}:${defaultPort}`,
+  baseURL: backupHost,
+  // baseURL: `${defaultHost}:${defaultPort}`,
 });
 
 export const getPopular = async (page = 1, perPage = 20) => {
@@ -165,6 +168,28 @@ export const getGenre = async (genres, page = 1, perPage = 20) => {
   const { data } = await api.get(
     `/api/anime/genre?genres=["${genres}"]&page=${page}&perPage=${perPage}`
   );
+
+  return data;
+};
+
+export const getAnnTopic = async (topic) => {
+  const { data } = await api.get(`/api/ann/topic/${topic}`);
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
+export const getAnnInfo = async (id) => {
+  const { data } = await api.get(`/api/ann/topic/info?id=${id}`);
+
+  if (!data)
+    return {
+      error: "No data",
+    };
 
   return data;
 };

@@ -62,6 +62,7 @@ export const Logo = styled.div`
   font-weight: bold;
   color: ${({ theme }) => theme.base.mainColor};
   & img {
+    pointer-events: none;
     width: 100%;
     height: 100%;
   }
