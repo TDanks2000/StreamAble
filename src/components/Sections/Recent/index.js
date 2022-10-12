@@ -13,7 +13,11 @@ function Recent({ page, perPage }) {
 
   if (!info.length) return null;
   return info.map((item) => (
-    <PostComponent isEpisode={true} key={`recent-post-${item.id}`} {...item} />
+    <PostComponent
+      isEpisode={true}
+      key={`recent-post-${item.id}-${item.episodeNumber}`}
+      {...item}
+    />
   ));
 }
 

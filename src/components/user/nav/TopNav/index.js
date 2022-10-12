@@ -22,18 +22,18 @@ export const TopNav = () => {
           <FaBookmark />
           <span>Watch List</span>
         </TopNavLink>
-        <TopNavLink to={"/user/continueWatching"}>
+        {/* <TopNavLink to={"/user/continueWatching"}>
           <FaClock />
           <span>Continue Watching</span>
-        </TopNavLink>
-        <TopNavLink to={"/user/mal"}>
+        </TopNavLink> */}
+        {/* <TopNavLink to={"/user/mal"}>
           <FaSync />
           <span>MAL</span>
-        </TopNavLink>
-        <TopNavLink to={"/user/settings"}>
+        </TopNavLink> */}
+        {/* <TopNavLink to={"/user/settings"}>
           <FaCog />
           <span>Settings</span>
-        </TopNavLink>
+        </TopNavLink> */}
       </TopNavLinks>
     </TopNavContainer>
   );

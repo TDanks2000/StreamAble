@@ -20,6 +20,7 @@ import { UserSettings } from "./pages/user/settings";
 import LogIn from "./pages/user/logIn";
 import PrivateRoute from "./routes/PrivateRoute";
 import News from "./pages/News";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -84,6 +85,7 @@ const App = () => {
           </Routes>
         </AppContainer>
         <ToastContainer />
+        <Footer />
       </AppWrapper>
     </Router>
   );

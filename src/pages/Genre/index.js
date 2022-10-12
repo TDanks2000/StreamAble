@@ -7,15 +7,18 @@ import { GenreContainer, GenreTitle, GenreWrapper } from "./Genre.styles";
 
 const Genre = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { genre } = useParams();
 
   useEffect(() => {
+    setLoading(true);
     api.getGenre([genre], 1, 7 * 4).then((res) => {
       setData(res);
+      setLoading(false);
     });
   }, [genre]);
 
-  if (!data?.results?.length) return null;
+  if (loading) return "loading...";
   return (
     <GenreContainer>
       <GenreTitle>{genre}</GenreTitle>

@@ -64,7 +64,7 @@ function Nav() {
               </DropdownItem>
             ))}
           </DropdownComponent>
-          <LinkNav to="/types">Type</LinkNav>
+          {/* <LinkNav to="/types">Type</LinkNav> */}
           <LinkNav to="/news">News</LinkNav>
         </LinkContainer>
         <Right>

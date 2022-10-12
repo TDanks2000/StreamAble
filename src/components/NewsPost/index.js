@@ -13,7 +13,7 @@ const NewsPost = ({ title, thumbnail, preview, uploadedAt, topics }) => {
   return (
     <NewsPostContainer>
       <NewsPostImg>
-        <NewsPostTopic>
+        <NewsPostTopic to={`/news/${topics[0]}`}>
           <span>{topics[0]}</span>
         </NewsPostTopic>
         <img src={thumbnail} alt={title} />

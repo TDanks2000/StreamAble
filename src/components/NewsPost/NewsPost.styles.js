@@ -1,4 +1,5 @@
 import { rgba } from "polished";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const NewsPostContainer = styled.div`
@@ -21,7 +22,7 @@ export const NewsPostImg = styled.div`
   }
 `;
 
-export const NewsPostTopic = styled.div`
+export const NewsPostTopic = styled(Link)`
   position: absolute;
   left: 0;
   top: 0;
@@ -32,6 +33,9 @@ export const NewsPostTopic = styled.div`
   & * {
     font-weight: bold;
     text-transform: uppercase;
+  }
+  &:hover {
+    text-decoration: underline;
   }
 `;
 

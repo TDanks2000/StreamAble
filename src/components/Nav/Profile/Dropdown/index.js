@@ -39,7 +39,7 @@ export const UserDropdown = ({ open, handleClick }) => {
         <FaBookmark />
         <span>Watch List</span>
       </DropdownItem>
-      <DropdownItem to={`/user/continueWatching`} onClick={handleClick}>
+      {/* <DropdownItem to={`/user/continueWatching`} onClick={handleClick}>
         <FaClock />
         <span>Continue Watching</span>
       </DropdownItem>
@@ -50,7 +50,7 @@ export const UserDropdown = ({ open, handleClick }) => {
       <DropdownItem to={`/user/settings`} onClick={handleClick}>
         <FaCog />
         <span>Settings</span>
-      </DropdownItem>
+      </DropdownItem> */}
       <DropdownLogout to={`#`} onClick={handleLogout}>
         <FaSignOutAlt />
         <span>Logout</span>

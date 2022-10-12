@@ -6,15 +6,18 @@ import { Container, Title, Wrapper } from "./News.styles";
 
 const News = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { topic } = useParams();
 
   useEffect(() => {
+    setLoading(true);
     api.getAnnTopic(topic).then((data) => {
       setData(data);
+      setLoading(false);
     });
-  }, []);
+  }, [topic]);
 
-  if (!data.length) return "loading...";
+  if (loading) return "loading...";
 
   return (
     <Container>
