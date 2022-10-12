@@ -82,7 +82,7 @@ function InfoComponent(props) {
               episodes={episodes}
               id={id}
               epTitle={
-                episodes[ep - 1].title
+                episodes[ep - 1]?.title
                   ? episodes[ep - 1].title
                   : `Episode ${ep}`
               }
