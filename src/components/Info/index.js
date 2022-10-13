@@ -52,54 +52,44 @@ function InfoComponent(props) {
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
 
-  const [subServers, setSubServers] = useState([]);
-  const [dubServers, setDubServers] = useState([]);
+  const [selectedServer, setSelectedServer] = useState(null);
 
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
 
   var htmlDoc = parser.parseFromString(description, "text/html");
 
-  const episodeId = episodes[ep - 1]?.id;
+  const [episodeId, setEpisodeId] = useState(episodes[ep - 1]?.id);
   const titlE = `${
     title_english || title_userPreferred || title_romaji
   } (${subOrDub})`;
 
+  const subEpisodeId = episodeId.replace("-dub-", "-");
+  const dubEpisodeId = episodeId
+    .replace("-dub-", "-")
+    .split("-episode-")
+    .join("-dub-episode-");
+
   useDocumentTitle(`${ep} - ${titlE} `);
 
-  useEffect(() => {
-    const subEpisodeId = episodeId.replace("-dub-", "-");
-    const dubEpisodeId = episodeId
-      .replace("-dub-", "-")
-      .split("-episode-")
-      .join("-dub-episode-");
-    api.getServers(subEpisodeId).then((res) => {
-      setSubServers(res);
-    });
-    api.getServers(dubEpisodeId).then((res) => {
-      setDubServers(res);
-    });
-  }, [episodeId, subOrDub]);
-
-  useEffect(() => {
-    if (subServers.length > 1 && subOrDub == "sub") {
-      api.getSource(subServers.shift().url).then(({ sources, headers }) => {
-        setHeaders(headers);
-        const src = sources.pop().url;
-        setStream(src);
-      });
+  const handleSourceChange = (serverName, newSourceType) => {
+    console.log(newSourceType);
+    setSelectedServer({ name: serverName });
+    if (serverName.toLowerCase().includes("gogo")) serverName = "gogocdn";
+    if (newSourceType === "dub") {
+      setSubOrDub(true);
+      setEpisodeId(dubEpisodeId);
     }
-  }, [subServers, subOrDub]);
-
-  useEffect(() => {
-    if (dubServers.length > 1 && subOrDub == "dub") {
-      api.getSource(dubServers.shift().url).then(({ sources, headers }) => {
-        setHeaders(headers);
-        const src = sources.pop().url;
-        setStream(src);
-      });
+    if (newSourceType === "sub") {
+      setSubOrDub(false);
+      setEpisodeId(subEpisodeId);
     }
-  }, [dubServers, subOrDub]);
+    api.getSource(episodeId, serverName).then(({ sources, headers }) => {
+      setHeaders(headers);
+      const src = sources.pop().url;
+      setStream(src);
+    });
+  };
 
   return (
     <InfoContainer cover={cover}>
@@ -141,10 +131,12 @@ function InfoComponent(props) {
         <InfoLeft>
           <Servers
             episodeId={episodeId}
-            subServers={subServers}
-            dubServers={dubServers}
             subOrDub={subOrDub}
             stream={stream}
+            selectedServer={selectedServer}
+            handleSourceChange={handleSourceChange}
+            subEpisodeId={subEpisodeId}
+            dubEpisodeId={dubEpisodeId}
           />
 
           <InfoTitle color={color}>

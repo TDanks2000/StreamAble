@@ -118,9 +118,9 @@ export const getEpisodes = async (id, dub = false) => {
   return data;
 };
 
-export const getSource = async (episodeId, provider) => {
+export const getSource = async (episodeId, server) => {
   let { data } = await api.get(
-    `/api/anime/watch/?episodeId=${episodeId}&provider=${provider}`
+    `/api/gogoanime/watch/${episodeId}?server=${server}`
   );
 
   if (!data)
