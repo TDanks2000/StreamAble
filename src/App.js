@@ -84,7 +84,7 @@ const App = () => {
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </AppContainer>
-        <ToastContainer />
+        <ToastContainer theme="dark" />
         <Footer />
       </AppWrapper>
     </Router>

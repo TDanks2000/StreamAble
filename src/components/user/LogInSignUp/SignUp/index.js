@@ -45,7 +45,7 @@ export const SignUpComponent = () => {
           toastSuccessNotify("Successfully logged in");
           return navigate("/");
         })
-        .catch((err) => toastErrorNotify(err.code));
+        .catch((err) => toastErrorNotify(err.code.replace("auth/", "")));
     } catch (err) {
       console.log(err);
       toastErrorNotify("Failed to sign up: ");

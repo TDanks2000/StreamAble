@@ -32,7 +32,7 @@ const LogInComponent = () => {
         toastSuccessNotify("Successfully logged in");
         return navigate("/");
       })
-      .catch((err) => toastErrorNotify(err.code));
+      .catch((err) => toastErrorNotify(err.code.replace("auth/", "")));
   };
 
   return (
