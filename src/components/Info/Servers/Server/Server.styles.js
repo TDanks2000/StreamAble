@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ServerContainer = styled.div`
+  font-size: 0.9rem;
   padding: 0.45rem 0.75rem;
   background: ${({ theme }) => theme.base.offDarkBg};
   border-radius: 10px;

@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.base.darkBg};
   margin-bottom: 1rem;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
 `;
 

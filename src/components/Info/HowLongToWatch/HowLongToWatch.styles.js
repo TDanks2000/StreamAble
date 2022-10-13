@@ -7,7 +7,7 @@ export const Container = styled.div`
   &:first-letter {
     text-transform: capitalize;
   }
-  & bold {
+  & span {
     text-transform: uppercase;
     font-weight: bold;
   }

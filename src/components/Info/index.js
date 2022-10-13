@@ -24,11 +24,16 @@ import Characters from "./Characters";
 import UserActions from "./UserActions";
 import NextEpisode from "./NextEpisode";
 import HowLongToWatch from "./HowLongToWatch";
-// import Servers from "./Servers";
+import Servers from "./Servers";
 
 function InfoComponent(props) {
+  console.log(props);
   const {
-    title: { english: title_english, title_userPreferred },
+    title: {
+      english: title_english,
+      title_userPreferred,
+      romaji: title_romaji,
+    },
     id,
     genres,
     description,
@@ -46,22 +51,55 @@ function InfoComponent(props) {
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
+
+  const [subServers, setSubServers] = useState([]);
+  const [dubServers, setDubServers] = useState([]);
+
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
+
   var htmlDoc = parser.parseFromString(description, "text/html");
+
   const episodeId = episodes[ep - 1]?.id;
-  const titlE = `${title_english || title_userPreferred} (${subOrDub})`;
+  const titlE = `${
+    title_english || title_userPreferred || title_romaji
+  } (${subOrDub})`;
 
   useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {
-    api.getSource(episodeId).then((sourceRes) => {
-      const { sources, headers } = sourceRes;
-      setHeaders(headers);
-      const src = sources.pop().url;
-      setStream(src);
+    const subEpisodeId = episodeId.replace("-dub-", "-");
+    const dubEpisodeId = episodeId
+      .replace("-dub-", "-")
+      .split("-episode-")
+      .join("-dub-episode-");
+    api.getServers(subEpisodeId).then((res) => {
+      setSubServers(res);
+    });
+    api.getServers(dubEpisodeId).then((res) => {
+      setDubServers(res);
     });
   }, [episodeId, subOrDub]);
+
+  useEffect(() => {
+    if (subServers.length > 1 && subOrDub == "sub") {
+      api.getSource(subServers.shift().url).then(({ sources, headers }) => {
+        setHeaders(headers);
+        const src = sources.pop().url;
+        setStream(src);
+      });
+    }
+  }, [subServers, subOrDub]);
+
+  useEffect(() => {
+    if (dubServers.length > 1 && subOrDub == "dub") {
+      api.getSource(dubServers.shift().url).then(({ sources, headers }) => {
+        setHeaders(headers);
+        const src = sources.pop().url;
+        setStream(src);
+      });
+    }
+  }, [dubServers, subOrDub]);
 
   return (
     <InfoContainer cover={cover}>
@@ -101,8 +139,16 @@ function InfoComponent(props) {
       </InfoTop>
       <InfoBottom>
         <InfoLeft>
+          <Servers
+            episodeId={episodeId}
+            subServers={subServers}
+            dubServers={dubServers}
+            subOrDub={subOrDub}
+            stream={stream}
+          />
+
           <InfoTitle color={color}>
-            <span>{title_english || title_userPreferred}</span>
+            <span>{title_english || title_userPreferred || title_romaji}</span>
             <UserActions data={props} />
             <SubOrDubSelector
               typeDub={typeDub}
@@ -112,7 +158,7 @@ function InfoComponent(props) {
           </InfoTitle>
           <EpisodeTitle>
             <span>
-              {episodes[ep - 1].title
+              {episodes[ep - 1]?.title
                 ? episodes[ep - 1].title
                 : `Episode ${ep}`}
             </span>
@@ -130,11 +176,13 @@ function InfoComponent(props) {
 
           <InfoSynopsis>{htmlDoc.querySelector("body").innerText}</InfoSynopsis>
 
-          <HowLongToWatch
-            duration={duration}
-            nextAiringEpisode={nextAiringEpisode}
-            episodes={episodes}
-          />
+          {duration && (
+            <HowLongToWatch
+              duration={duration}
+              nextAiringEpisode={nextAiringEpisode}
+              episodes={episodes}
+            />
+          )}
 
           <Characters data={characters} />
         </InfoLeft>
