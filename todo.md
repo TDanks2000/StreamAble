@@ -2,9 +2,9 @@
 
 ### FIREBASE
 
-- [ ] Improve implementation of user actions
+- [x] Improve implementation of user actions
   - [x] Improve the structure of the doc in the movies/tv or anime col
-  - [ ] Improve the functions that interact with the firebase api
+  - [x] Improve the functions that interact with the firebase api
 
 ### GENERAL
 
@@ -15,10 +15,10 @@
 
 ### FIXES
 
-- [ ] State on pages that are re rendering when there not supposed to
-- [ ] Dub/sub sometimes not working
-- [ ] Episode list sometimes not getting dubbed episodes
-- [ ] Sometimes the video player is not getting correct link depending on type of dub or sub
+- [x] State on pages that are re rendering when there not supposed to
+- [x] Dub/sub sometimes not working
+- [x] Episode list sometimes not getting dubbed episodes
+- [x] Sometimes the video player is not getting correct link depending on type of dub or sub
 
 ### MOVIES/TV/DRAMA/NEWS
 
@@ -37,3 +37,13 @@
   - [ ] Info page
   - [ ] Watch page
   - [ ] Actions (firebase)
+- [ ] NEWS
+  - [ ] Info page
+  - [x] View All news (/news/:topic)
+
+### MASSIVE OVERHAUL
+
+- [ ] Switch to typescript
+- [ ] Improve Component structure
+- [ ] More reusable components
+- [ ] fix long episode list memory leak

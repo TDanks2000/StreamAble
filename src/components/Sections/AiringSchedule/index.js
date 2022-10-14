@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import PostComponent from "../../Post";
 import * as api from "../../../utils/api/api";
 import { datesGroupByComponent, numberToDay } from "../../../utils/Helpers";
-import { DayTitle } from "./AiringSchedule..styles";
+import {
+  Container,
+  DayTitle,
+  ItemsContainer,
+  Wrapper,
+} from "./AiringSchedule..styles";
 
-function AiringSchedule({ wrapper: Wrapper }) {
+function AiringSchedule() {
   const [info, setInfo] = useState([]);
 
   useEffect(() => {
-    api.getAiringSchedule(40).then((data) => {
+    api.getAiringSchedule(150).then((data) => {
       //   setInfo(data);
       const grouped = datesGroupByComponent(data.results, "d");
       setInfo(grouped);
@@ -17,11 +22,11 @@ function AiringSchedule({ wrapper: Wrapper }) {
 
   if (!info) return null;
   return (
-    <div>
+    <Container>
       {Object.keys(info).map((key, index) => {
         const res = info[key];
         return (
-          <>
+          <ItemsContainer>
             <DayTitle>{numberToDay(key)}</DayTitle>
             <Wrapper>
               {res.map((r) => (
@@ -35,10 +40,10 @@ function AiringSchedule({ wrapper: Wrapper }) {
                 />
               ))}
             </Wrapper>
-          </>
+          </ItemsContainer>
         );
       })}
-    </div>
+    </Container>
   );
 }
 

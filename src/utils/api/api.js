@@ -46,7 +46,7 @@ export const getTrending = async (page = 1, perPage = 20) => {
 
 export const getTopRated = async (limit = 10, offset = 0) => {
   const { data } = await api.get(
-    `/api/anime/top?limit=${limit}&offset=${offset}`
+    `/api/anime/advanced-search?sort=["SCORE_DESC"]`
   );
 
   if (!data)

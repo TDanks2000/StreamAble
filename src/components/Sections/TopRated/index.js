@@ -5,14 +5,17 @@ import PostComponent from "../../Post";
 
 function TopRated({ limit, offset }) {
   const [info, setInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getTopRated(limit, offset).then((data) => {
       setInfo(data);
+      setLoading(false);
     });
   }, []);
 
-  if (!info.data) return null;
+  if (loading) return "loading...";
   return info.data.map((item) => (
     <PostComponent key={`top-post-${i}`} {...item} />
   ));

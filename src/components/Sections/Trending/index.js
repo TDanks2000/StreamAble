@@ -5,14 +5,17 @@ import PostComponent from "../../Post";
 
 function Trending({ page = 1, perPage = 10 }) {
   const [info, setInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getTrending(page, perPage).then((data) => {
       setInfo(data);
+      setLoading(false);
     });
   }, []);
 
-  if (!info.length) return null;
+  if (loading) return "loading...";
   return info.map((item) => (
     <PostComponent key={`trending-post-${item.id}`} {...item} />
   ));

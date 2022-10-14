@@ -53,7 +53,9 @@ function PostComponent(props) {
           )}
           <PostTop>
             <PostRatingWrapper>
-              <PostRating color={color}>{(rating / 10).toFixed(1)}</PostRating>
+              <PostRating color={color}>
+                {rating <= 0 ? "TBD" : (rating / 10).toFixed(1)}
+              </PostRating>
             </PostRatingWrapper>
           </PostTop>
           <PostBottom wantWatched={wantWatched}>
@@ -83,7 +85,9 @@ function PostComponent(props) {
         <PostTop>
           {wantRating && rating && (
             <PostRatingWrapper>
-              <PostRating>{(rating / 10).toFixed(1)}</PostRating>
+              <PostRating>
+                {rating <= 0 ? "TBD" : (rating / 10).toFixed(1)}
+              </PostRating>
             </PostRatingWrapper>
           )}
         </PostTop>

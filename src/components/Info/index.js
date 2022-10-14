@@ -64,9 +64,9 @@ function InfoComponent(props) {
     title_english || title_userPreferred || title_romaji
   } (${subOrDub})`;
 
-  const subEpisodeId = episodeId.replace("-dub-", "-");
+  const subEpisodeId = episodeId?.replace("-dub-", "-");
   const dubEpisodeId = episodeId
-    .replace("-dub-", "-")
+    ?.replace("-dub-", "-")
     .split("-episode-")
     .join("-dub-episode-");
 
@@ -75,7 +75,7 @@ function InfoComponent(props) {
   const handleSourceChange = (serverName, newSourceType) => {
     console.log(newSourceType);
     setSelectedServer({ name: serverName });
-    if (serverName.toLowerCase().includes("gogo")) serverName = "gogocdn";
+    if (serverName?.toLowerCase()?.includes("gogo")) serverName = "gogocdn";
     if (newSourceType === "dub") {
       setSubOrDub(true);
       setEpisodeId(dubEpisodeId);
