@@ -60,20 +60,29 @@ function InfoComponent(props) {
   var htmlDoc = parser.parseFromString(description, "text/html");
 
   const [episodeId, setEpisodeId] = useState(episodes[ep - 1]?.id);
+  const [subEpisodeId, setSubEpisodeId] = useState(
+    episodeId?.replace("-dub-", "-")
+  );
+  const [dubEpisodeId, setDubEpisodeId] = useState(
+    episodeId?.replace("-dub-", "-").split("-episode-").join("-dub-episode-")
+  );
   const titlE = `${
     title_english || title_userPreferred || title_romaji
   } (${subOrDub})`;
 
-  const subEpisodeId = episodeId?.replace("-dub-", "-");
-  const dubEpisodeId = episodeId
-    ?.replace("-dub-", "-")
-    .split("-episode-")
-    .join("-dub-episode-");
+  useEffect(() => {
+    setSubEpisodeId(episodeId?.replace("-dub-", "-"));
+    setDubEpisodeId(
+      episodeId?.replace("-dub-", "-").split("-episode-").join("-dub-episode-")
+    );
+  }, [episodeId]);
 
   useDocumentTitle(`${ep} - ${titlE} `);
 
   const handleSourceChange = (serverName, newSourceType) => {
-    console.log(newSourceType);
+    setStream(null);
+    setHeaders(null);
+
     setSelectedServer({ name: serverName });
     if (serverName?.toLowerCase()?.includes("gogo")) serverName = "gogocdn";
     if (newSourceType === "dub") {
@@ -84,12 +93,24 @@ function InfoComponent(props) {
       setSubOrDub(false);
       setEpisodeId(subEpisodeId);
     }
-    api.getSource(episodeId, serverName).then(({ sources, headers }) => {
-      setHeaders(headers);
-      const src = sources.pop().url;
-      setStream(src);
-    });
+    api
+      .getSource(episodeId, serverName)
+      .then(({ sources, headers }) => {
+        setHeaders(headers);
+        const src = sources.pop().url;
+        setStream(src);
+      })
+      .catch((err) => {
+        setHeaders(null);
+        setStream(null);
+      });
   };
+
+  useEffect(() => {
+    if (!episodes) {
+      setStream(null);
+    }
+  }, [episodes]);
 
   return (
     <InfoContainer cover={cover}>

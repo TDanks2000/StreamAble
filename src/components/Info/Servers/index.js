@@ -23,7 +23,7 @@ const Servers = ({
     api.getServers(dubEpisodeId).then((res) => {
       setDubServers(res);
     });
-  }, [episodeId]);
+  }, [subEpisodeId, dubEpisodeId, episodeId, subOrDub]);
 
   useEffect(() => {
     if (subServers.length > 1 && subOrDub == "sub") {

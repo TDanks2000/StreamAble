@@ -10,6 +10,16 @@ export const EpisodesContainer = styled.div`
   // margin-top: 0.5rem;
 `;
 
+export const NoEpisode = styled.div`
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  background: ${({ theme }) => theme.base.navBg};
+  transition: all 0.2s ease-in-out;
+`;
+
 export const Episode = styled(NavLink)`
   width: 100%;
   font-size: 1rem;

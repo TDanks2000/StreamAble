@@ -11,6 +11,7 @@ import {
 } from "./Player.styles";
 import { useAuth } from "../../../contexts/AuthContext";
 import { db } from "../../../utils/firebase";
+import Buffering from "../Buffering";
 
 function Player({
   headers,
@@ -31,6 +32,7 @@ function Player({
   const [volume, setVolume] = useState(1);
   const [currentTime, setCurrentTime] = useState(0);
   const [watched, setWatched] = useState(false);
+  const [showBuffer, setShowBuffer] = useState(false);
 
   const ContainerRef = useRef();
   const WrapperRef = useRef();
@@ -108,6 +110,12 @@ function Player({
   //   }
   // };
 
+  const handleBuffer = (e) => {
+    console.log(e.type);
+    if (e.type === "waiting") return setShowBuffer(true);
+    return setShowBuffer(false);
+  };
+
   return (
     <VideoWrapper onMouseMove={handleInactive} ref={WrapperRef}>
       <FullContainer ref={ContainerRef}>
@@ -136,6 +144,7 @@ function Player({
           />
         </VideoControlsContainer>
       </FullContainer>
+      <Buffering toShow={showBuffer} />
       <ReactPlayer
         width="100%"
         height="100%"
@@ -145,6 +154,8 @@ function Player({
         volume={volume}
         ref={VideoRef}
         onProgress={handleTimeChange}
+        onBuffer={handleBuffer}
+        onBufferEnd={handleBuffer}
         // onPause={handlePause}
         config={{
           file: {
