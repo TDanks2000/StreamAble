@@ -25,6 +25,7 @@ import UserActions from "./UserActions";
 import NextEpisode from "./NextEpisode";
 import HowLongToWatch from "./HowLongToWatch";
 import Servers from "./Servers";
+import { toastErrorNotify } from "../../utils/toast/Notify";
 
 function InfoComponent(props) {
   console.log(props);
@@ -75,7 +76,7 @@ function InfoComponent(props) {
     setDubEpisodeId(
       episodeId?.replace("-dub-", "-").split("-episode-").join("-dub-episode-")
     );
-  }, [episodeId]);
+  }, [episodes, episodeId]);
 
   useDocumentTitle(`${ep} - ${titlE} `);
 
@@ -101,6 +102,7 @@ function InfoComponent(props) {
         setStream(src);
       })
       .catch((err) => {
+        toastErrorNotify("there was an error changing the source");
         setHeaders(null);
         setStream(null);
       });
@@ -150,15 +152,17 @@ function InfoComponent(props) {
       </InfoTop>
       <InfoBottom>
         <InfoLeft>
-          <Servers
-            episodeId={episodeId}
-            subOrDub={subOrDub}
-            stream={stream}
-            selectedServer={selectedServer}
-            handleSourceChange={handleSourceChange}
-            subEpisodeId={subEpisodeId}
-            dubEpisodeId={dubEpisodeId}
-          />
+          {episodes.length > 0 && (
+            <Servers
+              episodeId={episodeId}
+              subOrDub={subOrDub}
+              stream={stream}
+              selectedServer={selectedServer}
+              handleSourceChange={handleSourceChange}
+              subEpisodeId={subEpisodeId}
+              dubEpisodeId={dubEpisodeId}
+            />
+          )}
 
           <InfoTitle color={color}>
             <span>{title_english || title_userPreferred || title_romaji}</span>

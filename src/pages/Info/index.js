@@ -22,7 +22,7 @@ function Info() {
     api.getEpisodes(id, typeSubOrDub).then((res) => {
       setEpisodes(res);
     });
-  }, [id, typeSubOrDub]);
+  }, [id, typeDub, pathname]);
 
   useEffect(() => {
     if (pathname.includes("sub")) {
@@ -42,6 +42,7 @@ function Info() {
         <GoBack />
       </>
     );
+
   return (
     <InfoComponent
       {...data}

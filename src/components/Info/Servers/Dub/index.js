@@ -10,6 +10,7 @@ const DubServers = ({
   handleSourceChange,
 }) => {
   if (servers.includes("not found") || !servers.length) return null;
+
   return (
     <DubContainer>
       <TypeTitle>

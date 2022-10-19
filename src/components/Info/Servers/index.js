@@ -18,22 +18,31 @@ const Servers = ({
 
   useEffect(() => {
     api.getServers(subEpisodeId).then((res) => {
-      setSubServers(res);
+      const filters = ["gogo server", "vidstreaming"];
+      const ServersFiltered = res.filter((server) =>
+        filters.includes(server.name.toLowerCase())
+      );
+      setSubServers(ServersFiltered);
     });
     api.getServers(dubEpisodeId).then((res) => {
-      setDubServers(res);
+      const filters = ["gogo server", "vidstreaming"];
+      const ServersFiltered = res.filter((server) =>
+        filters.includes(server.name.toLowerCase())
+      );
+      setDubServers(ServersFiltered);
     });
+    console.log(subEpisodeId);
   }, [subEpisodeId, dubEpisodeId, episodeId, subOrDub]);
 
   useEffect(() => {
-    if (subServers.length > 1 && subOrDub == "sub") {
-      handleSourceChange(subServers[0].name, "sub");
+    if (subOrDub == "sub" && subServers.length > 0) {
+      handleSourceChange(subServers[subServers.length - 1].name, "sub");
     }
   }, [subServers]);
 
   useEffect(() => {
-    if (dubServers.length > 1 && subOrDub == "dub") {
-      handleSourceChange(dubServers[0].name, "dub");
+    if (subOrDub == "dub" && dubServers.length > 0) {
+      handleSourceChange(dubServers[dubServers.length - 1].name, "dub");
     }
   }, [dubServers]);
 

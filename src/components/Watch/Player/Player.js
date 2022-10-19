@@ -160,6 +160,7 @@ function Player({
         config={{
           file: {
             attributes: {
+              crossOrigin: "true",
               preload: "metadata",
             },
             hlsOptions: {
