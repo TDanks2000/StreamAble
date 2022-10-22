@@ -13,7 +13,7 @@ const api = axios.create({
 export const getPopular = async (page = 1, perPage = 20) => {
   const {
     data: { results },
-  } = await api.get(`/api/anime/popular?page=${page}&perPage=${perPage}`);
+  } = await api.get(`/api/anilist/popular?page=${page}&perPage=${perPage}`);
 
   if (!results)
     return {
@@ -30,7 +30,7 @@ export const getPopular = async (page = 1, perPage = 20) => {
 export const getTrending = async (page = 1, perPage = 20) => {
   const {
     data: { results },
-  } = await api.get(`/api/anime/trending?page=${page}&perPage=${perPage}`);
+  } = await api.get(`/api/anilist/trending?page=${page}&perPage=${perPage}`);
 
   if (!results)
     return {
@@ -46,7 +46,7 @@ export const getTrending = async (page = 1, perPage = 20) => {
 
 export const getTopRated = async (limit = 10, offset = 0) => {
   const { data } = await api.get(
-    `/api/anime/advanced-search?sort=["SCORE_DESC"]`
+    `/api/anilist/advanced-search?sort=["SCORE_DESC"]`
   );
 
   if (!data)
@@ -61,7 +61,7 @@ export const getRecentEpisodes = async (page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(
-    `/api/anime/recent-episodes?page=${page}&perPage=${perPage}`
+    `/api/anilist/recent-episodes?page=${page}&perPage=${perPage}`
   );
 
   if (!results)
@@ -74,7 +74,7 @@ export const getRecentEpisodes = async (page = 1, perPage = 20) => {
 
 export const getAiringSchedule = async (perPage) => {
   const { data } = await api.get(
-    `/api/anime/airing-schedule?perPage=${perPage}`
+    `/api/anilist/airing-schedule?perPage=${perPage}`
   );
 
   if (!data?.results)
@@ -86,7 +86,7 @@ export const getAiringSchedule = async (perPage) => {
 };
 
 export const getInfo = async (id, dub) => {
-  const { data } = await api.get(`/api/anime/info/${id}?dub=${dub}`);
+  const { data } = await api.get(`/api/anilist/info/${id}?dub=${dub}`);
 
   if (!data)
     return {
@@ -97,7 +97,7 @@ export const getInfo = async (id, dub) => {
 };
 
 export const getData = async (id) => {
-  const { data } = await api.get(`/api/anime/data/${id}`);
+  const { data } = await api.get(`/api/anilist/data/${id}`);
 
   if (!data)
     return {
@@ -108,7 +108,7 @@ export const getData = async (id) => {
 };
 
 export const getEpisodes = async (id, dub = false) => {
-  const { data } = await api.get(`/api/anime/episodes/${id}?dub=${dub}`);
+  const { data } = await api.get(`/api/anilist/episodes/${id}?dub=${dub}`);
 
   if (!data)
     return {
@@ -151,7 +151,7 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(
-    `/api/anime/search/${search}?page=${page}&perPage=${perPage}`
+    `/api/anilist/search/${search}?page=${page}&perPage=${perPage}`
   );
 
   if (!results)
@@ -168,7 +168,7 @@ export const getGenre = async (genres, page = 1, perPage = 20) => {
       error: "No genres",
     };
   const { data } = await api.get(
-    `/api/anime/genre?genres=["${genres}"]&page=${page}&perPage=${perPage}`
+    `/api/anilist/genre?genres=["${genres}"]&page=${page}&perPage=${perPage}`
   );
 
   return data;
@@ -194,4 +194,28 @@ export const getAnnInfo = async (id) => {
     };
 
   return data;
+};
+
+export const getMangaSearch = async (title) => {
+  const { data } = await api.get(
+    `/api/anilist/manga/search/${encodeURIComponent(title)}`
+  );
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
+export const getMangaFromAnimeTitle = async (title) => {
+  const search = await getMangaSearch(title);
+  const searchRes = search.results;
+
+  const filter = await searchRes.filter((item) => {
+    return item.title.romaji.toLowerCase() === title.toLowerCase();
+  });
+
+  return filter[0];
 };

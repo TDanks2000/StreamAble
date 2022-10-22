@@ -16,6 +16,7 @@ import {
 } from "./Info.styles";
 
 import * as api from "../../utils/api/api";
+
 import ReactVideoPlayer from "../Watch";
 import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
@@ -26,6 +27,8 @@ import NextEpisode from "./NextEpisode";
 import HowLongToWatch from "./HowLongToWatch";
 import Servers from "./Servers";
 import { toastErrorNotify } from "../../utils/toast/Notify";
+import MangaInfo from "./Manga";
+import MangaModal from "./MangaModal";
 
 function InfoComponent(props) {
   console.log(props);
@@ -52,6 +55,7 @@ function InfoComponent(props) {
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
+  const [toShowMangaModal, setToShowMangaModal] = useState(false);
 
   const [selectedServer, setSelectedServer] = useState(null);
 
@@ -173,6 +177,7 @@ function InfoComponent(props) {
               setSubOrDub={setSubOrDub}
             />
           </InfoTitle>
+
           <EpisodeTitle>
             <span>
               {episodes[ep - 1]?.title
@@ -191,6 +196,12 @@ function InfoComponent(props) {
             ))}
           </InfoGenreWrapper>
 
+          <MangaInfo
+            title={title_romaji}
+            toShowMangaModal={toShowMangaModal}
+            setToShowMangaModal={setToShowMangaModal}
+          />
+
           <InfoSynopsis>{htmlDoc.querySelector("body").innerText}</InfoSynopsis>
 
           {duration && (
@@ -208,6 +219,7 @@ function InfoComponent(props) {
           <Recommended data={recommendations} />
         </InfoRight>
       </InfoBottom>
+      <MangaModal show={toShowMangaModal} />
     </InfoContainer>
   );
 }

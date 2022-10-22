@@ -1,0 +1,38 @@
+import React, { useEffect, useState } from "react";
+import * as api from "../../../utils/api/api";
+import { Button, Container } from "./Manga.styles";
+
+const MangaInfo = ({ title, setToShowMangaModal }) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const titleReplace = title.replace(" Part ", "").replace(/\s?[0-9]/g, "");
+
+  useEffect(() => {
+    setLoading(true);
+    api
+      .getMangaFromAnimeTitle(titleReplace)
+      .then((res) => {
+        if (res.length < 1) return setLoading(true);
+        setLoading(false);
+        setData(res);
+      })
+      .catch((err) => {
+        setLoading(true);
+      });
+  }, []);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setToShowMangaModal((prev) => !prev);
+  };
+
+  if (loading) return null;
+  return (
+    <Container>
+      <Button onClick={handleClick}>View Manga</Button>
+    </Container>
+  );
+};
+
+export default MangaInfo;
