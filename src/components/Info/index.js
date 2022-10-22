@@ -28,7 +28,6 @@ import HowLongToWatch from "./HowLongToWatch";
 import Servers from "./Servers";
 import { toastErrorNotify } from "../../utils/toast/Notify";
 import MangaInfo from "./Manga";
-import MangaModal from "./MangaModal";
 
 function InfoComponent(props) {
   console.log(props);
@@ -55,7 +54,6 @@ function InfoComponent(props) {
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
-  const [toShowMangaModal, setToShowMangaModal] = useState(false);
 
   const [selectedServer, setSelectedServer] = useState(null);
 
@@ -196,11 +194,7 @@ function InfoComponent(props) {
             ))}
           </InfoGenreWrapper>
 
-          <MangaInfo
-            title={title_romaji}
-            toShowMangaModal={toShowMangaModal}
-            setToShowMangaModal={setToShowMangaModal}
-          />
+          <MangaInfo title={title_romaji} />
 
           <InfoSynopsis>{htmlDoc.querySelector("body").innerText}</InfoSynopsis>
 
@@ -219,7 +213,6 @@ function InfoComponent(props) {
           <Recommended data={recommendations} />
         </InfoRight>
       </InfoBottom>
-      <MangaModal show={toShowMangaModal} />
     </InfoContainer>
   );
 }

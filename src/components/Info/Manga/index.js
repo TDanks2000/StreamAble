@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as api from "../../../utils/api/api";
 import { Button, Container } from "./Manga.styles";
 
-const MangaInfo = ({ title, setToShowMangaModal }) => {
+const MangaInfo = ({ title }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -22,15 +22,10 @@ const MangaInfo = ({ title, setToShowMangaModal }) => {
       });
   }, []);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setToShowMangaModal((prev) => !prev);
-  };
-
   if (loading) return null;
   return (
     <Container>
-      <Button onClick={handleClick}>View Manga</Button>
+      <Button>View Manga</Button>
     </Container>
   );
 };
