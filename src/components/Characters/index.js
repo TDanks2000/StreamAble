@@ -6,13 +6,17 @@ import {
   CharactersWrapper,
 } from "./Characters.styles";
 
-const Characters = ({ data }) => {
+const Characters = ({ data, wantVoiceActors = true }) => {
   return (
     <CharactersContainer>
       <CharactersTitle>Characters</CharactersTitle>
       <CharactersWrapper>
         {data.map((item, index) => (
-          <Character {...item} key={`character-${index}`} />
+          <Character
+            {...item}
+            key={`character-${index}`}
+            wantVoiceActors={wantVoiceActors}
+          />
         ))}
       </CharactersWrapper>
     </CharactersContainer>

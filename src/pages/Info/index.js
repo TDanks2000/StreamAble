@@ -22,7 +22,7 @@ function Info() {
     api.getEpisodes(id, typeSubOrDub).then((res) => {
       setEpisodes(res);
     });
-  }, [id, typeDub, pathname]);
+  }, [id, typeSubOrDub]);
 
   useEffect(() => {
     if (pathname.includes("sub")) {

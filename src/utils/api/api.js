@@ -119,9 +119,7 @@ export const getEpisodes = async (id, dub = false) => {
 };
 
 export const getSource = async (episodeId, server) => {
-  let { data } = await api.get(
-    `/api/gogoanime/watch/${episodeId}?server=${server}`
-  );
+  let { data } = await api.get(`/api/anilist/watch?episodeId=${episodeId}`);
 
   if (!data)
     return {
@@ -218,4 +216,30 @@ export const getMangaFromAnimeTitle = async (title) => {
   });
 
   return filter[0];
+};
+
+export const getMangaInfo = async (id) => {
+  const { data } = await api.get(
+    `/api/anilist/manga/info/${id}?provider=Mangasee123`
+  );
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
+export const getReadManga = async (id) => {
+  const { data } = await api.get(
+    `/api/anilist/manga/read?chapterId=${id}&provider=Mangasee123`
+  );
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
 };

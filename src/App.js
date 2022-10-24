@@ -21,6 +21,7 @@ import LogIn from "./pages/user/logIn";
 import PrivateRoute from "./routes/PrivateRoute";
 import News from "./pages/News";
 import Footer from "./components/Footer";
+import Manga from "./pages/Manga";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="/anime/:id" element={<Info />} />
             <Route path="/anime/:id/episode/:ep/" element={<Info />} />
             <Route path="/anime/:id/episode/:ep/:typeDub" element={<Info />} />
+            <Route path="/manga/:id/chapter/" element={<Manga />} />
             <Route path="/genre/:genre" element={<Genre />} />
             <Route path="/news/" element={<News />} />
             <Route path="/news/:topic" element={<News />} />

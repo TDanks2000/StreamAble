@@ -115,3 +115,32 @@ export const PlayerContainer = styled.div`
   position: relative;
   background: black;
 `;
+
+export const NoVideo = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(${({ image }) => image});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+export const NoVideoInner = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+`;
+
+export const NoVideoText = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: bold;
+`;

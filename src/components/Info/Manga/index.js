@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaBook } from "react-icons/fa";
 import * as api from "../../../utils/api/api";
 import { Button, Container } from "./Manga.styles";
 
@@ -25,7 +26,9 @@ const MangaInfo = ({ title }) => {
   if (loading) return null;
   return (
     <Container>
-      <Button>View Manga</Button>
+      <Button to={`/manga/${data.id}/chapter`}>
+        <FaBook />
+      </Button>
     </Container>
   );
 };

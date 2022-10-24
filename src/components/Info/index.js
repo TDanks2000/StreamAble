@@ -13,6 +13,9 @@ import {
   EpisodeTitle,
   PlayerContainer,
   InfoBottom,
+  NoVideo,
+  NoVideoText,
+  NoVideoInner,
 } from "./Info.styles";
 
 import * as api from "../../utils/api/api";
@@ -21,12 +24,13 @@ import ReactVideoPlayer from "../Watch";
 import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Recommended from "./Recommended";
-import Characters from "./Characters";
+import Characters from "../Characters";
 import UserActions from "./UserActions";
 import NextEpisode from "./NextEpisode";
 import HowLongToWatch from "./HowLongToWatch";
-import Servers from "./Servers";
+
 import { toastErrorNotify } from "../../utils/toast/Notify";
+
 import MangaInfo from "./Manga";
 
 function InfoComponent(props) {
@@ -51,64 +55,37 @@ function InfoComponent(props) {
     cover,
     totalEpisodes,
     nextAiringEpisode,
+    typeSubOrDub,
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
-
-  const [selectedServer, setSelectedServer] = useState(null);
 
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
 
   var htmlDoc = parser.parseFromString(description, "text/html");
 
-  const [episodeId, setEpisodeId] = useState(episodes[ep - 1]?.id);
-  const [subEpisodeId, setSubEpisodeId] = useState(
-    episodeId?.replace("-dub-", "-")
-  );
-  const [dubEpisodeId, setDubEpisodeId] = useState(
-    episodeId?.replace("-dub-", "-").split("-episode-").join("-dub-episode-")
-  );
-  const titlE = `${
-    title_english || title_userPreferred || title_romaji
-  } (${subOrDub})`;
+  const episodeId = episodes[ep - 1]?.id;
+  const titlE = `${title_english || title_userPreferred} (${subOrDub})`;
 
   useEffect(() => {
-    setSubEpisodeId(episodeId?.replace("-dub-", "-"));
-    setDubEpisodeId(
-      episodeId?.replace("-dub-", "-").split("-episode-").join("-dub-episode-")
-    );
-  }, [episodes, episodeId]);
-
-  useDocumentTitle(`${ep} - ${titlE} `);
-
-  const handleSourceChange = (serverName, newSourceType) => {
-    setStream(null);
-    setHeaders(null);
-
-    setSelectedServer({ name: serverName });
-    if (serverName?.toLowerCase()?.includes("gogo")) serverName = "gogocdn";
-    if (newSourceType === "dub") {
-      setSubOrDub(true);
-      setEpisodeId(dubEpisodeId);
-    }
-    if (newSourceType === "sub") {
-      setSubOrDub(false);
-      setEpisodeId(subEpisodeId);
-    }
+    if (episodes.length < 1) return;
     api
-      .getSource(episodeId, serverName)
-      .then(({ sources, headers }) => {
+      .getSource(episodeId)
+      .then((sourceRes) => {
+        console.log(sourceRes);
+        const { sources, headers } = sourceRes;
         setHeaders(headers);
         const src = sources.pop().url;
         setStream(src);
       })
       .catch((err) => {
-        toastErrorNotify("there was an error changing the source");
-        setHeaders(null);
         setStream(null);
+        toastErrorNotify("Error loading video");
       });
-  };
+  }, [episodeId, subOrDub]);
+
+  useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {
     if (!episodes) {
@@ -123,23 +100,31 @@ function InfoComponent(props) {
       <InfoTop>
         <InfoLeft>
           <PlayerContainer>
-            <ReactVideoPlayer
-              animeData={props}
-              totalEpisodes={totalEpisodes}
-              headers={headers}
-              url={stream}
-              startMuted={false}
-              startPlaying={false}
-              title={titlE}
-              epNum={ep}
-              episodes={episodes}
-              id={id}
-              epTitle={
-                episodes[ep - 1]?.title
-                  ? episodes[ep - 1].title
-                  : `Episode ${ep}`
-              }
-            />
+            {stream || episodes.length > 1 ? (
+              <ReactVideoPlayer
+                animeData={props}
+                totalEpisodes={totalEpisodes}
+                headers={headers}
+                url={stream}
+                startMuted={false}
+                startPlaying={false}
+                title={titlE}
+                epNum={ep}
+                episodes={episodes}
+                id={id}
+                epTitle={
+                  episodes[ep - 1]?.title
+                    ? episodes[ep - 1].title
+                    : `Episode ${ep}`
+                }
+              />
+            ) : (
+              <NoVideo image={cover}>
+                <NoVideoInner>
+                  <NoVideoText>No Video</NoVideoText>
+                </NoVideoInner>
+              </NoVideo>
+            )}
           </PlayerContainer>
         </InfoLeft>
         <InfoRight>
@@ -154,26 +139,16 @@ function InfoComponent(props) {
       </InfoTop>
       <InfoBottom>
         <InfoLeft>
-          {episodes.length > 0 && (
-            <Servers
-              episodeId={episodeId}
-              subOrDub={subOrDub}
-              stream={stream}
-              selectedServer={selectedServer}
-              handleSourceChange={handleSourceChange}
-              subEpisodeId={subEpisodeId}
-              dubEpisodeId={dubEpisodeId}
-            />
-          )}
-
           <InfoTitle color={color}>
             <span>{title_english || title_userPreferred || title_romaji}</span>
             <UserActions data={props} />
             <SubOrDubSelector
               typeDub={typeDub}
+              typeSubOrDub={typeSubOrDub}
               subOrDub={subOrDub}
               setSubOrDub={setSubOrDub}
             />
+            <MangaInfo title={title_romaji} />
           </InfoTitle>
 
           <EpisodeTitle>
@@ -193,8 +168,6 @@ function InfoComponent(props) {
               </InfoGenre>
             ))}
           </InfoGenreWrapper>
-
-          <MangaInfo title={title_romaji} />
 
           <InfoSynopsis>{htmlDoc.querySelector("body").innerText}</InfoSynopsis>
 
