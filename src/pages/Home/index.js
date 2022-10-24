@@ -35,7 +35,7 @@ function Home() {
       <SectionContainer>
         <Identifier>Recent Episodes</Identifier>
         <Wrapper>
-          <Recent perPage={7 * 2} />
+          <Recent perPage={9 * 2} />
         </Wrapper>
       </SectionContainer>
       <SectionContainer>

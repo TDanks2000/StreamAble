@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ReadContainer = styled.div`
-  width: 100%;
+  width: 360px;
   height: 100%;
 `;
 
@@ -9,7 +9,7 @@ export const PageImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 360px;
+  width: 100%;
   height: 540px;
   margin: 1rem auto;
   & img {
@@ -21,7 +21,7 @@ export const PageImage = styled.div`
 `;
 
 export const PageSelectorContainer = styled.div`
-  width: 360px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   display: flex;

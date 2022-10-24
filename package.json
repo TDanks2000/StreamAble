@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "axios": "^0.27.2",
     "firebase": "^9.10.0",
     "html-react-parser": "^3.0.4",
@@ -15,17 +15,17 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hotkeys-hook": "^3.4.7",
-    "react-icons": "https://github.com/react-icons/react-icons/releases/download/v4.5.1/react-icons-4.5.1.tgz",
+    "react-icons": "4.6.0",
     "react-is": "^18.2.0",
     "react-player": "^2.11.0",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
     "react-scrubber": "^1.1.1",
     "react-toastify": "^9.0.8",
     "screenfull": "^6.0.2",
-    "styled-components": "^5.3.5",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^5.3.6",
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

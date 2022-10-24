@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Inner = styled.div`
-  width: 60%;
+  width: 30%;
   height: 100%;
   display: flex;
   justify-content: center;
