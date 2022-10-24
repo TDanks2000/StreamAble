@@ -23,6 +23,13 @@ const MangaChapter = (props) => {
     setSelectedId(id);
   };
 
+  if (!title)
+    return (
+      <Container ref={contentRef} onClick={handleClick}>
+        {chapterNumberFromId || title || chapterNumber}
+      </Container>
+    );
+
   return (
     <Tooltip content={title} direction={direction} delay={250}>
       <Container ref={contentRef} onClick={handleClick}>

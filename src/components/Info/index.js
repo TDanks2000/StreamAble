@@ -23,7 +23,7 @@ import * as api from "../../utils/api/api";
 import ReactVideoPlayer from "../Watch";
 import { SubOrDubSelector } from "./SubOrDubSelector";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import Recommended from "./Recommended";
+import Recommended from "../Recommended";
 import Characters from "../Characters";
 import UserActions from "./UserActions";
 import NextEpisode from "./NextEpisode";

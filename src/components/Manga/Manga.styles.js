@@ -82,4 +82,17 @@ export const Top = styled.div`
 `;
 export const Bottom = styled.div`
   width: 100%;
+  overflow: hidden;
+`;
+
+export const BottomLeft = styled.div`
+  float: left;
+  width: 72%;
+  overflow: hidden;
+`;
+
+export const BottomRight = styled.div`
+  float: right;
+  width: 25%;
+  overflow: hidden;
 `;

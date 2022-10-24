@@ -18,10 +18,15 @@ const RecommendItem = (props) => {
     rating,
     type,
     episodes,
+    status,
   } = props;
 
+  const toManga = `/manga/${id}/chapter`;
+  const toAnime = `/anime/${id}/episode/1`;
+  const to = type.toLowerCase() === "manga" ? toManga : toAnime;
+
   return (
-    <Container to={`/anime/${id}/episode/1`}>
+    <Container to={to}>
       <Inner>
         <Left>
           <Poster>
@@ -32,7 +37,9 @@ const RecommendItem = (props) => {
           <Title>{title_userPreferred}</Title>
           <Meta>
             <Dot>{(rating / 10).toFixed(1)}</Dot>
-            <Dot>{episodes} Eps</Dot>
+            <Dot>
+              {type.toLowerCase() === "manga" ? `${status}` : `${episodes} EPS`}
+            </Dot>
             <Dot>{type.toUpperCase()}</Dot>
           </Meta>
         </Right>

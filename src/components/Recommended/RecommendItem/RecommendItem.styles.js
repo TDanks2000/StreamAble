@@ -70,6 +70,7 @@ export const Meta = styled.div`
 `;
 
 export const Dot = styled.span`
+  text-transform: uppercase;
   & + ::before {
     content: "";
     width: 3px;

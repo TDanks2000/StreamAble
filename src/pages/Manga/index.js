@@ -19,7 +19,7 @@ const Manga = () => {
         setLoading(false);
       })
       .catch((err) => setLoading(true));
-  }, []);
+  }, [id]);
 
   if (loading) return "loading...";
   return <MangaComponent {...data} />;

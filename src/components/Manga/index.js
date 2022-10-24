@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Bottom,
+  BottomLeft,
+  BottomRight,
   Desc,
   Left,
   MangaBG,
@@ -15,6 +17,8 @@ import parse from "html-react-parser";
 import MangaChapters from "./Chapters";
 import Modal from "./Modal";
 import Characters from "../Characters";
+import Recommended from "../Recommended";
+import { useHotkeys } from "react-hotkeys-hook";
 
 const MangaComponent = (props) => {
   const {
@@ -25,6 +29,7 @@ const MangaComponent = (props) => {
     chapters,
     characters,
     color,
+    recommendations,
   } = props;
   const titlE = title_romaji || title_english;
   const [modalShow, setModalShow] = useState(false);
@@ -32,7 +37,10 @@ const MangaComponent = (props) => {
 
   const desc = description.split("<br>")[0];
 
-  console.log(props);
+  useHotkeys("esc", (e) => {
+    if (modalShow) setModalShow(false);
+  });
+
   return (
     <MangaContainer>
       <MangaBG>
@@ -51,13 +59,18 @@ const MangaComponent = (props) => {
           </Right>
         </Top>
         <Bottom>
-          <MangaChapters
-            chapters={chapters}
-            show={modalShow}
-            setShow={setModalShow}
-            setSelectedId={setSelectedId}
-          />
-          <Characters data={characters} wantVoiceActors={false} />
+          <BottomLeft>
+            <MangaChapters
+              chapters={chapters}
+              show={modalShow}
+              setShow={setModalShow}
+              setSelectedId={setSelectedId}
+            />
+            <Characters data={characters} wantVoiceActors={false} />
+          </BottomLeft>
+          <BottomRight>
+            <Recommended data={recommendations.splice(0, 8)} />
+          </BottomRight>
         </Bottom>
       </MangaWrapper>
       <Modal
