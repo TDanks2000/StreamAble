@@ -18,6 +18,6 @@ export const Container = styled.div`
   &:hover {
     position: relative;
     z-index: 5;
-    transform: scale(1.2);
+    text-decoration: underline;
   }
 `;

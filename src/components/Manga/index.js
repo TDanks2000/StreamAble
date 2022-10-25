@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Bottom,
   BottomLeft,
@@ -8,10 +8,12 @@ import {
   MangaBG,
   MangaContainer,
   MangaImage,
+  MangaTop,
   MangaWrapper,
   Right,
   Title,
   Top,
+  TopInfo,
 } from "./Manga.styles";
 import parse from "html-react-parser";
 import MangaChapters from "./Chapters";
@@ -19,6 +21,8 @@ import Modal from "./Modal";
 import Characters from "../Characters";
 import Recommended from "../Recommended";
 import { useHotkeys } from "react-hotkeys-hook";
+import Genres from "./genres";
+import Meta from "./Meta";
 
 const MangaComponent = (props) => {
   const {
@@ -29,6 +33,7 @@ const MangaComponent = (props) => {
     chapters,
     characters,
     color,
+    genres,
     recommendations,
   } = props;
   const titlE = title_romaji || title_english;
@@ -44,9 +49,16 @@ const MangaComponent = (props) => {
 
   return (
     <MangaContainer>
-      <MangaBG>
-        <img src={cover} alt={titlE} />
-      </MangaBG>
+      <MangaTop>
+        <MangaBG>
+          <img src={cover} alt={titlE} />
+        </MangaBG>
+        <TopInfo>
+          <Title>{titlE}</Title>
+          <Genres genres={genres} />
+          <Meta {...props} />
+        </TopInfo>
+      </MangaTop>
       <MangaWrapper>
         <Top>
           <Left>
@@ -55,7 +67,6 @@ const MangaComponent = (props) => {
             </MangaImage>
           </Left>
           <Right>
-            <Title>{titlE}</Title>
             <Desc>{parse(desc)}</Desc>
           </Right>
         </Top>

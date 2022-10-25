@@ -6,12 +6,17 @@ export const MangaContainer = styled.div`
   //   overflow: hidden;
 `;
 
-export const MangaBG = styled.div`
+export const MangaTop = styled.div`
   width: 100%;
   height: 300px;
   position: absolute;
   left: 0;
   top: 0;
+`;
+
+export const MangaBG = styled.div`
+  width: 100%;
+  height: 100%;
   //   filter: blur(1px);
   & img {
     position: relative;
@@ -27,15 +32,31 @@ export const MangaBG = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.55);
     transition: all 1s;
     -webkit-transition: all 1s;
   }
 `;
 
+export const TopInfo = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 83%;
+  z-index: 4;
+`;
+
+export const Title = styled.h1`
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1;
+`;
+
 export const MangaWrapper = styled.div`
   position: relative;
   //   overflow: hidden;
+  margin-top: 4rem;
 `;
 
 export const MangaImage = styled.div`
@@ -54,20 +75,13 @@ const MangaLR = styled.div`
 export const Left = styled(MangaLR)`
   width: 15%;
   float: left;
-  margin-top: 5rem;
+  margin-top: 2rem;
 `;
 
 export const Right = styled(MangaLR)`
   width: calc(100% - 16%);
   float: right;
   margin-top: calc(300px - 37px - 2rem);
-`;
-
-export const Title = styled.h1`
-  width: 100%;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
 `;
 
 export const Desc = styled.div`
@@ -88,7 +102,7 @@ export const Bottom = styled.div`
 export const BottomLeft = styled.div`
   float: left;
   width: 72%;
-  overflow: hidden;
+  // overflow: hidden;
 `;
 
 export const BottomRight = styled.div`

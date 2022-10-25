@@ -5,6 +5,9 @@ export const GlobalStyles = createGlobalStyle`
     body, html {
         background-color: ${({ theme }) => theme.base.bg};
     }
+    img {
+        pointer-events: none;
+    }
     &::-webkit-scrollbar {
         width: 15px;
       }
