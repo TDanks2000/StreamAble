@@ -34,11 +34,12 @@ const MangaComponent = (props) => {
   const titlE = title_romaji || title_english;
   const [modalShow, setModalShow] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const desc = description.split("<br>")[0];
 
   useHotkeys("esc", (e) => {
-    if (modalShow) setModalShow(false);
+    return setModalShow(false);
   });
 
   return (
@@ -64,12 +65,15 @@ const MangaComponent = (props) => {
               chapters={chapters}
               show={modalShow}
               setShow={setModalShow}
+              selectedId={selectedId}
               setSelectedId={setSelectedId}
+              setLoading={setLoading}
+              loading={loading}
             />
             <Characters data={characters} wantVoiceActors={false} />
           </BottomLeft>
           <BottomRight>
-            <Recommended data={recommendations.splice(0, 8)} />
+            <Recommended data={recommendations} />
           </BottomRight>
         </Bottom>
       </MangaWrapper>
@@ -78,6 +82,8 @@ const MangaComponent = (props) => {
         setShow={setModalShow}
         id={selectedId}
         color={color}
+        setLoading={setLoading}
+        loading={loading}
       />
     </MangaContainer>
   );

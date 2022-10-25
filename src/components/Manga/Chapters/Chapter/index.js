@@ -3,7 +3,15 @@ import Tooltip from "../../../Tooltip";
 import { Container } from "./Chapter.styles";
 
 const MangaChapter = (props) => {
-  const { id, title, setShow, setSelectedId, chapterNumber } = props;
+  const {
+    id,
+    title,
+    setShow,
+    setSelectedId,
+    chapterNumber,
+    selectedId,
+    setLoading,
+  } = props;
 
   const [direction, setDirection] = useState("bottom");
 
@@ -18,21 +26,24 @@ const MangaChapter = (props) => {
     if (right >= 1350) return setDirection("left");
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setShow((prev) => !prev);
-    setSelectedId(id);
+    if (e.target.getAttribute("data-id") !== selectedId) {
+      setLoading(true);
+      return setSelectedId(id);
+    }
   };
 
   if (!title)
     return (
-      <Container ref={contentRef} onClick={handleClick}>
+      <Container ref={contentRef} onClick={handleClick} data-id={id}>
         {chapterNumberFromId || title || chapterNumber}
       </Container>
     );
 
   return (
     <Tooltip content={title} direction={direction} delay={250}>
-      <Container ref={contentRef} onClick={handleClick}>
+      <Container ref={contentRef} onClick={handleClick} data-id={id}>
         {chapterNumberFromId || title || chapterNumber}
       </Container>
     </Tooltip>

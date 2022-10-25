@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container, Inner, PageImage } from "./Modal.styles";
 
 import * as api from "../../../utils/api/api";
-import axios from "axios";
 import Read from "./Read";
 
-const Modal = ({ show, setShow, id, color }) => {
+const Modal = ({ show, setShow, id, color, setLoading, loading }) => {
   const [pages, setPages] = useState([]);
-  const [loading, setLoading] = useState(true);
   const contentRef = useRef();
   const focusedElement = document?.activeElement;
   const scrollPosition = { x: window.scrollX, y: window.scrollY };
@@ -50,7 +48,6 @@ const Modal = ({ show, setShow, id, color }) => {
 
   useEffect(() => {
     if (!show) return;
-    setLoading(true);
     api.getReadManga(id).then((res) => {
       setPages(res);
       setLoading(false);

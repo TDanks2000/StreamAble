@@ -8,15 +8,15 @@ export const Container = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
   &.active {
     display: block;
   }
 `;
 
 export const Inner = styled.div`
-  width: 30%;
+  width: 50%;
   height: 100%;
   display: flex;
   justify-content: center;

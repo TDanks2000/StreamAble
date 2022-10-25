@@ -4,7 +4,6 @@ import {
   LastPage,
   NextPage,
   PageImage,
-  PageSelectorContainer,
   ReadContainer,
 } from "./Read.styles";
 
@@ -35,24 +34,23 @@ const Read = ({ page: pages, color }) => {
 
   return (
     <ReadContainer>
+      {/* LAST PAGE */}
+      <LastPage
+        onClick={handleLastPage}
+        className={lastPage <= 0 || !lastPage ? "disabled" : ""}
+      ></LastPage>
+
+      {/* PAGE IMAGE */}
       <PageImage color={color}>
         <img src={page.img} alt={page.page} />
       </PageImage>
-      <PageSelectorContainer>
-        <LastPage
-          onClick={handleLastPage}
-          className={lastPage <= 0 || !lastPage ? "disabled" : ""}
-        >
-          Last
-        </LastPage>
-        <CurrentPage>{page.page}</CurrentPage>
-        <NextPage
-          onClick={handleNextPage}
-          className={nextPage >= totalPages || !nextPage ? "disabled" : ""}
-        >
-          Next
-        </NextPage>
-      </PageSelectorContainer>
+      {/* <CurrentPage>{page.page}</CurrentPage> */}
+
+      {/* NEXT PAGE */}
+      <NextPage
+        onClick={handleNextPage}
+        className={nextPage >= totalPages || !nextPage ? "disabled" : ""}
+      ></NextPage>
     </ReadContainer>
   );
 };

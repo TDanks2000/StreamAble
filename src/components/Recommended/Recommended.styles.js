@@ -19,4 +19,6 @@ export const Title = styled.h1`
   text-transform: uppercase;
   font-weight: bold;
   background: ${({ theme }) => theme.base.navBg};
+  border-radius: 4px;
+  overflow: hidden;
 `;

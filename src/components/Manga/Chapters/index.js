@@ -2,8 +2,15 @@ import React from "react";
 import MangaChapter from "./Chapter";
 import { Container, Title } from "./Chapters.styles";
 
-const MangaChapters = ({ chapters, show, setShow, setSelectedId }) => {
-  console.log(chapters);
+const MangaChapters = ({
+  chapters,
+  show,
+  setShow,
+  setSelectedId,
+  selectedId,
+  setLoading,
+  loading,
+}) => {
   return (
     <Container>
       <Title>Chapters</Title>
@@ -11,9 +18,12 @@ const MangaChapters = ({ chapters, show, setShow, setSelectedId }) => {
         <MangaChapter
           {...chapter}
           chapterNumber={i + 1}
-          key={chapter.title}
+          key={`chapter-${i}`}
           setShow={setShow}
+          selectedId={selectedId}
           setSelectedId={setSelectedId}
+          setLoading={setLoading}
+          loading={loading}
         />
       ))}
     </Container>
