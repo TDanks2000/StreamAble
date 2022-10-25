@@ -49,7 +49,7 @@ export const UserSettingsComponent = () => {
     <UserContainer>
       <FormContainer>
         <InputContainer>
-          <InputName>Anime title language</InputName>
+          <InputName>Anime title language {language}</InputName>
           <InputWrapper>
             <RadioButtonGroup
               options={languageOptions}

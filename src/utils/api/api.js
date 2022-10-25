@@ -1,13 +1,9 @@
 const axios = require("axios");
 
-const defaultHost = "http://localhost";
-const defaultPort = 3003 || 4000;
-
 const backupHost = "https://consume-api.up.railway.app";
 
 const api = axios.create({
   baseURL: backupHost,
-  // baseURL: `${defaultHost}:${defaultPort}`,
 });
 
 export const getPopular = async (page = 1, perPage = 20) => {

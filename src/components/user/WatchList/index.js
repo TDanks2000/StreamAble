@@ -35,7 +35,7 @@ export const UserWLComponent = () => {
         return unSubscribe;
       };
     }
-  }, [currentUser?.email]);
+  }, [currentUser?.email, queryRef]);
 
   if (movies === null) {
     return (

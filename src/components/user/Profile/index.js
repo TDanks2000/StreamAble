@@ -6,7 +6,9 @@ import { ButtonContainer } from "./UserProfile.styles";
 
 export const UserProfileComponent = () => {
   const { currentUser } = useAuth();
+  // eslint-disable-next-line no-unused-vars
   const [email, setEmail] = useState(currentUser.email);
+  // eslint-disable-next-line no-unused-vars
   const [displayName, setDisplayName] = useState(currentUser.displayName);
 
   let d = new Date(currentUser.metadata.creationTime);

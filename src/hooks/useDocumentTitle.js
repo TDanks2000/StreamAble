@@ -1,4 +1,5 @@
 // useDocumentTitle.js
+// react-hooks/exhaustive-deps
 import { useRef, useEffect } from "react";
 
 function useDocumentTitle(title, prevailOnUnmount = false) {
@@ -14,7 +15,7 @@ function useDocumentTitle(title, prevailOnUnmount = false) {
         document.title = defaultTitle.current;
       }
     },
-    []
+    [prevailOnUnmount]
   );
 }
 

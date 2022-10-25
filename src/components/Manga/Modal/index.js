@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Container, Inner, PageImage } from "./Modal.styles";
+import { Container, Inner } from "./Modal.styles";
 
 import * as api from "../../../utils/api/api";
 import Read from "./Read";
@@ -39,11 +39,12 @@ const Modal = ({ show, setShow, id, color, setLoading, loading }) => {
     return () => {
       restoreDocBodyScrolling();
     };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (e.target == contentRef.current) setShow(false);
+    if (e.target === contentRef.current) setShow(false);
   };
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const Modal = ({ show, setShow, id, color, setLoading, loading }) => {
       setPages(res);
       setLoading(false);
     });
-  }, [show, id]);
+  }, [show, id, setLoading]);
 
   return (
     <Container

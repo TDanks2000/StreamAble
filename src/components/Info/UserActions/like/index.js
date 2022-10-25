@@ -28,7 +28,7 @@ const Like = ({ data, currentUser }) => {
       setLiked(docLiked);
     });
     return unSubscribe;
-  }, [currentUser?.email, data]);
+  }, [currentUser?.email, data, movieID]);
 
   const handleLike = async () => {
     if (currentUser?.email) {

@@ -18,7 +18,7 @@ function Quality({ VideoRef, hlsPlayer, levels, currentQuality }) {
       setQualityLevels(levels);
       setCurrentLevel(levels.length);
     }
-  }, [currentQuality, levels]);
+  }, [currentQuality, levels, hlsPlayer]);
 
   if (qualityLevels.length <= 1) return null;
   return (

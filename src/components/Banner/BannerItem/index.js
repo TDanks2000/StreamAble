@@ -15,8 +15,6 @@ import {
 export const BannerItem = (props) => {
   const {
     title: { userPreferred: title_userPreferred },
-    id,
-    malId,
     cover,
     image,
     rating,

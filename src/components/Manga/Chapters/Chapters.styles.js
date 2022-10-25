@@ -13,6 +13,6 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
 `;

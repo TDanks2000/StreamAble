@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import screenfull from "screenfull";
 import { useHotkeys } from "react-hotkeys-hook";
 

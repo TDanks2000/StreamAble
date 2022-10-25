@@ -1,12 +1,6 @@
 import React from "react";
 import { Button } from "../Controls.styles";
-import {
-  MuteIcon,
-  VolumeContainer,
-  VolumeHighIcon,
-  VolumeLowIcon,
-  VolumeSlider,
-} from "./Volume.styles";
+import { VolumeContainer, VolumeSlider } from "./Volume.styles";
 import VolumeIcons from "./VolumeIcons";
 
 function Volume({ volume, setVolume, setMuted, muted }) {

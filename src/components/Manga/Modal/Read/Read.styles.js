@@ -28,6 +28,7 @@ export const PageSelectorButton = styled.div`
   width: 350px;
   height: 100%;
   cursor: pointer;
+  // background: red;
   & * {
     display: inline-flex;
     align-items: center;
@@ -43,10 +44,10 @@ export const PageSelectorButton = styled.div`
 `;
 
 export const LastPage = styled(PageSelectorButton)`
-  left: calc(350px - 10rem);
+  left: calc(450px - 10rem);
 `;
 export const NextPage = styled(PageSelectorButton)`
-  right: calc(350px - 10rem);
+  right: calc(450px - 10rem);
 `;
 
 export const CurrentPage = styled.div`

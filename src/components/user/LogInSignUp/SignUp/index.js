@@ -21,6 +21,7 @@ export const SignUpComponent = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const cPasswordRef = useRef();
+  //eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 

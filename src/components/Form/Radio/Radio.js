@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Label, Radio, Wrapper } from "./Radio.styles";
+import { Container, Label, Radio } from "./Radio.styles";
 
 const RadioInput = ({ label, id, disabled, ...rest }) => {
   return (

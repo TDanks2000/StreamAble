@@ -1,6 +1,6 @@
 import { rgba } from "polished";
 import { Link } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const DropdownContainer = styled.div`
   display: ${({ open }) => (open ? "block" : "none")};

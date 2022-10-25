@@ -1,7 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { CgProfile } from "react-icons/cg";
-import { useAuth } from "../../../contexts/AuthContext";
 import { UserDropdown } from "./Dropdown";
 import {
   ProfileContainer,
@@ -33,7 +31,7 @@ const NavProfile = ({ loggedIn }) => {
                     ? imgUrl
                     : loggedIn.photoURL
                 }
-                alt={`${loggedIn.displayName} profile picture`}
+                alt={`${loggedIn.displayName}`}
               />
             </ProfileImage>
           </ProfileContent>

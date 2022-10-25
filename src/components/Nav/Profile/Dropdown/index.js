@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import {
   FaBookmark,
-  FaClock,
-  FaCog,
+  // FaClock,
+  // FaCog,
   FaSignOutAlt,
-  FaSync,
+  // FaSync,
   FaUser,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,7 @@ import {
 
 export const UserDropdown = ({ open, handleClick }) => {
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState();
   const { logout } = useAuth();
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   LeftNavContainer,
   UserIcon,
@@ -19,7 +19,6 @@ import imgUrl from "../../../../assets/images/defaultUser.png";
 import WantWatch from "./WantWatchAmount";
 
 export const LeftNav = ({ logout, currentUser, uploadProfilePicture }) => {
-  const [selectedFile, setSelectedFile] = useState();
   const [isFilePicked, setIsFilePicked] = useState(false);
   const navigate = useNavigate();
 
@@ -55,7 +54,7 @@ export const LeftNav = ({ logout, currentUser, uploadProfilePicture }) => {
                   ? imgUrl
                   : currentUser.photoURL
               }
-              alt={`${currentUser.displayName} profile picture`}
+              alt={`${currentUser.displayName}`}
             />
             <ImageHover>
               <FaPen />
@@ -65,6 +64,7 @@ export const LeftNav = ({ logout, currentUser, uploadProfilePicture }) => {
               type="file"
               onChange={handleChange}
               accept="image/png"
+              disabled={isFilePicked}
             />
           </UserIcon>
         </UserIconWrapper>

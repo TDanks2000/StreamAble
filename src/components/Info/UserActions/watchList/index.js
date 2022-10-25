@@ -29,7 +29,7 @@ const WatchList = ({ data, currentUser }) => {
     });
 
     return unSubscribe;
-  }, [currentUser?.email, data]);
+  }, [currentUser?.email, data, movieID]);
 
   const handleLike = async () => {
     if (currentUser?.email) {

@@ -41,8 +41,8 @@ export const MangaBG = styled.div`
 export const TopInfo = styled.div`
   position: absolute;
   bottom: 0;
-  right: 0;
-  width: 83%;
+  left: calc(16% + 3.2rem);
+  width: 26%;
   z-index: 4;
 `;
 
@@ -94,9 +94,11 @@ export const Top = styled.div`
   width: 100%;
   overflow: hidden;
 `;
+
 export const Bottom = styled.div`
   width: 100%;
   overflow: hidden;
+  margin-top: 2rem;
 `;
 
 export const BottomLeft = styled.div`

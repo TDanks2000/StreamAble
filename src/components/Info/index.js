@@ -83,7 +83,7 @@ function InfoComponent(props) {
         setStream(null);
         toastErrorNotify("Error loading video");
       });
-  }, [episodeId, subOrDub]);
+  }, [episodeId, subOrDub, episodes.length]);
 
   useDocumentTitle(`${ep} - ${titlE} `);
 

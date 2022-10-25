@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import * as imageConversion from "image-conversion";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,

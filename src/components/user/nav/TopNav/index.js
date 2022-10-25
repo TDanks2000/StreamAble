@@ -3,10 +3,10 @@ import { TopNavContainer, TopNavLink, TopNavLinks } from "./TopNav.styles";
 
 import {
   FaBookmark,
-  FaClock,
-  FaCog,
-  FaSignOutAlt,
-  FaSync,
+  // FaClock,
+  // FaCog,
+  // FaSignOutAlt,
+  // FaSync,
   FaUser,
 } from "react-icons/fa";
 

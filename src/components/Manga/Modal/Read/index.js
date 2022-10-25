@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  CurrentPage,
-  LastPage,
-  NextPage,
-  PageImage,
-  ReadContainer,
-} from "./Read.styles";
+import { LastPage, NextPage, PageImage, ReadContainer } from "./Read.styles";
 
 const Read = ({ page: pages, color }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,7 +38,6 @@ const Read = ({ page: pages, color }) => {
       <PageImage color={color}>
         <img src={page.img} alt={page.page} />
       </PageImage>
-      {/* <CurrentPage>{page.page}</CurrentPage> */}
 
       {/* NEXT PAGE */}
       <NextPage

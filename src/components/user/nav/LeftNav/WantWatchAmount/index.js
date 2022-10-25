@@ -17,6 +17,7 @@ const WantWatch = ({ currentUser }) => {
         setWantWatchedAmount(col.size);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

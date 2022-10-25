@@ -5,9 +5,6 @@ export const FooterContainer = styled.footer`
   bottom: 0;
   width: 100%;
   //   height: 5rem;
-  padding: 1rem 1.5rem;
-  margin: 0 auto;
-  max-width: 1800px;
   color: ${({ theme }) => theme.text.primary};
   background: ${({ theme }) => theme.base.navBg};
 `;
@@ -15,6 +12,9 @@ export const FooterContainer = styled.footer`
 export const FooterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  margin: 0 auto;
+  max-width: 1800px;
 `;
 
 export const FooterLogo = styled.div`

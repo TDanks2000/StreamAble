@@ -21,7 +21,7 @@ const MangaInfo = ({ title }) => {
       .catch((err) => {
         setLoading(true);
       });
-  }, []);
+  }, [titleReplace]);
 
   if (loading) return null;
   return (

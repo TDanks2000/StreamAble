@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaClosedCaptioning, FaMicrophone } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./SubOrDubSelector.styles";
 
-export const SubOrDubSelector = ({
-  typeSubOrDub,
-  subOrDub,
-  setSubOrDub,
-  typeDub,
-}) => {
+export const SubOrDubSelector = ({ typeSubOrDub, subOrDub, setSubOrDub }) => {
   let navigate = useNavigate();
   let { pathname } = useLocation();
 

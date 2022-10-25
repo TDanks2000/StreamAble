@@ -13,7 +13,7 @@ function Recent({ page, perPage }) {
 
       setLoading(false);
     });
-  }, []);
+  }, [page, perPage]);
 
   if (loading) return "loading...";
   return info.map((item) => (

@@ -35,7 +35,7 @@ export const UserCWComponent = () => {
     return () => {
       return unSubscribe;
     };
-  }, []);
+  }, [queryRef]);
 
   const getNextEpisode = (watched) => {
     if (watched !== true) {
@@ -92,6 +92,7 @@ export const UserCWComponent = () => {
               />
             );
           }
+          return null;
         })}
       </UserWrapper>
     </UserContainer>
