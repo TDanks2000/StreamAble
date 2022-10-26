@@ -16,15 +16,21 @@ function Item(props) {
     rating,
     type,
     releaseDate,
+    totalChapters,
+    volumes,
   } = props;
   const { setOutput } = props;
 
+  const toManga = `/manga/${id}/chapter`;
+  const toAnime = `/anime/${id}/episode/1`;
+  const to = type.toLowerCase() === "manga" ? toManga : toAnime;
+
+  const ratingFixed = (rating / 10).toFixed(1);
+  const actualRating = ratingFixed.startsWith(0) ? "??" : ratingFixed;
+
+  if (type.toLowerCase() === "novel") return null;
   return (
-    <ItemContainer
-      to={`/anime/${id}/episode/1`}
-      onClick={() => setOutput([])}
-      key={id}
-    >
+    <ItemContainer to={to} onClick={() => setOutput([])} key={id}>
       <Poster>
         <span>
           <img src={image} alt="img" />
@@ -33,9 +39,9 @@ function Item(props) {
       <Info>
         <Name>{title_userPreferred}</Name>
         <Meta>
-          {rating ? <MetaItem>{(rating / 10).toFixed(1)}</MetaItem> : ""}
-          {releaseDate ? <MetaItem>{releaseDate}</MetaItem> : ""}
-          {type ? <MetaItem>{type}</MetaItem> : ""}
+          <MetaItem>{actualRating || "??"}</MetaItem>
+          <MetaItem>{releaseDate || "??"}</MetaItem>
+          <MetaItem>{type || "??"}</MetaItem>
         </Meta>
       </Info>
     </ItemContainer>

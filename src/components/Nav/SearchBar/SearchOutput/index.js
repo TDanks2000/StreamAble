@@ -1,16 +1,11 @@
 import React from "react";
 import Item from "./Item";
-import { SearchOutputContainer } from "./SearchOutput.styles";
 
-function SearchOutput({ data, setOutput }) {
+function SearchOutput({ data, setOutput, type }) {
   if (data.length < 1) return null;
-  return (
-    <SearchOutputContainer className={!data ? "hide" : "show"}>
-      {data.map((res) => (
-        <Item key={res.id} {...res} setOutput={setOutput} />
-      ))}
-    </SearchOutputContainer>
-  );
+  return data.map((res) => (
+    <Item key={res.id} {...res} setOutput={setOutput} />
+  ));
 }
 
 export default SearchOutput;

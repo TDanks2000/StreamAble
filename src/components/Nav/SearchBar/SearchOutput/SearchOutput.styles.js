@@ -22,3 +22,14 @@ export const SearchOutputContainer = styled.div`
     display: none;
   }
 `;
+
+export const SearchType = styled.div`
+  width: 100%;
+  & span {
+    font-size: 1.1rem;
+    margin: 15px 15px;
+    padding: 4px 15px;
+    border-radius: 8px;
+    background: ${({ theme }) => theme.base.darkBg};
+  }
+`;

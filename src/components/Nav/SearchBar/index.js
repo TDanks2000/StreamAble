@@ -4,16 +4,30 @@ import { FaSearch } from "react-icons/fa";
 import SearchOutput from "./SearchOutput";
 
 import * as api from "../../../utils/api/api";
+import { SearchOutputContainer } from "./SearchOutput/SearchOutput.styles";
 
 function Search() {
   const SearchBarRef = useRef();
-  const [output, setOutput] = useState([]);
+  const [animeOutput, setAnimeOutput] = useState([]);
+  const [mangaOutput, setMangaOutput] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const perPage = 3;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const SearchBarText = SearchBarRef.current.value;
-    if (SearchBarText.length < 3) return setOutput([]);
-    api.getSearch(SearchBarText, 1, 7).then((res) => setOutput(res));
+    if (SearchBarText.length < 3) {
+      setMangaOutput([]);
+      setAnimeOutput([]);
+      return false;
+    }
+    api
+      .getSearch(SearchBarText, page, perPage)
+      .then((res) => setAnimeOutput(res));
+    api
+      .getMangaSearch(SearchBarText, page, perPage)
+      .then((res) => setMangaOutput(res.results));
   };
 
   return (
@@ -22,7 +36,14 @@ function Search() {
       <SearchButton>
         <FaSearch />
       </SearchButton>
-      <SearchOutput data={output} setOutput={setOutput} />
+      <SearchOutputContainer
+        className={
+          animeOutput.length < 1 && mangaOutput.length < 1 ? "hide" : "show"
+        }
+      >
+        <SearchOutput data={animeOutput} setOutput={setAnimeOutput} />
+        <SearchOutput data={mangaOutput} setOutput={setMangaOutput} />
+      </SearchOutputContainer>
     </SearchContainer>
   );
 }

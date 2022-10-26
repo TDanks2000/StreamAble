@@ -190,9 +190,11 @@ export const getAnnInfo = async (id) => {
   return data;
 };
 
-export const getMangaSearch = async (title) => {
+export const getMangaSearch = async (title, page = 1, perPage = 20) => {
   const { data } = await api.get(
-    `/api/anilist/manga/search/${encodeURIComponent(title)}`
+    `/api/anilist/manga/search/${encodeURIComponent(
+      title
+    )}?page=${page}&perPage=${perPage}`
   );
 
   if (!data)
