@@ -16,10 +16,8 @@ function Item(props) {
     rating,
     type,
     releaseDate,
-    totalChapters,
-    volumes,
   } = props;
-  const { setOutput } = props;
+  const { onClick } = props;
 
   const toManga = `/manga/${id}/chapter`;
   const toAnime = `/anime/${id}/episode/1`;
@@ -30,7 +28,7 @@ function Item(props) {
 
   if (type.toLowerCase() === "novel") return null;
   return (
-    <ItemContainer to={to} onClick={() => setOutput([])} key={id}>
+    <ItemContainer to={to} onClick={onClick} key={id}>
       <Poster>
         <span>
           <img src={image} alt="img" />

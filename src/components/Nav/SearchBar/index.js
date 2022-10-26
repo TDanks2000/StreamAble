@@ -10,7 +10,7 @@ function Search() {
   const SearchBarRef = useRef();
   const [animeOutput, setAnimeOutput] = useState([]);
   const [mangaOutput, setMangaOutput] = useState([]);
-  const [page, setPage] = useState(1);
+  const page = 1;
 
   const perPage = 3;
 
@@ -30,6 +30,12 @@ function Search() {
       .then((res) => setMangaOutput(res.results));
   };
 
+  const handleRemove = (e) => {
+    setAnimeOutput([]);
+    setMangaOutput([]);
+    SearchBarRef.current.value = "";
+  };
+
   return (
     <SearchContainer onSubmit={handleSubmit}>
       <SearchBar type="search" ref={SearchBarRef} />
@@ -41,8 +47,8 @@ function Search() {
           animeOutput.length < 1 && mangaOutput.length < 1 ? "hide" : "show"
         }
       >
-        <SearchOutput data={animeOutput} setOutput={setAnimeOutput} />
-        <SearchOutput data={mangaOutput} setOutput={setMangaOutput} />
+        <SearchOutput data={animeOutput} onClick={handleRemove} />
+        <SearchOutput data={mangaOutput} onClick={handleRemove} />
       </SearchOutputContainer>
     </SearchContainer>
   );

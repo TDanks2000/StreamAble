@@ -69,7 +69,9 @@ function InfoComponent(props) {
   var htmlDoc = parser.parseFromString(description, "text/html");
 
   const episodeId = episodes[ep - 1]?.id;
-  const titlE = `${title_english || title_userPreferred} (${subOrDub})`;
+  const titleWithType = `${title_english || title_userPreferred} ${
+    subOrDub === "dub" ? `(${subOrDub})` : ""
+  }`;
 
   useEffect(() => {
     if (episodes.length < 1) return;
@@ -88,7 +90,7 @@ function InfoComponent(props) {
       });
   }, [episodeId, subOrDub, episodes.length]);
 
-  useDocumentTitle(`${ep} - ${titlE} `);
+  useDocumentTitle(`${ep} - ${titleWithType} `);
 
   useEffect(() => {
     if (episodes?.length <= 0) {
@@ -111,7 +113,7 @@ function InfoComponent(props) {
                 url={stream}
                 startMuted={false}
                 startPlaying={false}
-                title={titlE}
+                title={titleWithType}
                 epNum={ep}
                 episodes={episodes}
                 id={id}
@@ -143,7 +145,7 @@ function InfoComponent(props) {
       <InfoBottom>
         <InfoLeft>
           <InfoTitle color={color}>
-            <span>{title_english || title_userPreferred || title_romaji}</span>
+            <span>{titleWithType}</span>
             <UserActions data={props} />
             <SubOrDubSelector
               typeDub={typeDub}

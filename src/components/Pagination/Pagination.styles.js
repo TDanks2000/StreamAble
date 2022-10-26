@@ -32,6 +32,8 @@ export const PaginateItem = styled.li`
 
 export const PaginationContainer = styled.ul`
   display: flex;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
 `;
 
@@ -43,29 +45,7 @@ export const Dots = styled(PaginateItem)`
 `;
 
 export const Arrow = styled(PaginateItem)`
-  &:before {
-    position: relative;
-    top: 3pt;
-    content: "";
-    /* By using an em scale, the arrows will size with the font */
-    display: inline-block;
-    width: 0.4em;
-    height: 0.4em;
-    border-right: 0.12em solid ${({ theme }) => theme.text.primary};
-    border-top: 0.12em solid ${({ theme }) => theme.text.primary};
-  }
-  &.disabled {
-    &:before {
-      border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-      border-top: 0.12em solid rgba(0, 0, 0, 0.43);
-    }
-  }
-`;
-
-export const LeftArrow = styled(Arrow)`
-  transform: rotate(-135deg);
-`;
-
-export const RightArrow = styled(Arrow)`
-  transform: rotate(45deg);
+  display: inline-block;
+  font-size: 1rem;
+  margin-top: 0.45rem;
 `;

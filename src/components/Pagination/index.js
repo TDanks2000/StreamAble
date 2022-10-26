@@ -1,12 +1,12 @@
 import React from "react";
 import { DOTS, usePagination } from "../../hooks/usePagination";
 import {
+  Arrow,
   Dots,
-  LeftArrow,
   PaginateItem,
   PaginationContainer,
-  RightArrow,
 } from "./Pagination.styles";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const Pagination = (props) => {
   const {
@@ -43,7 +43,9 @@ const Pagination = (props) => {
     <PaginationContainer>
       {/* Left navigation arrow */}
       <PaginateItem onClick={onPrevious}>
-        <LeftArrow />
+        <Arrow>
+          <AiOutlineArrowLeft />
+        </Arrow>
       </PaginateItem>
       {paginationRange.map((pageNumber) => {
         // If the pageItem is a DOT, render the DOTS unicode character
@@ -66,7 +68,9 @@ const Pagination = (props) => {
         onClick={onNext}
         className={currentPage === lastPage ? "disabled" : ""}
       >
-        <RightArrow />
+        <Arrow>
+          <AiOutlineArrowRight />
+        </Arrow>
       </PaginateItem>
     </PaginationContainer>
   );
