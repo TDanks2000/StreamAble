@@ -16,6 +16,7 @@ import {
   NoVideo,
   NoVideoText,
   NoVideoInner,
+  RelatedContainer,
 } from "./Info.styles";
 
 import * as api from "../../utils/api/api";
@@ -32,6 +33,7 @@ import HowLongToWatch from "./HowLongToWatch";
 import { toastErrorNotify } from "../../utils/toast/Notify";
 
 import MangaInfo from "./Manga";
+import Relations from "../Relations";
 
 function InfoComponent(props) {
   console.log(props);
@@ -56,6 +58,7 @@ function InfoComponent(props) {
     totalEpisodes,
     nextAiringEpisode,
     typeSubOrDub,
+    relations,
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
@@ -88,10 +91,10 @@ function InfoComponent(props) {
   useDocumentTitle(`${ep} - ${titlE} `);
 
   useEffect(() => {
-    if (!episodes) {
+    if (episodes?.length <= 0) {
       setStream(null);
     }
-  }, [episodes]);
+  }, [episodeId, subOrDub, episodes]);
 
   return (
     <InfoContainer cover={cover}>
@@ -178,6 +181,11 @@ function InfoComponent(props) {
               episodes={episodes}
             />
           )}
+
+          {/* Related */}
+          <RelatedContainer>
+            <Relations related={relations} />
+          </RelatedContainer>
 
           <Characters data={characters} />
         </InfoLeft>

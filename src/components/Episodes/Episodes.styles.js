@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { rgba } from "polished";
 
 export const EpisodesContainer = styled.div`
   position: relative;
@@ -8,16 +9,6 @@ export const EpisodesContainer = styled.div`
   background: ${({ theme }) => theme.base.navBg};
   overflow: hidden;
   // margin-top: 0.5rem;
-`;
-
-export const NoEpisode = styled.div`
-  width: 100%;
-  font-size: 1.3rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-align: center;
-  background: ${({ theme }) => theme.base.navBg};
-  transition: all 0.2s ease-in-out;
 `;
 
 export const Episode = styled(NavLink)`
@@ -42,12 +33,15 @@ export const Episode = styled(NavLink)`
 export const EpisodeInner = styled.div`
   width: 100%;
   height: 100%;
-  // background: ${({ theme }) => theme.base.navBg};
   backdrop-filter: blur(5px);
   padding: 0.6rem 0.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  &:hover,
+  &.active {
+    background: rgba(0, 0, 0, 0.75);
+  }
 `;
 
 export const EpisodesTitle = styled.h1`
@@ -60,13 +54,14 @@ export const EpisodesTitle = styled.h1`
 `;
 
 export const EpisodesWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
   gap: 0;
   width: 100%;
-  max-height: 93%;
+  max-height: 86%;
   overflow-y: auto;
   &.name {
     justify-content: flex-end;
@@ -85,6 +80,31 @@ export const EpisodesWrapper = styled.div`
       & ${EpisodeInner} {
         background: rgba(0, 0, 0, 0.5);
       }
+    }
+  }
+`;
+
+export const PaginationContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: ${({ theme }) => theme.base.navBg};
+  color: ${({ theme }) => theme.text.primary};
+`;
+
+export const NoEpisode = styled.div`
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  background: ${({ theme }) => theme.base.navBg};
+  transition: all 0.2s ease-in-out;
+  & ${EpisodeInner} {
+    &:hover {
+      background: none;
     }
   }
 `;

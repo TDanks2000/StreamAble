@@ -75,6 +75,7 @@ export const InfoLeft = styled.div`
 `;
 
 export const InfoRight = styled.div`
+  position: relative;
   width: 32%;
   height: 100%;
 `;
@@ -143,4 +144,9 @@ export const NoVideoText = styled.div`
   font-size: 4rem;
   text-transform: uppercase;
   font-weight: bold;
+`;
+
+export const RelatedContainer = styled.div`
+  width: 100%;
+  margin-top: 1.5rem;
 `;

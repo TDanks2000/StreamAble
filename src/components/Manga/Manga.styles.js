@@ -41,9 +41,12 @@ export const MangaBG = styled.div`
 export const TopInfo = styled.div`
   position: absolute;
   bottom: 0;
-  left: calc(16% + 3.2rem);
-  width: 26%;
+  left: 17%;
+  width: 56%;
   z-index: 4;
+  @media (min-width: 1700px) {
+    left: calc(16% + 3.2rem);
+  }
 `;
 
 export const Title = styled.h1`
@@ -51,6 +54,9 @@ export const Title = styled.h1`
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const MangaWrapper = styled.div`

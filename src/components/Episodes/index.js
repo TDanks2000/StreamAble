@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
+import Pagination from "../Pagination";
 import {
   Episode,
   EpisodeInner,
@@ -6,44 +7,55 @@ import {
   EpisodesTitle,
   EpisodesWrapper,
   NoEpisode,
+  PaginationContainer,
 } from "./Episodes.styles";
+
+const PageSize = 25;
 
 function InfoEpisodes(props) {
   const { episodes, id, color, ep } = props;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const currentEpisodesData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return episodes.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, episodes]);
 
   return (
     <EpisodesContainer>
       <EpisodesTitle>Episodes</EpisodesTitle>
-      <EpisodesWrapper className={episodes.length > 100 ? "number" : "name"}>
+      <EpisodesWrapper>
         {episodes?.length <= 0 ? (
           <NoEpisode>
             <EpisodeInner>No episodes</EpisodeInner>
           </NoEpisode>
         ) : (
-          episodes.map(({ title, image }, index) => {
-            const realEpisode = index + 1;
+          currentEpisodesData.map(({ title, image, number }, _index) => {
             return (
               <Episode
-                to={`/anime/${id}/episode/${realEpisode}`}
-                key={realEpisode}
+                to={`/anime/${id}/episode/${number}`}
+                key={number}
                 image={image}
                 color={color}
-                className={realEpisode === ep ? "active" : ""}
+                className={number === ep ? "active" : ""}
               >
-                {episodes.length > 100 ? (
-                  <EpisodeInner>{realEpisode}</EpisodeInner>
-                ) : (
-                  <EpisodeInner>
-                    {!title
-                      ? `Episode ${realEpisode}`
-                      : `${realEpisode} - ${title}`}
-                  </EpisodeInner>
-                )}
+                <EpisodeInner className={number === ep ? "active" : ""}>
+                  {!title ? `Episode ${number}` : `${number} - ${title}`}
+                </EpisodeInner>
               </Episode>
             );
           })
         )}
       </EpisodesWrapper>
+      <PaginationContainer>
+        <Pagination
+          currentPage={currentPage}
+          totalCount={episodes.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </PaginationContainer>
     </EpisodesContainer>
   );
 }

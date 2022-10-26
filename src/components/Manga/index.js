@@ -23,6 +23,7 @@ import Recommended from "../Recommended";
 import { useHotkeys } from "react-hotkeys-hook";
 import Genres from "./genres";
 import Meta from "./Meta";
+import Relations from "../Relations";
 
 const MangaComponent = (props) => {
   const {
@@ -35,6 +36,7 @@ const MangaComponent = (props) => {
     color,
     genres,
     recommendations,
+    relations,
   } = props;
   const titlE = title_romaji || title_english;
   const [modalShow, setModalShow] = useState(false);
@@ -81,6 +83,9 @@ const MangaComponent = (props) => {
               setLoading={setLoading}
               loading={loading}
             />
+
+            <Relations related={relations} />
+
             <Characters data={characters} wantVoiceActors={false} />
           </BottomLeft>
           <BottomRight>
