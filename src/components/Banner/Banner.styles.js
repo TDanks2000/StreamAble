@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const BannerContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 350px;
-  position: relative;
   border-radius: 10px;
   overflow: hidden;
   -webkit-box-shadow: -8px 21px 43px -16px rgba(0, 0, 0, 0.67);

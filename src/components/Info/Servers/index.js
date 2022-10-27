@@ -31,7 +31,6 @@ const Servers = ({
       );
       setDubServers(ServersFiltered);
     });
-    console.log(subEpisodeId);
   }, [subEpisodeId, dubEpisodeId, episodeId, subOrDub]);
 
   useEffect(() => {

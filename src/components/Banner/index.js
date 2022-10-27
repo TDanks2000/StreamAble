@@ -1,18 +1,11 @@
 import React from "react";
-import { Carousel } from "react-responsive-carousel";
+import Carousel from "../Carousel";
 import { BannerContainer } from "./Banner.styles";
 
 export const Banner = ({ children }) => {
   return (
     <BannerContainer>
-      <Carousel
-        showThumbs={false}
-        centerMode={false}
-        showStatus={false}
-        interval={5000}
-        autoPlay={true}
-        infiniteLoop={true}
-      >
+      <Carousel show={1} infiniteLoop={true}>
         {children}
       </Carousel>
     </BannerContainer>

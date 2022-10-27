@@ -33,10 +33,10 @@ export const BannerItem = (props) => {
     .querySelector("body")
     .innerText.split(" [Written by MAL Rewrite]")[0];
   return (
-    <BannerItemContainer url={cover || image}>
+    <BannerItemContainer url={cover || image} to={to}>
       <BannerItemInside>
         <BannerItemInfo>
-          <BannerItemTitle to={to}>{title_userPreferred}</BannerItemTitle>
+          <BannerItemTitle>{title_userPreferred}</BannerItemTitle>
           <BannerGenreWrapper>
             {genres?.map((genre) => (
               <BannerGenre to={`/genre/${genre}`} key={`genre-${genre}`}>

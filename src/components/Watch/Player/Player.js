@@ -111,7 +111,6 @@ function Player({
   // };
 
   const handleBuffer = (e) => {
-    console.log(e.type);
     if (e.type === "waiting") return setShowBuffer(true);
     return setShowBuffer(false);
   };

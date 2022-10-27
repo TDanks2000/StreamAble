@@ -18,15 +18,12 @@ export const BannerItemInfo = styled.div`
   text-align: left;
 `;
 
-export const BannerItemTitle = styled(Link)`
+export const BannerItemTitle = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   width: 100%;
   text-transform: uppercase;
   cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 export const BannerGenreWrapper = styled.div`
@@ -87,7 +84,7 @@ const DoT = styled.span`
 
 export const Dot = () => <DoT></DoT>;
 
-export const BannerItemContainer = styled.div`
+export const BannerItemContainer = styled(Link)`
   width: 100%;
   height: 350px;
   margin: 0;
@@ -96,7 +93,7 @@ export const BannerItemContainer = styled.div`
   background-size: cover;
   cursor: pointer;
   &:hover ${BannerItemTitle} {
-    // text-decoration: underline;
+    text-decoration: underline;
   }
   &:hover ${BannerItemInside} {
     backdrop-filter: blur(1px);
