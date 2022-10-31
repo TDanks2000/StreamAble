@@ -36,7 +36,6 @@ import MangaInfo from "./Manga";
 import Relations from "../Relations";
 
 function InfoComponent(props) {
-  console.log(props);
   const {
     title: {
       english: title_english,
@@ -78,7 +77,6 @@ function InfoComponent(props) {
     api
       .getSource(episodeId)
       .then((sourceRes) => {
-        console.log(sourceRes);
         const { sources, headers } = sourceRes;
         setHeaders(headers);
         const src = sources.pop().url;
