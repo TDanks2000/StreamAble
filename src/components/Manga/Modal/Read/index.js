@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { proxyURL } from "../../../../utils/utils";
 import { LastPage, NextPage, PageImage, ReadContainer } from "./Read.styles";
 
 const Read = ({ page: pages, color }) => {
@@ -36,7 +37,7 @@ const Read = ({ page: pages, color }) => {
 
       {/* PAGE IMAGE */}
       <PageImage color={color}>
-        <img src={page.img} alt={page.page} />
+        <img src={proxyURL + page.img} alt={page.page} />
       </PageImage>
 
       {/* NEXT PAGE */}

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { rgba } from "polished";
 
 export const EpisodesContainer = styled.div`
   position: relative;

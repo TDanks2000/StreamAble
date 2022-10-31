@@ -12,6 +12,7 @@ import {
 import { useAuth } from "../../../contexts/AuthContext";
 import { db } from "../../../utils/firebase";
 import Buffering from "../Buffering";
+import { proxyURL } from "../../../utils/utils";
 
 function Player({
   headers,
@@ -115,6 +116,8 @@ function Player({
     return setShowBuffer(false);
   };
 
+  if (!url) return null;
+
   return (
     <VideoWrapper onMouseMove={handleInactive} ref={WrapperRef}>
       <FullContainer ref={ContainerRef}>
@@ -147,7 +150,7 @@ function Player({
       <ReactPlayer
         width="100%"
         height="100%"
-        url={url}
+        url={proxyURL + url}
         playing={playing}
         muted={muted}
         volume={volume}

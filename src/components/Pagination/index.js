@@ -42,11 +42,9 @@ const Pagination = (props) => {
   return (
     <PaginationContainer>
       {/* Left navigation arrow */}
-      <PaginateItem onClick={onPrevious}>
-        <Arrow>
-          <AiOutlineArrowLeft />
-        </Arrow>
-      </PaginateItem>
+      <Arrow onClick={onPrevious}>
+        <AiOutlineArrowLeft />
+      </Arrow>
       {paginationRange.map((pageNumber) => {
         // If the pageItem is a DOT, render the DOTS unicode character
         if (pageNumber === DOTS) {
@@ -58,20 +56,19 @@ const Pagination = (props) => {
           <PaginateItem
             onClick={() => onPageChange(pageNumber)}
             className={pageNumber === currentPage ? "selected" : ""}
+            key={pageNumber}
           >
             {pageNumber}
           </PaginateItem>
         );
       })}
       {/*  Right Navigation arrow */}
-      <PaginateItem
+      <Arrow
         onClick={onNext}
         className={currentPage === lastPage ? "disabled" : ""}
       >
-        <Arrow>
-          <AiOutlineArrowRight />
-        </Arrow>
-      </PaginateItem>
+        <AiOutlineArrowRight />
+      </Arrow>
     </PaginationContainer>
   );
 };

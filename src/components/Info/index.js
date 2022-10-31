@@ -79,7 +79,10 @@ function InfoComponent(props) {
       .then((sourceRes) => {
         const { sources, headers } = sourceRes;
         setHeaders(headers);
-        const src = sources.pop().url;
+        const srcSelector = sources.find((source) =>
+          source.quality.includes("1080")
+        );
+        const src = srcSelector.url || sources.pop().url;
         setStream(src);
       })
       .catch((err) => {

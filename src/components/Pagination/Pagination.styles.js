@@ -47,5 +47,5 @@ export const Dots = styled(PaginateItem)`
 export const Arrow = styled(PaginateItem)`
   display: inline-block;
   font-size: 1rem;
-  margin-top: 0.45rem;
+  margin-top: 0.7rem;
 `;
