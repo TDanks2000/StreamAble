@@ -1,0 +1,36 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  EpisodeContainer,
+  EpisodeName,
+  ImgContainer,
+  Left,
+  Right,
+} from "./episode.styles";
+
+const Episode = ({ image, title, index, ep, animeId, id, isFiller }) => {
+  const navigate = useNavigate();
+
+  if (isFiller === true) console.log(isFiller);
+
+  const realEpisode = Number(index + 1);
+  return (
+    <EpisodeContainer
+      className={realEpisode === Number(ep) ? "active" : ""}
+      onClick={() => navigate(`/anime/${animeId}/episode/${realEpisode}`)}
+    >
+      <Left>
+        <ImgContainer>
+          <img src={image} alt={title} />
+        </ImgContainer>
+      </Left>
+      <Right>
+        <EpisodeName isFiller={isFiller}>
+          {!title ? `Episode ${realEpisode}` : `${realEpisode} - ${title}`}
+        </EpisodeName>
+      </Right>
+    </EpisodeContainer>
+  );
+};
+
+export default Episode;
