@@ -10,6 +10,21 @@ const settings = {
   speed: 500,
   slidesToShow: 7.1,
   slidesToScroll: 5,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+  ],
   adaptiveHeight: true,
   arrows: false,
   dots: false,

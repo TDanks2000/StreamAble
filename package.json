@@ -31,7 +31,7 @@
     "web-vitals": "^3.0.4"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "build": "vite build"
   },
   "eslintConfig": {

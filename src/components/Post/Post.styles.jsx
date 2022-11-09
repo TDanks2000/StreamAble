@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const PostContainer = styled.div`
   position: relative;
-  width: 1760px;
+  width: 176px;
   height: 240px;
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
@@ -20,6 +20,10 @@ export const PostContainer = styled.div`
   @media (min-width: 1700px) {
     width: 200px;
     height: 300px;
+  }
+  @media (max-width: 500px) {
+    width: 135px;
+    height: 200px;
   }
 `;
 

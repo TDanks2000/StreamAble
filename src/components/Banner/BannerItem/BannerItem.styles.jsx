@@ -24,6 +24,9 @@ export const BannerItemTitle = styled.div`
   width: 100%;
   text-transform: uppercase;
   cursor: pointer;
+  @media (min-width: 300px) {
+    font-size: 1rem;
+  }
 `;
 
 export const BannerGenreWrapper = styled.div`
@@ -57,6 +60,9 @@ export const BannerItemDesc = styled.h1`
   color: ${({ theme }) => theme.text.offWhite};
   text-align: left;
   padding-bottom: 0.5rem;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const BannerItemUnderInfo = styled.div`
@@ -66,11 +72,17 @@ export const BannerItemUnderInfo = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const BannerItemUnderInfoItem = styled.p`
   font-size: 1.1rem;
   text-transform: uppercase;
+  @media (max-width: 500px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const DoT = styled.span`
@@ -100,5 +112,8 @@ export const BannerItemContainer = styled(Link)`
   }
   @media (min-width: 1700px) {
     height: 500px;
+  }
+  @media (max-width: 500px) {
+    height: 300px;
   }
 `;

@@ -12,4 +12,7 @@ export const BannerContainer = styled.div`
   @media (min-width: 1700px) {
     height: 500px;
   }
+  @media (max-width: 500px) {
+    height: 300px;
+  }
 `;
