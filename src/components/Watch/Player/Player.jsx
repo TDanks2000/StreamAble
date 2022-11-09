@@ -1,6 +1,6 @@
 import { doc, setDoc } from "firebase/firestore";
 import React, { useState, useRef } from "react";
-import ReactPlayer from "react-player/lazy";
+import ReactPlayer from "react-player";
 import Controls from "../Controls";
 import TimeLine from "../TimeLine";
 import Top from "../TopControls";
