@@ -2,29 +2,36 @@ import moment from "moment";
 import React from "react";
 import CountdownTimer from "../../CountdownTimer";
 import {
+  CountdownWrapper,
   NextEpisodeContainer,
   NextEpisodeDate,
   NextEpisodeNumber,
   NextEpisodeTime,
+  NextEpisodeWrapper,
 } from "./NextEpisode.styles";
 
 const NextEpisode = ({ nextAiringEpisode }) => {
   if (!nextAiringEpisode) return null;
 
   const nextAiringTimeDate = moment(nextAiringEpisode.airingTime * 1000);
-  console.log("date", nextAiringEpisode);
+  // console.log("date", nextAiringEpisode);
   return (
-    <NextEpisodeContainer>
-      <NextEpisodeDate>{nextAiringTimeDate.format("MMM DD")}</NextEpisodeDate>
-      <NextEpisodeNumber>
-        <p>
-          Episode <span>{nextAiringEpisode.episode}</span>
-        </p>
-      </NextEpisodeNumber>
-      <NextEpisodeTime>{nextAiringTimeDate.format("HH:MM")}</NextEpisodeTime>
-
-      {/* <CountdownTimer targetDate={dateTimeAfterThreeDays}/> */}
-    </NextEpisodeContainer>
+    <NextEpisodeWrapper>
+      <NextEpisodeContainer>
+        <NextEpisodeDate>{nextAiringTimeDate.format("MMM DD")}</NextEpisodeDate>
+        <NextEpisodeNumber>
+          <p>
+            Episode <span>{nextAiringEpisode.episode}</span>
+          </p>
+        </NextEpisodeNumber>
+        <NextEpisodeTime>{nextAiringTimeDate.format("HH:MM")}</NextEpisodeTime>
+      </NextEpisodeContainer>
+      <CountdownWrapper>
+        <CountdownTimer
+          targetDate={new Date(nextAiringEpisode.airingTime * 1000)}
+        />
+      </CountdownWrapper>
+    </NextEpisodeWrapper>
   );
 };
 

@@ -51,6 +51,9 @@ export const InfoTopBot = styled.div`
 
 export const InfoTop = styled(InfoTopBot)`
   height: 550px;
+  @media (min-width: 1700px) {
+    height: 640px;
+  }
 `;
 
 export const InfoBottom = styled(InfoTopBot)`

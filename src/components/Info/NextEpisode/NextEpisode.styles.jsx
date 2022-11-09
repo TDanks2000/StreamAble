@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
-export const NextEpisodeContainer = styled.div`
+export const NextEpisodeWrapper = styled.div`
   position: relative;
   width: 100%;
-  background: ${({ theme }) => theme.base.navBg};
-  color: ${({ theme }) => theme.text.primary};
   border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 1.1rem;
+`;
+
+export const NextEpisodeContainer = styled.div`
+  position: relative;
+  background: ${({ theme }) => theme.base.navBg};
+  color: ${({ theme }) => theme.text.primary};
+  overflow: hidden;
 `;
 
 const NextEpisodeTDStyles = styled.div`
@@ -46,4 +50,13 @@ export const NextEpisodeNumber = styled.div`
       margin-left: 10px;
     }
   }
+`;
+
+export const CountdownWrapper = styled.div`
+  background: ${({ theme }) => theme.base.navBg};
+  color: ${({ theme }) => theme.text.primary};
+  margin-bottom: 1.1rem;
+  overflow: hidden;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 `;

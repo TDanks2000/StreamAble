@@ -1,5 +1,6 @@
 import React from "react";
 import { useCountdown } from "../../hooks/useCountdown";
+import { ShowCounter } from "./showCounter";
 
 const CountdownTimer = ({ targetDate, expiredNotice: ExpiredNotice }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
