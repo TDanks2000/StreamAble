@@ -6,7 +6,8 @@ const CountdownTimer = ({ targetDate, expiredNotice: ExpiredNotice }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
   if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice />;
+    // return <ExpiredNotice />;
+    return null;
   } else {
     return (
       <ShowCounter

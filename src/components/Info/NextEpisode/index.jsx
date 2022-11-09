@@ -14,6 +14,7 @@ const NextEpisode = ({ nextAiringEpisode }) => {
   if (!nextAiringEpisode) return null;
 
   const nextAiringTimeDate = moment(nextAiringEpisode.airingTime * 1000);
+  const date = new Date(nextAiringEpisode.airingTime * 1000);
   // console.log("date", nextAiringEpisode);
   return (
     <NextEpisodeWrapper>
@@ -26,11 +27,11 @@ const NextEpisode = ({ nextAiringEpisode }) => {
         </NextEpisodeNumber>
         <NextEpisodeTime>{nextAiringTimeDate.format("HH:MM")}</NextEpisodeTime>
       </NextEpisodeContainer>
-      <CountdownWrapper>
-        <CountdownTimer
-          targetDate={new Date(nextAiringEpisode.airingTime * 1000)}
-        />
-      </CountdownWrapper>
+      {new Date() < date ? (
+        <CountdownWrapper>
+          <CountdownTimer targetDate={date} />
+        </CountdownWrapper>
+      ) : null}
     </NextEpisodeWrapper>
   );
 };
