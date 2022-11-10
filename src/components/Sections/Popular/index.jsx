@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PostComponent from "../../Post";
 import * as api from "../../../utils/api/api";
+import Loading from "../../Loading";
 function Popular({ limit, type }) {
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ function Popular({ limit, type }) {
     });
   }, []);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
   return info.map((item, i) => (
     <PostComponent key={`popular-post-${i}`} {...item} />
   ));

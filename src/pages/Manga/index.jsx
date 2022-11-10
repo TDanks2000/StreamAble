@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../../components/Loading";
 import MangaComponent from "../../components/Manga";
 
 import * as api from "../../utils/api/api";
@@ -21,7 +22,7 @@ const Manga = () => {
       .catch((err) => setLoading(true));
   }, [id]);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
   return <MangaComponent {...data} />;
 };
 

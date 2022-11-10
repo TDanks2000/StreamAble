@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { getTopRated } from "../../../utils/api/api";
+import Loading from "../../Loading";
 import PostComponent from "../../Post";
 
 function TopRated({ limit, offset }) {
@@ -15,7 +16,7 @@ function TopRated({ limit, offset }) {
     });
   }, []);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
   return info.data.map((item) => (
     <PostComponent key={`top-post-${i}`} {...item} />
   ));

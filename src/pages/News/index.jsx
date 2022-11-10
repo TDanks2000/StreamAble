@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../../components/Loading";
 import NewsPost from "../../components/NewsPost";
 import * as api from "../../utils/api/api";
 import { Container, Title, Wrapper } from "./News.styles";
@@ -17,7 +18,7 @@ const News = () => {
     });
   }, [topic]);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
 
   return (
     <Container>

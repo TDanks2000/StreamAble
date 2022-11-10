@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import InfoComponent from "../../components/Info";
+import Loading from "../../components/Loading";
 import * as api from "../../utils/api/api";
 
 const Random = () => {
@@ -17,7 +18,7 @@ const Random = () => {
     };
   }, []);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
   return <InfoComponent {...randomAnime} episodes={randomAnime?.episodes} />;
 };
 
