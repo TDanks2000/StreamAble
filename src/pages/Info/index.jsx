@@ -7,6 +7,7 @@ import * as api from "../../utils/api/api";
 import InfoComponent from "../../components/Info";
 import { Error, GoBack } from "../styles";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import Loading from "../../components/Loading";
 
 function Info() {
   let { pathname } = useLocation();
@@ -37,8 +38,8 @@ function Info() {
     }
   }, [pathname]);
 
-  if (!episodes) return "loading...";
-  if (!data) return "loading...";
+  if (!episodes) return <Loading />;
+  if (!data) return <Loading />;
 
   if (data?.error)
     return (

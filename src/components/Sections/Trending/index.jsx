@@ -4,6 +4,7 @@ import { getTrending } from "../../../utils/api/api";
 import PostComponent from "../../Post";
 
 import Slider from "react-slick";
+import Loading from "../../Loading";
 
 const settings = {
   infinite: true,
@@ -42,7 +43,7 @@ function Trending({ page = 1, perPage = 10 }) {
     });
   }, []);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
   return (
     <Slider {...settings}>
       {info.map((item) => (

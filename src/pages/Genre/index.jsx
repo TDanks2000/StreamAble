@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../../components/Loading";
 import PostComponent from "../../components/Post";
 
 import * as api from "../../utils/api/api";
@@ -18,7 +19,7 @@ const Genre = () => {
     });
   }, [genre]);
 
-  if (loading) return "loading...";
+  if (loading) return <Loading />;
   return (
     <GenreContainer>
       <GenreTitle>{genre}</GenreTitle>
