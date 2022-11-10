@@ -22,6 +22,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import News from "./pages/News";
 import Footer from "./components/Footer";
 import Manga from "./pages/Manga";
+import { UserLiked } from "./pages/user/liked";
 
 const App = () => {
   return (
@@ -63,6 +64,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <UserWL />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user/liked"
+              element={
+                <PrivateRoute>
+                  <UserLiked />
                 </PrivateRoute>
               }
             />

@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth, db, storage } from "../utils/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore/lite";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 

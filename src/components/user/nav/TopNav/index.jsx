@@ -3,6 +3,7 @@ import { TopNavContainer, TopNavLink, TopNavLinks } from "./TopNav.styles";
 
 import {
   FaBookmark,
+  FaHeart,
   // FaClock,
   // FaCog,
   // FaSignOutAlt,
@@ -21,6 +22,10 @@ export const TopNav = () => {
         <TopNavLink to={"/user/watchList"}>
           <FaBookmark />
           <span>Watch List</span>
+        </TopNavLink>
+        <TopNavLink to={"/user/liked"}>
+          <FaHeart />
+          <span>liked</span>
         </TopNavLink>
         {/* <TopNavLink to={"/user/continueWatching"}>
           <FaClock />

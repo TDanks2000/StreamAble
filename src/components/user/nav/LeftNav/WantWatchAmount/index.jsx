@@ -21,7 +21,7 @@ const WantWatch = ({ currentUser }) => {
 
   return (
     <UnderInfo>
-      Watch List: <span>{wantWatchedAmount}</span>
+      Plan to watch: <span>{wantWatchedAmount}</span>
     </UnderInfo>
   );
 };

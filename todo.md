@@ -46,4 +46,4 @@
 - [ ] Switch to typescript
 - [ ] Improve Component structure
 - [ ] More reusable components
-- [ ] fix long episode list memory leak
+- [x] fix long episode list memory leak

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   FaBookmark,
+  FaHeart,
   // FaClock,
   // FaCog,
   FaSignOutAlt,
@@ -39,6 +40,10 @@ export const UserDropdown = ({ open, handleClick }) => {
       <DropdownItem to={`/user/watchlist`} onClick={handleClick}>
         <FaBookmark />
         <span>Watch List</span>
+      </DropdownItem>
+      <DropdownItem to={`/user/liked`} onClick={handleClick}>
+        <FaHeart />
+        <span>liked</span>
       </DropdownItem>
       {/* <DropdownItem to={`/user/continueWatching`} onClick={handleClick}>
         <FaClock />
