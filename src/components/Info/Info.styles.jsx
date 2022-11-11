@@ -51,8 +51,15 @@ export const InfoTopBot = styled.div`
 
 export const InfoTop = styled(InfoTopBot)`
   height: 550px;
+
   @media (min-width: 1700px) {
     height: 640px;
+  }
+  @media (orientation: portrait) and (max-width: 500px) {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 
@@ -75,12 +82,20 @@ export const EpisodeTitle = styled.span`
 export const InfoLeft = styled.div`
   width: 65%;
   height: 100%;
+  @media (orientation: portrait) and (max-width: 500px) {
+    height: 24vh;
+    width: 100%;
+  }
 `;
 
 export const InfoRight = styled.div`
   position: relative;
   width: 32%;
   height: 100%;
+  @media (orientation: portrait) and (max-width: 500px) {
+    width: 100%;
+    // height: 550px;
+  }
 `;
 
 export const InfoGenreWrapper = styled.div`

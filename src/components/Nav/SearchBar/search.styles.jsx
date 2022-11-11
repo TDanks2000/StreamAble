@@ -11,7 +11,7 @@ export const SearchContainer = styled.form`
   height: 36px;
   line-height: 36px;
   border-radius: 0.5rem;
-  @media (max-width: 500px) {
+  @media (orientation: portrait) and (max-width: 500px) {
     display: none;
   }
 `;

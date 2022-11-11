@@ -21,7 +21,7 @@ export const PostContainer = styled.div`
     width: 200px;
     height: 300px;
   }
-  @media (max-width: 500px) {
+  @media (orientation: portrait) and (max-width: 500px) {
     width: 135px;
     height: 200px;
   }

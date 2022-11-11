@@ -16,4 +16,7 @@ export const AppContainer = styled.div`
   width: 100%;
   max-width: 1800px;
   height: 100%;
+  @media (orientation: portrait) and (max-width: 500px) {
+    padding: 0.25rem 0.85rem;
+  }
 `;
