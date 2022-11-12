@@ -17,6 +17,8 @@ import NavProfile from "./Profile";
 
 import LOGO from "../../assets/images/logo.png";
 import { useAuth } from "../../contexts/AuthContext";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import MobileNav from "./Mobile/MobileNav";
 
 export const Genres = [
   "ACTION",
@@ -41,7 +43,19 @@ export const Genres = [
 ];
 
 function Nav() {
+  const detectMobile = useIsMobile();
   const { currentUser } = useAuth(true);
+
+  if (detectMobile.isMobile()) {
+    return (
+      <NavWrapper>
+        <NavContainer>
+          <MobileNav Logo={LOGO} currentUser={currentUser} />
+        </NavContainer>
+      </NavWrapper>
+    );
+  }
+
   return (
     <NavWrapper>
       <NavContainer>

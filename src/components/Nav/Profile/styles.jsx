@@ -58,3 +58,14 @@ export const ProfileContent = styled.div`
     opacity: 0.8;
   }
 `;
+
+export const ProfileContainerMobile = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 0.25rem;
+  & ${ProfileImage} {
+    width: 35px;
+    height: 35px;
+  }
+`;

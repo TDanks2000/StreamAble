@@ -1,12 +1,20 @@
 import styled from "styled-components";
 
-export const LeftNavContainer = styled.div`
+export const LeftNavWrapper = styled.div`
   position: relative;
   width: 350px;
-  float: left;
+  @media (orientation: portrait) and (max-width: 900px) {
+    width: 100%;
+  }
+`;
+
+export const LeftNavContainer = styled.div`
+  position: relative;
+  width: 100%;
   background: ${({ theme }) => theme.base.navBg};
   padding: 2rem 3rem;
   border-radius: 7px;
+  float: left;
 `;
 
 export const UserIconWrapper = styled.div`

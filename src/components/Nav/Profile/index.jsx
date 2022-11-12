@@ -7,16 +7,38 @@ import {
   ProfileLink,
   ProfileContent,
   ProfileUserName,
+  ProfileContainerMobile,
 } from "./styles";
 
 import imgUrl from "../../../assets/images/defaultUser.png";
+import { useIsMobile } from "../../../hooks/useIsMobile";
 
 const NavProfile = ({ loggedIn }) => {
+  const detectMobile = useIsMobile();
   const [open, setOpen] = useState(false);
 
   const handleClick = (e) => {
     setOpen((prevState) => !prevState);
   };
+
+  if (detectMobile.isMobile()) {
+    return (
+      <ProfileContainerMobile>
+        <ProfileLink to={`/user/profile`}>
+          <ProfileImage>
+            <img
+              src={
+                !loggedIn.photoURL?.startsWith("http")
+                  ? imgUrl
+                  : loggedIn.photoURL
+              }
+              alt={`${loggedIn.displayName}`}
+            />
+          </ProfileImage>
+        </ProfileLink>
+      </ProfileContainerMobile>
+    );
+  }
 
   return (
     <ProfileContainer>

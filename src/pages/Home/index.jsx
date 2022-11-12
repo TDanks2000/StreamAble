@@ -17,10 +17,10 @@ function Home() {
       setPopular(data);
     });
 
-    if (detectMobile.isMobile())
-      toastWarnNotify(
-        "this website is not made for mobile, if you want the best experience please visit on desktop"
-      );
+    // if (detectMobile.isMobile())
+    //   toastWarnNotify(
+    //     "this website is not made for mobile, if you want the best experience please visit on desktop"
+    //   );
   }, []);
 
   return (

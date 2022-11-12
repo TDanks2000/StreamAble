@@ -10,6 +10,7 @@ import {
   ImageHover,
   ImageHiddenInput,
   UnderInfo,
+  LeftNavWrapper,
 } from "./LeftNav.styles";
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -44,46 +45,46 @@ export const LeftNav = ({ logout, currentUser, uploadProfilePicture }) => {
   };
 
   return (
-    <React.Fragment>
-      <LeftNavContainer>
-        <UserIconWrapper>
-          <UserIcon>
-            <img
-              src={
-                !currentUser.photoURL?.startsWith("http")
-                  ? imgUrl
-                  : currentUser.photoURL
-              }
-              alt={`${currentUser.displayName}`}
-            />
-            <ImageHover>
-              <FaPen />
-              <span>Change avatar</span>
-            </ImageHover>
-            <ImageHiddenInput
-              type="file"
-              onChange={handleChange}
-              accept="image/png"
-              disabled={isFilePicked}
-            />
-          </UserIcon>
-        </UserIconWrapper>
-        <UserName>{currentUser.displayName}</UserName>
-        <UnderInfoContainer>
-          <UnderInfo>
-            Joined: <span>{creationDate}</span>
-          </UnderInfo>
-          <WantWatch currentUser={currentUser} />
-        </UnderInfoContainer>
-        <Bottom>
-          <LogOutText onClick={handleLogout}>
-            <span>
-              <MdLogout />
-            </span>
-            Log Out
-          </LogOutText>
-        </Bottom>
-      </LeftNavContainer>
-    </React.Fragment>
+    // <LeftNavWrapper>
+    <LeftNavContainer>
+      <UserIconWrapper>
+        <UserIcon>
+          <img
+            src={
+              !currentUser.photoURL?.startsWith("http")
+                ? imgUrl
+                : currentUser.photoURL
+            }
+            alt={`${currentUser.displayName}`}
+          />
+          <ImageHover>
+            <FaPen />
+            <span>Change avatar</span>
+          </ImageHover>
+          <ImageHiddenInput
+            type="file"
+            onChange={handleChange}
+            accept="image/png"
+            disabled={isFilePicked}
+          />
+        </UserIcon>
+      </UserIconWrapper>
+      <UserName>{currentUser.displayName}</UserName>
+      <UnderInfoContainer>
+        <UnderInfo>
+          Joined: <span>{creationDate}</span>
+        </UnderInfo>
+        <WantWatch currentUser={currentUser} />
+      </UnderInfoContainer>
+      <Bottom>
+        <LogOutText onClick={handleLogout}>
+          <span>
+            <MdLogout />
+          </span>
+          Log Out
+        </LogOutText>
+      </Bottom>
+    </LeftNavContainer>
+    // </LeftNavWrapper>
   );
 };
