@@ -53,10 +53,19 @@ export const InputWrapper = styled.div`
     border: 1px solid #303030;
     border-radius: 5px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    @media (orientation: portrait) and (max-width: 900px) {
+      font-size: 0.9rem;
+    }
   }
   & input[readonly] {
     background-color: #292929;
     opacity: 1;
+  }
+  @media (orientation: portrait) and (max-width: 900px) {
+    max-width: 55%;
+    flex: 0 0 55%;
+    position: absolute;
+    right: 0;
   }
 `;
 
@@ -71,8 +80,17 @@ export const UserWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2.12rem;
+  @media (min-width: 0) and (max-width: 670px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 670px) and (max-width: 870px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 870px) and (max-width: 1070px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
   & ${PostContainer} {
-    width: 100%;
-    height: 270px;
+    // width: 100%;
+    // height: 270px;
   }
 `;

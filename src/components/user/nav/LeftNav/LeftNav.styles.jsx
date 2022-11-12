@@ -3,18 +3,30 @@ import styled from "styled-components";
 export const LeftNavWrapper = styled.div`
   position: relative;
   width: 350px;
-  @media (orientation: portrait) and (max-width: 900px) {
+  @media (max-width: 1400px) {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 `;
 
 export const LeftNavContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 350px;
   background: ${({ theme }) => theme.base.navBg};
   padding: 2rem 3rem;
   border-radius: 7px;
   float: left;
+  @media (max-width: 700px) {
+    width: 300px;
+    padding: 2rem 3rem;
+  }
+
+  @media (max-width: 1400px) {
+    width: 500px;
+  }
 `;
 
 export const UserIconWrapper = styled.div`

@@ -40,7 +40,7 @@ export const NavWrapper = styled.div`
   margin-top: 0;
   background-color: ${({ theme }) => theme.base.navBg};
   color: ${({ theme }) => theme.text.primary};
-  overflow: hidden;
+  // overflow: hidden;
 `;
 
 export const NavContainer = styled.nav`

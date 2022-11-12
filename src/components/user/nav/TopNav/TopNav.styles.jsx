@@ -1,14 +1,27 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const TopNavContainer = styled.div`
+export const TopNavWrapper = styled.div`
   display: inline-block;
-  margin-left: 10px;
-  padding: 1rem;
-  margin-left: 1rem;
+  position: relative;
   width: calc(100% - 350px - 1rem);
+  overflow: hidden;
   background: ${({ theme }) => theme.base.navBg};
   border-radius: 7px;
+  padding: 1rem;
+  margin-left: 1rem;
+  @media (max-width: 1400px) {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
+`;
+
+export const TopNavContainer = styled.div`
+  width: 100%;
 `;
 
 export const TopNavLinks = styled.div`

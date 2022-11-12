@@ -44,7 +44,7 @@ export const Genres = [
 
 function Nav() {
   const detectMobile = useIsMobile();
-  const { currentUser } = useAuth(true);
+  const { currentUser } = useAuth();
 
   if (detectMobile.isMobile()) {
     return (

@@ -22,22 +22,24 @@ const NavProfile = ({ loggedIn }) => {
   };
 
   if (detectMobile.isMobile()) {
-    return (
-      <ProfileContainerMobile>
-        <ProfileLink to={`/user/profile`}>
-          <ProfileImage>
-            <img
-              src={
-                !loggedIn.photoURL?.startsWith("http")
-                  ? imgUrl
-                  : loggedIn.photoURL
-              }
-              alt={`${loggedIn.displayName}`}
-            />
-          </ProfileImage>
-        </ProfileLink>
-      </ProfileContainerMobile>
-    );
+    if (loggedIn?.email)
+      return (
+        <ProfileContainerMobile>
+          <ProfileLink to={`/user/profile`}>
+            <ProfileImage>
+              <img
+                src={
+                  !loggedIn?.photoURL?.startsWith("http")
+                    ? imgUrl
+                    : loggedIn.photoURL
+                }
+                alt={`${loggedIn.displayName}`}
+              />
+            </ProfileImage>
+          </ProfileLink>
+        </ProfileContainerMobile>
+      );
+    return null;
   }
 
   return (
