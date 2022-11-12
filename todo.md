@@ -13,12 +13,23 @@
 - [ ] Add filters to the search page
 - [ ] Airing Schedule
 
+### RESPONSIVE
+
+- [x] Mobile nav bar/ hamburger menu
+- [x] news
+- [x] user pages
+- [ ] Info page
+- [ ] Search bar/ create search page
+- [ ]
+
 ### FIXES
 
 - [x] State on pages that are re rendering when there not supposed to
 - [x] Dub/sub sometimes not working
 - [x] Episode list sometimes not getting dubbed episodes
 - [x] Sometimes the video player is not getting correct link depending on type of dub or sub
+- [ ] Sometimes video player goes blank
+- [ ] "Unable to set source of video" press episode and works?
 
 ### MOVIES/TV/DRAMA/NEWS
 
