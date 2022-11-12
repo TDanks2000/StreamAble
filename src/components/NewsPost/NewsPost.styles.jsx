@@ -8,6 +8,9 @@ export const NewsPostContainer = styled.div`
   background: ${({ theme }) => rgba(theme.base.darkBg, 0.75)};
   border-radius: 5px;
   overflow: hidden;
+  @media (max-width: 550px) {
+    width: 380px;
+  }
 `;
 
 export const NewsPostImg = styled.div`

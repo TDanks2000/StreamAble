@@ -13,6 +13,8 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   display: grid;
   gap: 1rem;
+  align-items: center;
+  justify-items: center;
   @media (min-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
   }
