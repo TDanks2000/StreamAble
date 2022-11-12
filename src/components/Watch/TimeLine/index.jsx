@@ -9,7 +9,7 @@ function TimeLine({ VideoRef, playing, currentTime, setCurrentTime }) {
   const bufferPosition =
     currentTime <= 0
       ? 0
-      : VideoRef?.getInternalPlayer().buffered.end(bufferedLength);
+      : VideoRef?.getInternalPlayer()?.buffered?.end(bufferedLength ?? 0);
   const handleChange = (e) => {
     setCurrentTime(e);
     VideoRef.seekTo(e);

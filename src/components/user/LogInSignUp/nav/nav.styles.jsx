@@ -10,12 +10,15 @@ export const LoginNavContainer = styled.div`
   background: ${({ theme }) => theme.base.darkBg};
   color: ${({ theme }) => theme.text.primary};
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  @media (orientation: portrait) and (max-width: 600px) {
+    font-size .9rem;
+  }
 `;
 
 export const LoginLink = styled(NavLink)`
   text-transform: uppercase;
   color: inherit;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: 400;
   &.active {
     font-weight: bold;

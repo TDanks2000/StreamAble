@@ -18,6 +18,15 @@ export const LoginContainer = styled.div`
   background: ${({ theme }) => theme.base.navBg};
   border-radius: 7px;
   overflow: hidden;
+  @media (orientation: portrait) and (max-width: 600px) {
+    width: 400px;
+    min-height: 360px;
+    font-size: 0.9rem;
+  }
+  @media (orientation: portrait) and (max-width: 500px) {
+    width: 350px;
+    min-height: 360px;
+  }
 `;
 
 export const LoginWrapper = styled.div`
@@ -30,7 +39,7 @@ export const FormWrapper = styled.form`
 
 export const InputWrapper = styled.div`
   position: relative;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.4em;
 `;
 
 export const InputIcon = styled.div`
@@ -39,12 +48,12 @@ export const InputIcon = styled.div`
   line-height: 3rem;
   width: 3rem;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.1em;
 `;
 
 export const Input = styled.input`
   padding-left: 3rem;
-  font-size: 1.1rem;
+  font-size: 1.1em;
   height: 3rem;
   line-height: 3rem;
   display: block;
@@ -84,5 +93,8 @@ export const Submit = styled.button`
   cursor: pointer;
   &:hover {
     opacity: 1;
+  }
+  @media (orientation: portrait) and (max-width: 600px) {
+    padding: 0.7rem 1.3rem;
   }
 `;

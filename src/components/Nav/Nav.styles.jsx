@@ -36,9 +36,11 @@ export const DropdownLinkText = styled.h3`
 `;
 
 export const NavWrapper = styled.div`
+  width: 100%;
   margin-top: 0;
   background-color: ${({ theme }) => theme.base.navBg};
   color: ${({ theme }) => theme.text.primary};
+  overflow: hidden;
 `;
 
 export const NavContainer = styled.nav`

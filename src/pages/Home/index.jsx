@@ -5,13 +5,22 @@ import * as api from "../../utils/api/api";
 import { Banner } from "../../components/Banner";
 import { BannerItem } from "../../components/Banner/BannerItem";
 import Recent from "../../components/Sections/Recent";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import { toastWarnNotify } from "../../utils/toast/Notify";
 
 function Home() {
+  const detectMobile = useIsMobile();
   const [popular, setPopular] = useState([]);
+
   useEffect(() => {
     api.getPopular(1, 7).then((data) => {
       setPopular(data);
     });
+
+    if (detectMobile.isMobile())
+      toastWarnNotify(
+        "this website is not made for mobile, if you want the best experience please visit on desktop"
+      );
   }, []);
 
   return (
