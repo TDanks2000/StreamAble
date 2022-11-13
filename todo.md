@@ -20,7 +20,6 @@
 - [x] user pages
 - [ ] Info page
 - [ ] Search bar/ create search page
-- [ ]
 
 ### FIXES
 
@@ -30,6 +29,7 @@
 - [x] Sometimes the video player is not getting correct link depending on type of dub or sub
 - [ ] Sometimes video player goes blank
 - [ ] "Unable to set source of video" press episode and works?
+- [x] "When i click back arrow episode gets blank, But when u are on 1 page"
 
 ### MOVIES/TV/DRAMA/NEWS
 

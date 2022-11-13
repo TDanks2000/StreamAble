@@ -28,21 +28,25 @@ const Pagination = (props) => {
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
+  let lastPage = paginationRange[paginationRange.length - 1];
 
   const onNext = () => {
+    if (currentPage === lastPage) return false;
     onPageChange(currentPage + 1);
   };
 
   const onPrevious = () => {
+    if (currentPage === 1) return false;
     onPageChange(currentPage - 1);
   };
-
-  let lastPage = paginationRange[paginationRange.length - 1];
 
   return (
     <PaginationContainer>
       {/* Left navigation arrow */}
-      <Arrow onClick={onPrevious}>
+      <Arrow
+        onClick={onPrevious}
+        className={currentPage === 1 ? "disabled" : ""}
+      >
         <AiOutlineArrowLeft />
       </Arrow>
       {paginationRange.map((pageNumber) => {

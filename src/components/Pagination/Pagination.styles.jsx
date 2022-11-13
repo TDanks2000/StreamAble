@@ -48,4 +48,5 @@ export const Arrow = styled(PaginateItem)`
   display: inline-block;
   font-size: 1rem;
   margin-top: 0.7rem;
+  color: ${({ theme }) => theme.text.secondary};
 `;
