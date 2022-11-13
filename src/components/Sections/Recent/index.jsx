@@ -13,16 +13,38 @@ const settings = {
   initialSlide: 0,
   responsive: [
     {
-      breakpoint: 768,
+      breakpoint: 1524,
       settings: {
-        arrows: false,
-        slidesToShow: 3,
+        slidesToShow: 5,
+        slidesToScroll: 3,
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 890,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 790,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 580,
       settings: {
         slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 300,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
       },
     },
   ],

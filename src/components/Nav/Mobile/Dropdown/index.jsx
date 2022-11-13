@@ -19,7 +19,9 @@ const MobileDropdown = ({ openNav }) => {
           <ListItem>
             <ListItemLink to="/">Home</ListItemLink>
           </ListItem>
-          {/* <ListItem  to="/Genre">Genre</ListItem> */}
+          <ListItem>
+            <ListItemLink to="/Genre">Genre</ListItemLink>
+          </ListItem>
           <ListItem>
             <ListItemLink to="/news">News</ListItemLink>
           </ListItem>

@@ -23,6 +23,7 @@ import News from "./pages/News";
 import Footer from "./components/Footer";
 import Manga from "./pages/Manga";
 import { UserLiked } from "./pages/user/liked";
+import Genres from "./pages/Genres";
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/anime/:id/episode/:ep/:typeDub" element={<Info />} />
             <Route path="/manga/:id/chapter/" element={<Manga />} />
             <Route path="/genre/:genre" element={<Genre />} />
+            <Route path="/genre/" element={<Genres />} />
             <Route path="/news/" element={<News />} />
             <Route path="/news/:topic" element={<News />} />
             {/* USER ROUTES */}
