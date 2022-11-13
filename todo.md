@@ -12,6 +12,8 @@
 - [ ] Type page
 - [ ] Add filters to the search page
 - [ ] Airing Schedule
+- [ ] Continue watching
+- [ ] Save state of video player time
 
 ### RESPONSIVE
 
