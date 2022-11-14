@@ -20,4 +20,7 @@ export const Button = styled(Link)`
     display: flex;
     align-items: center;
   }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;

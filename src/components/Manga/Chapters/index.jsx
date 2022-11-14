@@ -19,11 +19,13 @@ const MangaChapters = ({
   const [currentPage, setCurrentPage] = useState(1);
 
   const currentChaptersData = useMemo(() => {
+    if (!chapters?.length) return false;
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return chapters.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, chapters]);
 
+  if (!chapters?.length) return null;
   return (
     <Container>
       <Title>Chapters</Title>

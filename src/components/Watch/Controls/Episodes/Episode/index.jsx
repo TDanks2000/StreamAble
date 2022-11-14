@@ -11,8 +11,6 @@ import {
 const Episode = ({ image, title, index, ep, animeId, id, isFiller }) => {
   const navigate = useNavigate();
 
-  if (isFiller === true) console.log(isFiller);
-
   const realEpisode = Number(index + 1);
   return (
     <EpisodeContainer

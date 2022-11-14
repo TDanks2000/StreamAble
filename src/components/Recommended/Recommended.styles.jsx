@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  float: left;
   margin-top: 0.5rem;
   width: 100%;
+  overflow: hidden;
+  @media (max-width: 750px) {
+    display: none;
+    opacity: 0;
+  }
 `;
 
 export const Wrapper = styled.div`

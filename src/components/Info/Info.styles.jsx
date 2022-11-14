@@ -32,9 +32,15 @@ export const InfoTitle = styled.h1`
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   // color: ${({ color }) => color};
   & span {
     width: auto;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -77,12 +83,15 @@ export const EpisodeTitle = styled.span`
   & span {
     width: auto;
   }
+  @media (max-width: 600px) {
+    font-size: 0.75rem;
+  }
 `;
 
 export const InfoLeft = styled.div`
   width: 65%;
   height: 100%;
-  @media (orientation: portrait) and (max-width: 500px) {
+  @media (max-width: 500px) {
     height: 24vh;
     width: 100%;
   }
@@ -92,7 +101,7 @@ export const InfoRight = styled.div`
   position: relative;
   width: 32%;
   height: 100%;
-  @media (orientation: portrait) and (max-width: 500px) {
+  @media (max-width: 500px) {
     width: 100%;
     // height: 550px;
   }
@@ -114,8 +123,14 @@ export const InfoGenre = styled(Link)`
   border-radius: 0.5rem;
   color: ${({ theme }) => theme.text.offWhite};
   margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:hover {
     text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    font-size: 0.85rem;
   }
 `;
 

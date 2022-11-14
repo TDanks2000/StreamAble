@@ -24,4 +24,7 @@ export const ActionContainer = styled.div`
     display: flex;
     align-items: center;
   }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;

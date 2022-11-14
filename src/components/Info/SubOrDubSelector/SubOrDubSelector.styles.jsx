@@ -13,4 +13,7 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
   }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;

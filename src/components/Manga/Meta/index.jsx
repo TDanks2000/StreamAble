@@ -3,7 +3,7 @@ import { Container, Dot } from "./Meta.styles";
 
 const Meta = (props) => {
   const { releaseDate, chapters, status, rating } = props;
-  const TotalChapters = chapters.length;
+  const TotalChapters = chapters?.length || 0;
   const actualRating = (rating / 10).toFixed(1);
 
   return (

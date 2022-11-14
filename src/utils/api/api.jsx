@@ -90,7 +90,6 @@ export const getInfo = async (id, dub) => {
       error: "No data",
     };
 
-  console.log("data straight from api", data);
   return data;
 };
 

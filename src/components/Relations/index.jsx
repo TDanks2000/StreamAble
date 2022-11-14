@@ -5,42 +5,28 @@ import Related from "./Related";
 const toInclude = ["tv", "manga"];
 
 const settings = {
-  infinite: true,
+  infinite: false,
   speed: 500,
-  slidesToShow: 7.1,
-  slidesToScroll: 5,
+  slidesToShow: 4.1,
+  slidesToScroll: 2,
   initialSlide: 0,
   responsive: [
     {
-      breakpoint: 1524,
-      settings: {
-        slidesToShow: 5,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 890,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 790,
+      breakpoint: 1270,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
       },
     },
     {
-      breakpoint: 580,
+      breakpoint: 1110,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
       },
     },
     {
-      breakpoint: 300,
+      breakpoint: 667,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,

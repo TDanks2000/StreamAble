@@ -35,6 +35,8 @@ import { toastErrorNotify } from "../../utils/toast/Notify";
 import MangaInfo from "./Manga";
 import Relations from "../Relations";
 
+import { useIsMobile } from "../../hooks/useIsMobile";
+
 function InfoComponent(props) {
   const {
     title: {
@@ -61,6 +63,8 @@ function InfoComponent(props) {
   } = props;
   const [stream, setStream] = useState(null);
   const [headers, setHeaders] = useState(null);
+
+  const detectMobile = useIsMobile();
 
   let { ep = 1 } = useParams();
   var parser = new DOMParser();
@@ -194,10 +198,12 @@ function InfoComponent(props) {
 
           <Characters data={characters} typeDub={subOrDub !== "sub"} />
         </InfoLeft>
-        <InfoRight>
-          <NextEpisode nextAiringEpisode={nextAiringEpisode} />
-          <Recommended data={recommendations} />
-        </InfoRight>
+        {detectMobile.isMobile() ? (
+          <InfoRight>
+            <NextEpisode nextAiringEpisode={nextAiringEpisode} />
+            <Recommended data={recommendations} />
+          </InfoRight>
+        ) : null}
       </InfoBottom>
     </InfoContainer>
   );
