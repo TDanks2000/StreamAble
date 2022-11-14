@@ -67,9 +67,9 @@ function InfoComponent(props) {
   const detectMobile = useIsMobile();
 
   let { ep = 1 } = useParams();
-  var parser = new DOMParser();
+  const parser = new DOMParser();
 
-  var htmlDoc = parser.parseFromString(description, "text/html");
+  let htmlDoc = parser.parseFromString(description, "text/html");
 
   const episodeId = episodes[ep - 1]?.id;
   const titleWithType = `${title_english || title_userPreferred} ${
