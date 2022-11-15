@@ -1,5 +1,5 @@
-import { doc, setDoc } from "firebase/firestore";
-import React, { useState, useRef } from "react";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import Controls from "../Controls";
 import TimeLine from "../TimeLine";
@@ -13,6 +13,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { db } from "../../../utils/firebase";
 import Buffering from "../Buffering";
 import { proxyURL } from "../../../utils/utils";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 function Player({
   headers,
@@ -38,6 +39,12 @@ function Player({
   const ContainerRef = useRef();
   const WrapperRef = useRef();
   const VideoRef = useRef();
+
+  const currentEpisode = episodes[epNum - 1];
+  const [watchedAmount, setWatchedAmount] = useLocalStorage(currentEpisode.id, {
+    watchedAmount: null,
+    duration: null,
+  });
 
   const movieID = doc(db, "users", `${currentUser?.email}`, "anime", id);
 
@@ -111,13 +118,72 @@ function Player({
   //   }
   // };
 
+  const handleUpdateCW = async (watching = true) => {
+    if (!currentUser?.email) return false;
+
+    const docs = await getDoc(movieID);
+    const docData = docs?.data();
+    const docEpisodes = docData?.episodes;
+    const docEpisode = docEpisodes.find((e) => e.number === parseFloat(epNum));
+
+    const newEpisodesArray = [
+      {
+        number: parseFloat(epNum),
+        title: epTitle,
+        watching: !docEpisode ? watching : docEpisode?.watching,
+      },
+    ];
+
+    setDoc(
+      movieID,
+      {
+        episodes: newEpisodesArray,
+      },
+      { merge: true }
+    );
+  };
+
   const handleBuffer = (e) => {
     if (e.type === "waiting") return setShowBuffer(true);
     return setShowBuffer(false);
   };
 
-  if (!url) return null;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!VideoRef?.current) return false;
+      const currentVideoRef = VideoRef.current;
+      const duration = currentVideoRef?.getDuration();
+      const timeWatchedPercent = parseFloat(
+        ((currentVideoRef?.getCurrentTime() / duration) * 100).toFixed(5)
+      );
+      if (
+        watchedAmount.watchedAmount !== null &&
+        watchedAmount.watchedAmount === timeWatchedPercent
+      )
+        return false;
+      if (
+        watchedAmount.watchedAmount !== null &&
+        watchedAmount.watchedAmount >= timeWatchedPercent
+      )
+        return false;
+      setWatchedAmount({
+        watchedAmount: timeWatchedPercent,
+        duration,
+      });
+    }, 1000);
 
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const handleStartingTimeUpdate = (e) => {
+    if (watchedAmount) {
+      e.seekTo(watchedAmount.watchedAmount * 10, "seconds");
+    }
+  };
+
+  if (!url) return null;
   return (
     <VideoWrapper onMouseMove={handleInactive} ref={WrapperRef}>
       <FullContainer ref={ContainerRef}>
@@ -158,6 +224,9 @@ function Player({
         onProgress={handleTimeChange}
         onBuffer={handleBuffer}
         onBufferEnd={handleBuffer}
+        onStart={() => handleUpdateCW(true)}
+        onEnded={() => handleUpdateCW(false)}
+        onReady={handleStartingTimeUpdate}
         // onPause={handlePause}
         config={{
           file: {
@@ -167,7 +236,6 @@ function Player({
             },
             hlsOptions: {
               autoStartLoad: true,
-              startPosition: -1,
               startFragPrefetch: true,
             },
           },

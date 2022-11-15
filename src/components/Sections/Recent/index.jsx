@@ -2,58 +2,10 @@ import React, { useEffect, useState } from "react";
 import PostComponent from "../../Post";
 import * as api from "../../../utils/api/api";
 
-import Slider from "react-slick";
 import Loading from "../../Loading";
+import Slider from "react-slick";
 
-const settings = {
-  infinite: true,
-  speed: 500,
-  slidesToShow: 7.1,
-  slidesToScroll: 5,
-  initialSlide: 0,
-  responsive: [
-    {
-      breakpoint: 1524,
-      settings: {
-        slidesToShow: 5,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 890,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 790,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 580,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 300,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-  adaptiveHeight: false,
-  arrows: false,
-  dots: false,
-};
-
-function Recent({ page, perPage }) {
+function Recent({ page, perPage, settings }) {
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(true);
 

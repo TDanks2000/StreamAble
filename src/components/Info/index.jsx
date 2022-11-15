@@ -198,7 +198,7 @@ function InfoComponent(props) {
 
           <Characters data={characters} typeDub={subOrDub !== "sub"} />
         </InfoLeft>
-        {detectMobile.isMobile() ? (
+        {!detectMobile.isMobile() ? (
           <InfoRight>
             <NextEpisode nextAiringEpisode={nextAiringEpisode} />
             <Recommended data={recommendations} />
