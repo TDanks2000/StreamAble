@@ -3,15 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Nav from "./components/Nav";
 
-import Home from "./pages/Home";
 import { AppContainer, AppWrapper } from "./app.styles";
-import Info from "./pages/Info";
-import { NoMatch } from "./pages/NoMatch";
-import Genre from "./pages/Genre";
 
 import { ToastContainer } from "react-toastify";
 
-// USER ROUTES
+/* 
+  USER ROUTES 
+*/
 import { UserProfile } from "./pages/user/profile";
 import { UserWL } from "./pages/user/watchList";
 import { UserCW } from "./pages/user/continueWatching";
@@ -19,6 +17,14 @@ import { UserMal } from "./pages/user/mal";
 import { UserSettings } from "./pages/user/settings";
 import LogIn from "./pages/user/logIn";
 import PrivateRoute from "./routes/PrivateRoute";
+
+/* 
+  ROUTES 
+*/
+import Home from "./pages/Home";
+import Info from "./pages/Info";
+import { NoMatch } from "./pages/NoMatch";
+import Genre from "./pages/Genre";
 import News from "./pages/News";
 import Footer from "./components/Footer";
 import Manga from "./pages/Manga";

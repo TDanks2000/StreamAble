@@ -27,6 +27,7 @@ function Player({
   id,
   totalEpisodes,
   animeData,
+  skipTimes,
 }) {
   const { currentUser } = useAuth();
   const [playing, setPlaying] = useState(startPlaying);
@@ -194,6 +195,7 @@ function Player({
             playing={playing}
             currentTime={currentTime}
             setCurrentTime={setCurrentTime}
+            skipTimes={skipTimes}
           />
           <Controls
             id={id}

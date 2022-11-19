@@ -60,8 +60,10 @@ function InfoComponent(props) {
     nextAiringEpisode,
     typeSubOrDub,
     relations,
+    malId,
   } = props;
   const [stream, setStream] = useState(null);
+  const [skipTimes, setSkipTimes] = useState(null);
   const [headers, setHeaders] = useState(null);
 
   const detectMobile = useIsMobile();
@@ -77,7 +79,7 @@ function InfoComponent(props) {
   }`;
 
   useEffect(() => {
-    if (episodes.length < 1) return;
+    if (episodes.length < 1) return false;
     api
       .getSource(episodeId)
       .then((sourceRes) => {
@@ -85,7 +87,9 @@ function InfoComponent(props) {
         setHeaders(headers);
         const srcSelector = sources.find(
           (source) =>
-            source.quality.includes("1080") || source.quality.includes("720")
+            source.quality.includes("1080") ||
+            source.quality.includes("720") ||
+            source.quality.includes("default")
         );
         const src = srcSelector?.url || sources.pop().url;
         setStream(src);
@@ -95,6 +99,10 @@ function InfoComponent(props) {
         setStream(null);
         toastErrorNotify("Error loading video");
       });
+    api.getSkipTimes(malId, ep, 1440).then((skipTimes) => {
+      if (skipTimes.length <= 0) return false;
+      setSkipTimes(skipTimes);
+    });
   }, [episodeId, subOrDub, episodes.length]);
 
   useDocumentTitle(`${ep} - ${titleWithType} `);
@@ -124,6 +132,7 @@ function InfoComponent(props) {
                 epNum={ep}
                 episodes={episodes}
                 id={id}
+                skipTimes={skipTimes}
                 epTitle={
                   episodes[ep - 1]?.title
                     ? episodes[ep - 1].title

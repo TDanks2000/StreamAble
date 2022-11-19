@@ -7,6 +7,19 @@ const api = axios.create({
   baseURL: backupHost,
 });
 
+export const getSkipTimes = async (malId, episodeNumber, episodeLength) => {
+  const { data } = await api.get(
+    `/api/anime/aniskip/skip-times/${malId}/${episodeNumber}/${episodeLength}`
+  );
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
 export const getPopular = async (page = 1, perPage = 20) => {
   const {
     data: { results },

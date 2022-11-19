@@ -3,7 +3,13 @@ import { Scrubber } from "react-scrubber";
 import { TimelineContainer } from "./TimeLine.styles";
 import { useHotkeys } from "react-hotkeys-hook";
 
-function TimeLine({ VideoRef, playing, currentTime, setCurrentTime }) {
+function TimeLine({
+  VideoRef,
+  playing,
+  currentTime,
+  setCurrentTime,
+  skipTimes,
+}) {
   const bufferedLength =
     currentTime <= 0 ? 0 : VideoRef?.getInternalPlayer()?.buffered?.length - 1;
   const bufferPosition =
@@ -27,7 +33,6 @@ function TimeLine({ VideoRef, playing, currentTime, setCurrentTime }) {
   useHotkeys("left", () => handleSkip(VideoRef.getCurrentTime() - 5));
 
   // if (currentTime <= 0 && !playing) return null;
-
   return (
     <TimelineContainer>
       <Scrubber
