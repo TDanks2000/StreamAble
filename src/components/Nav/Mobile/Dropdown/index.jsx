@@ -25,6 +25,9 @@ const MobileDropdown = ({ openNav }) => {
           <ListItem>
             <ListItemLink to="/news">News</ListItemLink>
           </ListItem>
+          <ListItem>
+            <ListItemLink to="/download/app">APP</ListItemLink>
+          </ListItem>
           {!currentUser?.email ? (
             <>
               <ListItem>

@@ -30,6 +30,7 @@ import Footer from "./components/Footer";
 import Manga from "./pages/Manga";
 import { UserLiked } from "./pages/user/liked";
 import Genres from "./pages/Genres";
+import DownloadAPP from "./pages/DownloadApp";
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/genre/" element={<Genres />} />
             <Route path="/news/" element={<News />} />
             <Route path="/news/:topic" element={<News />} />
+            <Route path="/download/app" element={<DownloadAPP />} />
             {/* USER ROUTES */}
             <Route path="/user/signIn" element={<LogIn isSwitch={true} />} />
             <Route path="/user/signUp" element={<LogIn isSwitch={false} />} />

@@ -78,9 +78,9 @@ function Nav() {
               </DropdownItem>
             ))}
           </DropdownComponent>
-          {/* <LinkNav to="/anime/random">random</LinkNav> */}
           {/* <LinkNav to="/types">Type</LinkNav> */}
           <LinkNav to="/news">News</LinkNav>
+          <LinkNav to="/download/app">App</LinkNav>
         </LinkContainer>
         <Right>
           <NavProfile loggedIn={currentUser} />

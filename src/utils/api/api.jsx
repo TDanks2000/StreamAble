@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backupHost = "https://consume-api.up.railway.app";
+const backupHost = "https://consume-api.onrender.com";
 // const backupHost = "https://consume-api.onrender.com";
 
 const api = axios.create({
