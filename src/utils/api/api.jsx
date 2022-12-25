@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const backupHost = "https://consume-api.onrender.com";
+// TODO@ change to lib
+const backupHost = "https://api.consumet.org";
 // const backupHost = "https://consume-api.onrender.com";
 
 const api = axios.create({
@@ -23,7 +24,7 @@ export const getSkipTimes = async (malId, episodeNumber, episodeLength) => {
 export const getPopular = async (page = 1, perPage = 20) => {
   const {
     data: { results },
-  } = await api.get(`/api/anilist/popular?page=${page}&perPage=${perPage}`);
+  } = await api.get(`/meta/anilist/popular?page=${page}&perPage=${perPage}`);
 
   if (!results)
     return {
@@ -40,7 +41,7 @@ export const getPopular = async (page = 1, perPage = 20) => {
 export const getTrending = async (page = 1, perPage = 20) => {
   const {
     data: { results },
-  } = await api.get(`/api/anilist/trending?page=${page}&perPage=${perPage}`);
+  } = await api.get(`/meta/anilist/trending?page=${page}&perPage=${perPage}`);
 
   if (!results)
     return {
@@ -56,7 +57,7 @@ export const getTrending = async (page = 1, perPage = 20) => {
 
 export const getTopRated = async (limit = 10, offset = 0) => {
   const { data } = await api.get(
-    `/api/anilist/advanced-search?sort=["SCORE_DESC"]`
+    `/meta/anilist/advanced-search?sort=["SCORE_DESC"]`
   );
 
   if (!data)
@@ -71,7 +72,7 @@ export const getRecentEpisodes = async (page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(
-    `/api/anilist/recent-episodes?page=${page}&perPage=${perPage}`
+    `/meta/anilist/recent-episodes?page=${page}&perPage=${perPage}`
   );
 
   if (!results)
@@ -84,7 +85,7 @@ export const getRecentEpisodes = async (page = 1, perPage = 20) => {
 
 export const getAiringSchedule = async (perPage) => {
   const { data } = await api.get(
-    `/api/anilist/airing-schedule?perPage=${perPage}`
+    `/meta/anilist/airing-schedule?perPage=${perPage}`
   );
 
   if (!data?.results)
@@ -96,7 +97,7 @@ export const getAiringSchedule = async (perPage) => {
 };
 
 export const getInfo = async (id, dub) => {
-  const { data } = await api.get(`/api/anilist/info/${id}?dub=${dub}`);
+  const { data } = await api.get(`/meta/anilist/info/${id}?dub=${dub}`);
 
   if (!data)
     return {
@@ -107,7 +108,7 @@ export const getInfo = async (id, dub) => {
 };
 
 export const getRandomAnime = async () => {
-  const { data } = await api.get(`/api/anilist/random-anime`);
+  const { data } = await api.get(`/meta/anilist/random-anime`);
 
   if (!data)
     return {
@@ -118,7 +119,7 @@ export const getRandomAnime = async () => {
 };
 
 export const getData = async (id) => {
-  const { data } = await api.get(`/api/anilist/data/${id}`);
+  const { data } = await api.get(`/meta/anilist/data/${id}`);
 
   if (!data)
     return {
@@ -130,7 +131,7 @@ export const getData = async (id) => {
 
 export const getEpisodes = async (id, dub = false, fetchFiller = true) => {
   const { data } = await api.get(
-    `/api/anilist/episodes/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
+    `/meta/anilist/episodes/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
   );
 
   if (!data)
@@ -142,7 +143,7 @@ export const getEpisodes = async (id, dub = false, fetchFiller = true) => {
 };
 
 export const getSource = async (episodeId, server) => {
-  let { data } = await api.get(`/api/anilist/watch?episodeId=${episodeId}`);
+  let { data } = await api.get(`/meta/anilist/watch?episodeId=${episodeId}`);
 
   if (!data)
     return {
@@ -153,7 +154,7 @@ export const getSource = async (episodeId, server) => {
 };
 
 export const getServers = async (episodeId) => {
-  let { data } = await api.get(`/api/anime/servers/${episodeId}`);
+  let { data } = await api.get(`/meta/anilist/servers/${episodeId}`);
 
   if (!data)
     return {
@@ -172,7 +173,7 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(
-    `/api/anilist/search/${search}?page=${page}&perPage=${perPage}`
+    `/meta/anilist/search/${search}?page=${page}&perPage=${perPage}`
   );
 
   if (!results)
@@ -189,7 +190,7 @@ export const getGenre = async (genres, page = 1, perPage = 20) => {
       error: "No genres",
     };
   const { data } = await api.get(
-    `/api/anilist/genre?genres=["${genres}"]&page=${page}&perPage=${perPage}`
+    `/meta/anilist/genre?genres=["${genres}"]&page=${page}&perPage=${perPage}`
   );
 
   return data;
