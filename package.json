@@ -20,7 +20,7 @@
     "react-icons": "4.6.0",
     "react-is": "^18.2.0",
     "react-player": "^2.11.0",
-    "react-router-dom": "^6.4.3",
+    "react-router-dom": "^6.11.2",
     "react-scrubber": "^1.1.1",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
